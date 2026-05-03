@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wen Minjie 文敏婕 — Portfolio</title>
+<meta name="description" content="A doctoral practice at QUT investigating technologically mediated, reciprocal interactions between humans and native plants." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0a0a0a;
+    color: #d4d4d4;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
+  img { max-width: 100%; display: block; }
+  ::selection { background: #6FE89F; color: #0a0a0a; }
+
+  /* ========== NAVIGATION ========== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    padding: 1.75rem 2.5rem;
+    gap: 2rem;
+    background: linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0) 100%);
+    backdrop-filter: blur(8px);
+  }
+  .logo {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+  .menu {
+    display: flex;
+    justify-content: center;
+    gap: 56px;
+    font-size: 13px;
+    color: #fff;
+  }
+  .menu a:hover { color: #6FE89F; }
+  .contact-info {
+    font-size: 12px;
+    color: #fff;
+    line-height: 1.7;
+    text-align: right;
+  }
+  .contact-info-l {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .contact-info a:hover { color: #6FE89F; }
+
+  /* ========== HERO ========== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 640px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.2) 30%, rgba(10,10,10,0.3) 70%, rgba(10,10,10,0.85) 100%);
+    z-index: 2;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 0 2.5rem;
+    max-width: 720px;
+    animation: fadeUp 1.4s ease-out;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #6FE89F;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-h {
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.08;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: -0.015em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-h em {
+    font-style: italic;
+    color: #6FE89F;
+    font-weight: 300;
+  }
+  .hero-p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.8;
+    max-width: 460px;
+    font-weight: 300;
+  }
+  .hero-meta {
+    position: absolute;
+    left: 2.5rem;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    color: #d4d4d4;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    z-index: 3;
+  }
+  .hero-meta-l { display: flex; gap: 40px; }
+  .hero-meta strong {
+    display: block;
+    color: #fff;
+    font-weight: 400;
+    margin-top: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  /* ========== SECTION DIVIDER ========== */
+  .section-divide {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem 2.5rem 3rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #666;
+  }
+  .divide-num { color: #6FE89F; margin-right: 16px; }
+
+  /* ========== WORKS ========== */
+  .works {
+    padding: 0 2.5rem 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 7rem;
+  }
+  .work {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+  }
+  .work:hover { transform: translateY(-4px); }
+  .work:nth-child(even) .work-img-wrap { order: 2; }
+  .work:nth-child(even) .work-meta { order: 1; }
+  .work-img-wrap {
+    position: relative;
+    overflow: hidden;
+    background: #1a1a1a;
+    aspect-ratio: 16 / 11;
+  }
+  .work-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease, filter 0.7s ease;
+    filter: brightness(0.9);
+  }
+  .work:hover .work-img-wrap img {
+    transform: scale(1.04);
+    filter: brightness(1);
+  }
+  .work-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #6FE89F;
+    letter-spacing: 0.18em;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+  .work-title {
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+  .work-title em { font-style: italic; color: #6FE89F; font-weight: 300; }
+  .work-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #888;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .work-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.85;
+    font-weight: 300;
+    max-width: 420px;
+    margin-bottom: 1.75rem;
+  }
+  .work-spec {
+    display: flex;
+    gap: 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #666;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .work-spec strong {
+    display: block;
+    color: #aaa;
+    font-weight: 400;
+    margin-top: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  /* ========== ABOUT SECTION ========== */
+  .about {
+    padding: 6rem 2.5rem;
+    border-top: 0.5px solid #1f1f1f;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .about-l {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #666;
+  }
+  .about-l span { color: #6FE89F; }
+  .about-r p {
+    font-size: 16px;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 1.5rem;
+    max-width: 640px;
+  }
+  .about-r p em {
+    font-style: italic;
+    color: #6FE89F;
+  }
+  .about-meta {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 3rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #666;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    max-width: 640px;
+  }
+  .about-meta strong {
+    display: block;
+    color: #fff;
+    font-weight: 400;
+    margin-top: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 3rem 2.5rem 2.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #666;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-top: 0.5px solid #1f1f1f;
+    margin: 0 2.5rem;
+    align-items: center;
+  }
+  .foot-c { text-align: center; color: #6FE89F; }
+  .foot-r { text-align: right; }
+
+  /* ========== MOBILE ========== */
+  @media (max-width: 768px) {
+    nav {
+      grid-template-columns: 1fr auto;
+      padding: 1rem 1.25rem;
+      gap: 1rem;
+    }
+    .menu { display: none; }
+    .contact-info { font-size: 11px; }
+    .hero { padding-top: 80px; min-height: 560px; }
+    .hero-content { padding: 0 1.25rem; }
+    .hero-meta {
+      left: 1.25rem; right: 1.25rem; bottom: 1.5rem;
+      flex-direction: column; align-items: flex-start; gap: 1rem;
+    }
+    .hero-meta-l { gap: 24px; flex-wrap: wrap; }
+    .section-divide { padding: 4rem 1.25rem 2rem; flex-direction: column; align-items: flex-start; gap: 8px; }
+    .works { padding: 0 1.25rem 4rem; gap: 4rem; }
+    .work { grid-template-columns: 1fr; gap: 1.5rem; }
+    .work:nth-child(even) .work-img-wrap,
+    .work:nth-child(even) .work-meta { order: initial; }
+    .about { padding: 4rem 1.25rem; grid-template-columns: 1fr; gap: 1.5rem; }
+    footer {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      text-align: left;
+      margin: 0 1.25rem;
+      padding: 2rem 0;
+    }
+    .foot-c, .foot-r { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <span class="logo">文敏婕  Wen Minjie</span>
+  <div class="menu">
+    <a href="#works">作品 / Works</a>
+    <a href="#about">关于 / About</a>
+    <a href="#" target="_blank">CV</a>
+    <a href="#" target="_blank">研究 / Research</a>
+  </div>
+  <div class="contact-info">
+    <div class="contact-info-l">联系 / Contact</div>
+    <div><a href="mailto:your.email@example.com">Email</a></div>
+    <div><a href="https://instagram.com/" target="_blank">Instagram</a></div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <!-- 在这里替换为你自己的 hero 大图：把图片放到 images/hero.jpg 然后下面的 src 改成 "images/hero.jpg" -->
+  <img class="hero-bg" src="https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?w=1920&q=80" alt="Plant installation" />
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">— PORTFOLIO 2026</div>
+    <h1 class="hero-h">Use plant,<br>for plant, <em>back to plant.</em></h1>
+    <p class="hero-p">A doctoral practice at QUT investigating technologically mediated, reciprocal interactions between humans and native plants — through more-than-human theory and restorative environment frameworks.</p>
+  </div>
+
+  <div class="hero-meta">
+    <div class="hero-meta-l">
+      <span>Based<strong>Brisbane, AU</strong></span>
+      <span>Field<strong>HPI / RtD</strong></span>
+      <span>Year<strong>2026 →</strong></span>
+    </div>
+    <span>↓ scroll</span>
+  </div>
+</section>
+
+<!-- ============ WORKS DIVIDE ============ -->
+<div class="section-divide" id="works">
+  <span><span class="divide-num">§ 01</span>Selected works</span>
+  <span>2021 — 2025 / 05 projects</span>
+</div>
+
+<!-- ============ WORKS ============ -->
+<section class="works">
+
+  <!-- WORK 01 -->
+  <article class="work">
+    <div class="work-img-wrap">
+      <!-- 替换为：images/work-01.jpg -->
+      <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=1200&q=80" alt="The Light Humor of Plants" />
+    </div>
+    <div class="work-meta">
+      <span class="work-num">→ 01 / 05</span>
+      <h3 class="work-title"><em>The Light Humor</em><br>of Plants</h3>
+      <div class="work-tag">Data Visualisation Installation · 2022</div>
+      <p class="work-desc">An exploration of organic life in virtual digital environments, based on Roy Ascott's "moist media". Plants generate algorithmic life forms through their own bioelectric signals and surrounding environmental data — temperature, humidity, light, CO₂, and human touch.</p>
+      <div class="work-spec">
+        <span>Medium<strong>Plant + Arduino</strong></span>
+        <span>Sensors<strong>CO₂ / Touch / Light</strong></span>
+      </div>
+    </div>
+  </article>
+
+  <!-- WORK 02 -->
+  <article class="work">
+    <div class="work-img-wrap">
+      <!-- 替换为：images/work-02.jpg -->
+      <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&q=80" alt="Plant System" />
+    </div>
+    <div class="work-meta">
+      <span class="work-num">→ 02 / 05</span>
+      <h3 class="work-title">Plant <em>System</em></h3>
+      <div class="work-tag">Cross-media Interactive Installation · 2024</div>
+      <p class="work-desc">A simulation of root-system kinship between plants. The work reveals plant sociality and the blurred line between self and not-self — and asks how invasive species reshape the dynamics of an entire ecosystem.</p>
+      <div class="work-spec">
+        <span>Scale<strong>Room-size</strong></span>
+        <span>Displays<strong>5 monitors</strong></span>
+      </div>
+    </div>
+  </article>
+
+  <!-- WORK 03 -->
+  <article class="work">
+    <div class="work-img-wrap">
+      <!-- 替换为：images/work-03.jpg -->
+      <img src="https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?w=1200&q=80" alt="Serenity Sensorium" />
+    </div>
+    <div class="work-meta">
+      <span class="work-num">→ 03 / 05</span>
+      <h3 class="work-title">Serenity <em>Sensorium</em></h3>
+      <div class="work-tag">Art Healing System for Anxiety · 2023</div>
+      <p class="work-desc">An art-healing sensing system for people with anxiety disorders. Breathing meditation is translated into the rise and fall of physical modules — guiding visitors towards a slower, embodied pulse through plant, physical, and virtual layers.</p>
+      <div class="work-spec">
+        <span>Method<strong>Breath × touch</strong></span>
+        <span>Output<strong>Servo modules</strong></span>
+      </div>
+    </div>
+  </article>
+
+  <!-- WORK 04 -->
+  <article class="work">
+    <div class="work-img-wrap">
+      <!-- 替换为：images/work-04.jpg -->
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80" alt="Super City" />
+    </div>
+    <div class="work-meta">
+      <span class="work-num">→ 04 / 05</span>
+      <h3 class="work-title">Super <em>City</em></h3>
+      <div class="work-tag">Transmedia Dynamic Installation · 2021</div>
+      <p class="work-desc">An electronic dynamic installation that transforms PCB boards, magnetic fluid, and light into the daily operation of a media city — circulation, emergence, data flow, and the strangeness of urban time. Social life in the 21st century is increasingly life in a media city.</p>
+      <div class="work-spec">
+        <span>Medium<strong>PCB + magnetic fluid</strong></span>
+        <span>Software<strong>Touch Designer</strong></span>
+      </div>
+    </div>
+  </article>
+
+  <!-- WORK 05 -->
+  <article class="work">
+    <div class="work-img-wrap">
+      <!-- 替换为：images/work-05.jpg -->
+      <img src="https://images.unsplash.com/photo-1530530824250-e88a51b53ddc?w=1200&q=80" alt="Ecological Game Field" />
+    </div>
+    <div class="work-meta">
+      <span class="work-num">→ 05 / 05</span>
+      <h3 class="work-title">Ecological <em>Game Field</em></h3>
+      <div class="work-tag">Plant–Machine Interactive Installation · 2025</div>
+      <p class="work-desc">Plants are given a voice through machines. An AI vision system reads their growth state and redistributes light and nutrients in a decentralised manner — forming a network where plants negotiate, cooperate, and survive together. A challenge to traditional subject-object boundaries.</p>
+      <div class="work-spec">
+        <span>System<strong>AI camera × plants</strong></span>
+        <span>Resource<strong>Light / nutrient</strong></span>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="about-l">
+    <span>§ 02</span><br><br>About<br>关于
+  </div>
+  <div class="about-r">
+    <p>I am a first-year PhD researcher at QUT's School of Architecture and Built Environment, supervised by Dr. Yasu Santo, Prof. Marcus Foth, and Dr. Susan Loh.</p>
+    <p>My thesis investigates how technologically mediated systems can support <em>reciprocal</em> interactions between humans and native Australian plants in urban environments — using Research through Design as the overarching methodology, framed by more-than-human theory and restorative environment theory.</p>
+    <p>Before Brisbane, I trained in Digital Media Arts and Intelligent Design in China, with practice in installation art and human-plant interaction systems.</p>
+
+    <div class="about-meta">
+      <div>Affiliation<strong>QUT, Brisbane</strong></div>
+      <div>Field<strong>HPI / RtD</strong></div>
+      <div>Languages<strong>EN · 中文</strong></div>
+      <div>ORCID<strong>0009-0002-5132-0250</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <span>© 2026 文敏婕 / Wen Minjie</span>
+  <span class="foot-c">wenminjie.space</span>
+  <span class="foot-r">Last edit · May 2026</span>
+</footer>
+
+</body>
+</html>
