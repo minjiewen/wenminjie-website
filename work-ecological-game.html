@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ecological Game Field — Wen Minjie</title>
+<meta name="description" content="Ecological Game Field by Wen Minjie — Plant–Machine Interactive Installation, 2025." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0a0a0a;
+    color: #d4d4d4;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
+  ::selection { background: #6FE89F; color: #0a0a0a; }
+
+  .bg-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.45;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    padding: 1.75rem 2.5rem;
+    gap: 2rem;
+    background: linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0) 100%);
+    backdrop-filter: blur(8px);
+  }
+  .logo { font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 400; color: #fff; }
+  .logo a:hover { color: #6FE89F; }
+  .menu { display: flex; justify-content: center; gap: 56px; font-size: 16px; font-weight: 400; color: #fff; }
+  .menu a:hover, .menu a.active { color: #6FE89F; }
+  .contact-info { font-size: 15px; color: #fff; line-height: 1.7; text-align: right; }
+  .contact-info-l { font-size: 15px; margin-bottom: 4px; }
+  .contact-info a:hover { color: #6FE89F; }
+
+  .work-page {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8rem 3rem 4rem;
+  }
+
+  /* ===== Hero ===== */
+  .work-hero {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #1a1a1a;
+    overflow: hidden;
+    margin-bottom: 4rem;
+  }
+  .work-hero img, .work-hero video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .placeholder-hero {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #0d1410 0%, #0a0a0a 100%);
+    color: rgba(111, 232, 159, 0.4);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    border: 0.5px dashed rgba(111, 232, 159, 0.2);
+  }
+
+  /* ===== Title block ===== */
+  .work-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #6FE89F;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .work-h {
+    font-size: clamp(48px, 6vw, 76px);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .work-h em { font-style: italic; color: #6FE89F; }
+  .work-tag-line {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #888;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 5rem;
+  }
+
+  /* ===== Free-flowing content ===== */
+  .work-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  .text-block {
+    max-width: 720px;
+  }
+  .text-block p {
+    font-size: 17px;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 1.5rem;
+  }
+  .text-block p:last-child { margin-bottom: 0; }
+  .text-block em { font-style: italic; color: #6FE89F; }
+
+  /* Centered text block (max-width but centered, used between images) */
+  .text-block.center {
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  /* ===== Image — alternating left/right ===== */
+  .image-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .image-row.reverse > :first-child { order: 2; }
+  .image-row.reverse > :last-child { order: 1; }
+  .image-row img {
+    width: 100%;
+    display: block;
+  }
+  .image-row .text-block { max-width: none; }
+
+  /* Single full-width image */
+  .image-single {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #1a1a1a;
+    overflow: hidden;
+  }
+  .image-single img, .image-single video {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+
+  /* Half-width image (used in image-row) */
+  .image-half {
+    aspect-ratio: 4 / 3;
+    background: #1a1a1a;
+    overflow: hidden;
+  }
+  .image-half img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+
+  /* Two-column gallery */
+  .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .image-pair .image-half { aspect-ratio: 1 / 1; }
+
+  /* Three-column gallery */
+  .image-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .image-trio .image-half { aspect-ratio: 4 / 5; }
+
+  /* Placeholder styling */
+  .placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #0d1410 0%, #0a0a0a 100%);
+    color: rgba(111, 232, 159, 0.3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    border: 0.5px dashed rgba(111, 232, 159, 0.15);
+  }
+
+  /* ===== Video embed ===== */
+  .video-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #1a1a1a;
+    overflow: hidden;
+  }
+  .video-wrap iframe { width: 100%; height: 100%; border: 0; }
+  .video-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #0d1410 0%, #0a0a0a 100%);
+    color: rgba(111, 232, 159, 0.4);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    border: 0.5px dashed rgba(111, 232, 159, 0.2);
+  }
+
+  /* ===== Specs grid ===== */
+  .specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem 3rem;
+    max-width: 720px;
+    padding-top: 2rem;
+    border-top: 0.5px solid #1f1f1f;
+  }
+  .specs > div {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #666;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .specs strong {
+    display: block;
+    color: #fff;
+    font-weight: 400;
+    margin-top: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  /* ===== Credits block (collaborators / thanks) ===== */
+  .credits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 720px;
+    padding-top: 2rem;
+    border-top: 0.5px solid #1f1f1f;
+  }
+  .credits-block-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #6FE89F;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .credits-block p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* ===== Prev/Next nav ===== */
+  .work-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 7rem;
+    padding-top: 3rem;
+    border-top: 0.5px solid #1f1f1f;
+  }
+  .work-nav-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: opacity 0.3s ease;
+  }
+  .work-nav-item:hover { opacity: 0.7; }
+  .work-nav-item.next { text-align: right; align-items: flex-end; }
+  .work-nav-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #6FE89F;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .work-nav-title {
+    font-size: 22px;
+    color: #fff;
+    font-weight: 300;
+  }
+
+  /* ===== Footer with copyright ===== */
+  footer {
+    position: relative;
+    z-index: 2;
+    padding: 4rem 3rem 2.5rem;
+    border-top: 0.5px solid #1f1f1f;
+    margin: 0 3rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+  }
+  .copyright {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.8;
+  }
+  .footer-back {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #6FE89F;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .footer-back:hover { color: #b4ffce; }
+
+  @media (max-width: 768px) {
+    nav { grid-template-columns: 1fr auto; padding: 1rem 1.25rem; gap: 1rem; }
+    .menu { display: none; }
+    .contact-info { font-size: 13px; }
+    .work-page { padding: 6rem 1.25rem 3rem; }
+    .work-h { font-size: clamp(36px, 9vw, 56px); }
+    .work-tag-line { gap: 12px; flex-direction: column; }
+    .image-row { grid-template-columns: 1fr; gap: 1.5rem; }
+    .image-row.reverse > :first-child,
+    .image-row.reverse > :last-child { order: initial; }
+    .image-trio { grid-template-columns: 1fr; }
+    .image-pair { grid-template-columns: 1fr; }
+    .credits { grid-template-columns: 1fr; gap: 2rem; }
+    .work-nav { grid-template-columns: 1fr; gap: 1.5rem; }
+    .work-nav-item.next { text-align: left; align-items: flex-start; }
+    footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
+    .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<canvas class="bg-canvas" id="bgParticleCanvas"></canvas>
+
+<nav>
+  <span class="logo"><a href="index.html">Wen Minjie</a></span>
+  <div class="menu">
+    <a href="index.html#works" class="active">Works</a>
+    <a href="exhibitions.html">Exhibitions</a>
+    <a href="publications.html">Publications</a>
+    <a href="cv.html">CV</a>
+    <a href="about.html">About</a>
+  </div>
+  <div class="contact-info">
+    <div class="contact-info-l">Contact</div>
+    <div><a href="mailto:your.email@example.com">Email</a></div>
+  </div>
+</nav>
+
+<article class="work-page">
+
+  <!-- Hero -->
+  <div class="work-hero">
+    <div class="placeholder-hero">— Hero image / GIF / video —</div>
+  </div>
+
+  <!-- Title -->
+  <div class="work-num">→ Work 05 / 05</div>
+  <h1 class="work-h">Ecological <em>Game Field</em></h1>
+  <div class="work-tag-line">
+    <span>Plant–Machine Interactive Installation</span>
+    <span>· 2025</span>
+    <span>· Plants · AI camera · Light · Nutrient</span>
+  </div>
+
+  <!-- Free-flowing content (text + images alternating) -->
+  <div class="work-content">
+
+    <!-- Opening paragraph (full width text) -->
+    <div class="text-block">
+      <p>Plants are given a voice through machines. An AI vision system reads their growth state and redistributes light and nutrients in a decentralised manner — forming a network where plants negotiate, cooperate, and survive together.</p>
+    </div>
+
+    <!-- Single full-width image -->
+    <div class="image-single">
+      <div class="placeholder">— Process / detail image —</div>
+    </div>
+
+    <!-- Image left, text right -->
+    <div class="image-row">
+      <div class="image-half">
+        <div class="placeholder">— Detail / sketch —</div>
+      </div>
+      <div class="text-block">
+        <p>A challenge to traditional subject-object boundaries: who is the agent in this system, and who is the resource? The work proposes that machines can be intermediaries, not masters. Cameras observe, AI interprets, but the plants themselves remain the protagonists of the system.</p>
+      </div>
+    </div>
+
+    <!-- Text right, image left (reverse) -->
+    <div class="image-row reverse">
+      <div class="image-half">
+        <div class="placeholder">— Exhibition site —</div>
+      </div>
+      <div class="text-block">
+        <p>High-precision cameras continuously monitor leaf color, growth stage, and electrical signals from the plants. When the system detects that a plant is under-resourced, light and nutrient solution are redirected — but the redirection is governed by a decentralized algorithm that respects each plant's state, not a top-down optimization.</p>
+      </div>
+    </div>
+
+    <!-- Image trio (3 small images) -->
+    <div class="image-trio">
+      <div class="image-half"><div class="placeholder">— Detail 1 —</div></div>
+      <div class="image-half"><div class="placeholder">— Detail 2 —</div></div>
+      <div class="image-half"><div class="placeholder">— Detail 3 —</div></div>
+    </div>
+
+    <!-- Closing paragraph -->
+    <div class="text-block">
+      <p>The result is a strange ecology: plants whose needs are heard but not solved, machines that respond but do not control. It is a small experiment in what post-anthropocentric design might look like in practice — not a utopia, but a working negotiation.</p>
+    </div>
+
+    <!-- Video -->
+    <div class="video-wrap">
+      <div class="video-placeholder">— Video embed (YouTube / Bilibili / Vimeo) —</div>
+    </div>
+
+    
+
+    <!-- Specs -->
+    <div class="specs">
+      <div>System<strong>AI camera × plants</strong></div>
+      <div>Resource<strong>Light / nutrient</strong></div>
+      <div>Year<strong>2025</strong></div>
+      <div>Status<strong>Exhibited</strong></div>
+    </div>
+
+  </div>
+
+  <!-- Prev / Next -->
+  <div class="work-nav">
+    <a href="work-super-city.html" class="work-nav-item">
+      <span class="work-nav-label">← Previous · 04</span>
+      <span class="work-nav-title">View previous work</span>
+    </a>
+    <a href="work-light-humor.html" class="work-nav-item next">
+      <span class="work-nav-label">Next · 01 →</span>
+      <span class="work-nav-title">View next work</span>
+    </a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-grid">
+    <div class="copyright">© Copyright 2026. Wen Minjie / 文敏婕. All rights reserved.</div>
+    <a href="index.html" class="footer-back">← Back to all works</a>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const canvas = document.getElementById('bgParticleCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let bgParticles = [];
+  const BG_PARTICLE_COUNT = 60;
+  const BG_CONNECT_DIST = 180;
+  const BG_COLOR = [80, 200, 130];
+
+  function resizeBg() {
+    const dpr = window.devicePixelRatio || 1;
+    width = window.innerWidth; height = window.innerHeight;
+    canvas.width = width * dpr; canvas.height = height * dpr;
+    canvas.style.width = width + 'px'; canvas.style.height = height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  class BgParticle {
+    constructor() {
+      this.x = Math.random() * width; this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.15; this.vy = (Math.random() - 0.5) * 0.15;
+      this.radius = Math.random() * 1.2 + 0.4;
+      this.opacity = Math.random() * 0.4 + 0.2;
+      this.pulse = Math.random() * Math.PI * 2;
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy;
+      this.vx += (Math.random() - 0.5) * 0.01; this.vy += (Math.random() - 0.5) * 0.01;
+      this.vx *= 0.99; this.vy *= 0.99;
+      if (this.x < 0) this.x = width; if (this.x > width) this.x = 0;
+      if (this.y < 0) this.y = height; if (this.y > height) this.y = 0;
+      this.pulse += 0.01;
+    }
+    draw() {
+      const alpha = this.opacity * (0.7 + Math.sin(this.pulse) * 0.3);
+      const glowR = this.radius * 5;
+      const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, glowR);
+      grad.addColorStop(0, `rgba(${BG_COLOR[0]}, ${BG_COLOR[1]}, ${BG_COLOR[2]}, ${alpha * 0.4})`);
+      grad.addColorStop(1, `rgba(${BG_COLOR[0]}, ${BG_COLOR[1]}, ${BG_COLOR[2]}, 0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath(); ctx.arc(this.x, this.y, glowR, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = `rgba(${BG_COLOR[0]}, ${BG_COLOR[1]}, ${BG_COLOR[2]}, ${alpha})`;
+      ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  function initBg() {
+    resizeBg(); bgParticles = [];
+    for (let i = 0; i < BG_PARTICLE_COUNT; i++) bgParticles.push(new BgParticle());
+  }
+  function drawBgConnections() {
+    for (let i = 0; i < bgParticles.length; i++) {
+      for (let j = i + 1; j < bgParticles.length; j++) {
+        const dx = bgParticles[i].x - bgParticles[j].x;
+        const dy = bgParticles[i].y - bgParticles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < BG_CONNECT_DIST) {
+          const op = Math.pow(1 - dist / BG_CONNECT_DIST, 2) * 0.12;
+          ctx.strokeStyle = `rgba(${BG_COLOR[0]}, ${BG_COLOR[1]}, ${BG_COLOR[2]}, ${op})`;
+          ctx.lineWidth = 0.4;
+          ctx.beginPath();
+          ctx.moveTo(bgParticles[i].x, bgParticles[i].y);
+          ctx.lineTo(bgParticles[j].x, bgParticles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+  function animateBg() {
+    ctx.clearRect(0, 0, width, height);
+    drawBgConnections();
+    bgParticles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animateBg);
+  }
+  window.addEventListener('resize', initBg);
+  initBg(); animateBg();
+})();
+</script>
+</body>
+</html>

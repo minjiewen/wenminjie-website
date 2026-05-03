@@ -207,27 +207,57 @@
 
   /* ========== WORKS ========== */
   .works {
-    padding: 0 2.5rem 6rem;
+    padding: 0 0 6rem 0;
     display: flex;
     flex-direction: column;
-    gap: 7rem;
+    gap: 8rem;
+  }
+  .work-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
   }
   .work {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    cursor: pointer;
+    gap: 4rem;
+    align-items: stretch;
+    min-height: 60vh;
+    position: relative;
     transition: transform 0.5s ease;
   }
-  .work:hover { transform: translateY(-4px); }
-  .work:nth-child(even) .work-img-wrap { order: 2; }
-  .work:nth-child(even) .work-meta { order: 1; }
+  /* Odd works (1st, 3rd, 5th): image LEFT (touches left edge), text RIGHT-aligned */
+  .works > .work-link:nth-child(odd) .work-img-wrap {
+    order: 1;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .works > .work-link:nth-child(odd) .work-meta {
+    order: 2;
+    padding-right: 4rem;
+    padding-left: 0;
+    text-align: right;
+    align-items: flex-end;
+  }
+  /* Even works (2nd, 4th): image RIGHT (touches right edge), text LEFT-aligned */
+  .works > .work-link:nth-child(even) .work-img-wrap {
+    order: 2;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .works > .work-link:nth-child(even) .work-meta {
+    order: 1;
+    padding-left: 4rem;
+    padding-right: 0;
+    text-align: left;
+    align-items: flex-start;
+  }
   .work-img-wrap {
     position: relative;
     overflow: hidden;
     background: #1a1a1a;
-    aspect-ratio: 16 / 11;
+    aspect-ratio: 4 / 3;
+    width: 100%;
   }
   .work-img-wrap img {
     width: 100%; height: 100%;
@@ -235,24 +265,48 @@
     transition: transform 0.7s ease, filter 0.7s ease;
     filter: brightness(0.9);
   }
-  .work:hover .work-img-wrap img {
+  .work-link:hover .work-img-wrap img {
     transform: scale(1.04);
     filter: brightness(1);
   }
-  .work-num {
+  .work-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 0.5rem;
+    position: relative;
+  }
+  .work-meta::after {
+    content: '→ View work';
+    position: absolute;
+    top: 0;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: #6FE89F;
-    letter-spacing: 0.18em;
-    margin-bottom: 1.25rem;
-    display: block;
+    color: rgba(111, 232, 159, 0);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
   }
+  .works > .work-link:nth-child(odd) .work-meta::after {
+    right: 0;
+    transform: translateX(-10px);
+  }
+  .works > .work-link:nth-child(even) .work-meta::after {
+    left: 4rem;
+    transform: translateX(-10px);
+  }
+  .work-link:hover .work-meta::after {
+    color: #6FE89F;
+    transform: translateX(0);
+  }
+  .work-num { display: none; }
   .work-title {
-    font-size: clamp(28px, 3vw, 38px);
+    font-size: clamp(32px, 3.6vw, 48px);
     font-weight: 300;
     color: #fff;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
     margin-bottom: 1rem;
   }
   .work-title em { font-style: italic; color: #6FE89F; font-weight: 300; }
@@ -345,21 +399,37 @@
   }
 
   /* ========== FOOTER ========== */
+/* ===== Copyright footer ===== */
   footer {
+    position: relative;
+    z-index: 2;
+    padding: 4rem 3rem 2.5rem;
+    border-top: 0.5px solid #1f1f1f;
+    margin: 0 3rem;
+  }
+  .footer-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 3rem 2.5rem 2.5rem;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+  }
+  .copyright {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.8;
+  }
+  .footer-back {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #666;
+    font-size: 11px;
+    color: #6FE89F;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    border-top: 0.5px solid #1f1f1f;
-    margin: 0 2.5rem;
-    align-items: center;
   }
-  .foot-c { text-align: center; color: #6FE89F; }
-  .foot-r { text-align: right; }
+  .footer-back:hover { color: #b4ffce; }
+  @media (max-width: 768px) {
+    footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
+    .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
 
   /* ========== MOBILE ========== */
   @media (max-width: 768px) {
@@ -376,18 +446,23 @@
     .kw { font-size: 10px; padding: 5px 11px; }
     .section-divide { padding: 4rem 1.25rem 2rem; flex-direction: column; align-items: flex-start; gap: 8px; }
     .works { padding: 0 1.25rem 4rem; gap: 4rem; }
-    .work { grid-template-columns: 1fr; gap: 1.5rem; }
-    .work:nth-child(even) .work-img-wrap,
-    .work:nth-child(even) .work-meta { order: initial; }
-    .about { padding: 4rem 1.25rem; grid-template-columns: 1fr; gap: 1.5rem; }
-    footer {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      text-align: left;
-      margin: 0 1.25rem;
-      padding: 2rem 0;
+    .work { grid-template-columns: 1fr; gap: 1.5rem; min-height: auto; }
+    .works > .work-link:nth-child(odd) .work-img-wrap,
+    .works > .work-link:nth-child(even) .work-img-wrap {
+      order: initial;
+      margin-left: 0;
+      margin-right: 0;
     }
-    .foot-c, .foot-r { text-align: left; }
+    .works > .work-link:nth-child(odd) .work-meta,
+    .works > .work-link:nth-child(even) .work-meta {
+      order: initial;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .works > .work-link:nth-child(even) .work-meta::after { left: auto; right: 0; }
+    .about { padding: 4rem 1.25rem; grid-template-columns: 1fr; gap: 1.5rem; }
+    footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
+    .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   }
 </style>
 </head>
@@ -444,7 +519,7 @@
 <section class="works">
 
   <!-- WORK 01 -->
-  <article class="work">
+  <a href="work-light-humor.html" class="work-link"><article class="work">
     <div class="work-img-wrap">
       <!-- 替换为：images/work-01.jpg -->
       <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=1200&q=80" alt="The Light Humor of Plants" />
@@ -458,10 +533,10 @@
         <span>Sensors<strong>CO₂ / Touch / Light</strong></span>
       </div>
     </div>
-  </article>
+  </article></a>
 
   <!-- WORK 02 -->
-  <article class="work">
+  <a href="work-plant-system.html" class="work-link"><article class="work">
     <div class="work-img-wrap">
       <!-- 替换为：images/work-02.jpg -->
       <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&q=80" alt="Plant System" />
@@ -475,10 +550,10 @@
         <span>Displays<strong>5 monitors</strong></span>
       </div>
     </div>
-  </article>
+  </article></a>
 
   <!-- WORK 03 -->
-  <article class="work">
+  <a href="work-serenity.html" class="work-link"><article class="work">
     <div class="work-img-wrap">
       <!-- 替换为：images/work-03.jpg -->
       <img src="https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?w=1200&q=80" alt="Serenity Sensorium" />
@@ -492,10 +567,10 @@
         <span>Output<strong>Servo modules</strong></span>
       </div>
     </div>
-  </article>
+  </article></a>
 
   <!-- WORK 04 -->
-  <article class="work">
+  <a href="work-super-city.html" class="work-link"><article class="work">
     <div class="work-img-wrap">
       <!-- 替换为：images/work-04.jpg -->
       <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80" alt="Super City" />
@@ -509,10 +584,10 @@
         <span>Software<strong>Touch Designer</strong></span>
       </div>
     </div>
-  </article>
+  </article></a>
 
   <!-- WORK 05 -->
-  <article class="work">
+  <a href="work-ecological-game.html" class="work-link"><article class="work">
     <div class="work-img-wrap">
       <!-- 替换为：images/work-05.jpg -->
       <img src="https://images.unsplash.com/photo-1530530824250-e88a51b53ddc?w=1200&q=80" alt="Ecological Game Field" />
@@ -526,7 +601,7 @@
         <span>Resource<strong>Light / nutrient</strong></span>
       </div>
     </div>
-  </article>
+  </article></a>
 
 </section>
 
@@ -551,9 +626,10 @@
 
 <!-- ============ FOOTER ============ -->
 <footer>
-  <span>© 2026 文敏婕 / Wen Minjie</span>
-  <span class="foot-c">wenminjie.space</span>
-  <span class="foot-r">Last edit · May 2026</span>
+  <div class="footer-grid">
+    <div class="copyright">© Copyright 2026. Wen Minjie / 文敏婕. All rights reserved.</div>
+    <a href="index.html" class="footer-back">← Back to home</a>
+  </div>
 </footer>
 
 <script>
