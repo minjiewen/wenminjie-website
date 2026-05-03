@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Wen Minjie 文敏婕</title>
+<meta name="description" content="About Wen Minjie — PhD researcher at QUT" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0a0a0a;
+    color: #d4d4d4;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
+  ::selection { background: #6FE89F; color: #0a0a0a; }
+
+  .bg-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.45;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    padding: 1.75rem 2.5rem;
+    gap: 2rem;
+    background: linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0) 100%);
+    backdrop-filter: blur(8px);
+  }
+  .logo {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #fff;
+  }
+  .logo a:hover { color: #6FE89F; }
+  .menu {
+    display: flex;
+    justify-content: center;
+    gap: 56px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+  }
+  .menu a:hover { color: #6FE89F; }
+  .menu a.active { color: #6FE89F; }
+  .contact-info {
+    font-size: 15px;
+    color: #fff;
+    line-height: 1.7;
+    text-align: right;
+  }
+  .contact-info-l { font-size: 15px; margin-bottom: 4px; }
+  .contact-info a:hover { color: #6FE89F; }
+
+  /* Page content */
+  .page {
+    position: relative;
+    z-index: 2;
+    padding: 9rem 3rem 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .page-header {
+    margin-bottom: 5rem;
+    border-bottom: 0.5px solid #1f1f1f;
+    padding-bottom: 2rem;
+  }
+  .page-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #6FE89F;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .page-title {
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .page-title em { font-style: italic; color: #6FE89F; }
+  .page-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    max-width: 580px;
+    line-height: 1.8;
+  }
+
+  /* Exhibition list */
+  .exhibition-list { display: flex; flex-direction: column; gap: 0; }
+  .ex-item {
+    display: grid;
+    grid-template-columns: 100px 1fr 200px;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 0.5px solid #1f1f1f;
+    align-items: baseline;
+    transition: padding 0.4s ease;
+    cursor: pointer;
+  }
+  .ex-item:hover { padding-left: 1rem; }
+  .ex-item:hover .ex-title { color: #6FE89F; }
+  .ex-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: #6FE89F;
+    letter-spacing: 0.1em;
+  }
+  .ex-title {
+    font-size: 22px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+  }
+  .ex-title em { font-style: italic; }
+  .ex-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #888;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  .placeholder {
+    background: rgba(111, 232, 159, 0.04);
+    border: 0.5px dashed rgba(111, 232, 159, 0.3);
+    padding: 3rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 4rem;
+  }
+  .placeholder-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: rgba(111, 232, 159, 0.7);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  footer {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 3rem 3rem 2.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #666;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-top: 0.5px solid #1f1f1f;
+    margin: 0 3rem;
+    align-items: center;
+  }
+  .foot-c { text-align: center; color: #6FE89F; }
+  .foot-r { text-align: right; }
+
+  @media (max-width: 768px) {
+    nav { grid-template-columns: 1fr auto; padding: 1rem 1.25rem; gap: 1rem; }
+    .menu { display: none; }
+    .contact-info { font-size: 13px; }
+    .page { padding: 7rem 1.25rem 4rem; }
+    .ex-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .ex-meta { text-align: left; }
+    footer { grid-template-columns: 1fr; gap: 1rem; text-align: left; margin: 0 1.25rem; }
+    .foot-c, .foot-r { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<canvas class="bg-canvas" id="bgParticleCanvas"></canvas>
+
+<nav>
+  <span class="logo"><a href="index.html">Wen Minjie</a></span>
+  <div class="menu">
+    <a href="index.html#works">Works</a>
+    <a href="exhibitions.html">Exhibitions</a>
+    <a href="publications.html">Publications</a>
+    <a href="cv.html">CV</a>
+    <a href="about.html" class="active">About</a>
+  </div>
+  <div class="contact-info">
+    <div class="contact-info-l">Contact</div>
+    <div><a href="mailto:your.email@example.com">Email</a></div>
+  </div>
+</nav>
+
+<section class="page">
+  <header class="page-header">
+    <div class="page-tag">— Section 05</div>
+    <h1 class="page-title"><em>About</em><br>the practice.</h1>
+    <p class="page-sub">A doctoral practice between architecture, art, and the more-than-human world.</p>
+  </header>
+
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; max-width: 900px;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #666; letter-spacing: 0.18em; text-transform: uppercase; line-height: 2;">
+      <div>About<br>关于</div>
+    </div>
+    <div>
+      <p style="font-size: 17px; line-height: 1.85; color: rgba(255,255,255,0.85); margin-bottom: 1.75rem;">
+        I am a first-year PhD researcher at QUT's School of Architecture and Built Environment, supervised by Dr. Yasu Santo, Prof. Marcus Foth, and Dr. Susan Loh.
+      </p>
+      <p style="font-size: 17px; line-height: 1.85; color: rgba(255,255,255,0.85); margin-bottom: 1.75rem;">
+        My research investigates how technologically mediated systems can support <em style="color: #6FE89F; font-style: italic;">reciprocal</em> interactions between humans and native Australian plants in urban environments — using Research through Design as the overarching methodology, framed by more-than-human theory and restorative environment theory.
+      </p>
+      <p style="font-size: 17px; line-height: 1.85; color: rgba(255,255,255,0.85); margin-bottom: 1.75rem;">
+        Before Brisbane, I trained in Digital Media Arts and Intelligent Design in China, with practice in installation art and human–plant interaction systems.
+      </p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem; margin-top: 3rem; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #666; letter-spacing: 0.15em; text-transform: uppercase;">
+        <div>Affiliation<br><strong style="display: block; color: #fff; font-weight: 400; margin-top: 6px; font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 0.02em; text-transform: none;">QUT, Brisbane</strong></div>
+        <div>Field<br><strong style="display: block; color: #fff; font-weight: 400; margin-top: 6px; font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 0.02em; text-transform: none;">HPI / RtD</strong></div>
+        <div>Languages<br><strong style="display: block; color: #fff; font-weight: 400; margin-top: 6px; font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 0.02em; text-transform: none;">EN · 中文</strong></div>
+        <div>ORCID<br><a href="https://orcid.org/0009-0002-5132-0250" target="_blank" style="display: block; color: #6FE89F; font-weight: 400; margin-top: 6px; font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 0.02em; text-transform: none;">0009-0002-5132-0250</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Wen Minjie / 文敏婕</span>
+  <span class="foot-c">wenminjie.space</span>
+  <span class="foot-r"><a href="index.html">← Back to Home</a></span>
+</footer>
+
+<script>
+(function() {
+  const canvas = document.getElementById('bgParticleCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let bgParticles = [];
+
+  const BG_PARTICLE_COUNT = 60;
+  const BG_CONNECT_DIST = 180;
+  const BG_COLOR = [80, 200, 130];
+
+  function resizeBg() {
+    const dpr = window.devicePixelRatio || 1;
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  class BgParticle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.15;
+      this.vy = (Math.random() - 0.5) * 0.15;
+      this.radius = Math.random() * 1.2 + 0.4;
+      this.opacity = Math.random() * 0.4 + 0.2;
+      this.pulse = Math.random() * Math.PI * 2;
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy;
+      this.vx += (Math.random() - 0.5) * 0.01;
+      this.vy += (Math.random() - 0.5) * 0.01;
+      this.vx *= 0.99; this.vy *= 0.99;
+      if (this.x < 0) this.x = width;
+      if (this.x > width) this.x = 0;
+      if (this.y < 0) this.y = height;
+      if (this.y > height) this.y = 0;
+      this.pulse += 0.01;
+    }
+    draw() {
+      const alpha = this.opacity * (0.7 + Math.sin(this.pulse) * 0.3);
+      const glowR = this.radius * 5;
+      const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, glowR);
+      grad.addColorStop(0, `rgba(${BG_COLOR[0]}, ${BG_COLOR[1]}, ${BG_COLOR[2]}, ${alpha * 0.4})`);
+      grad.addColorStop(1, `rgba(${BG_COLOR[0]}, ${BG_COLOR[1]}, ${BG_COLOR[2]}, 0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath(); ctx.arc(this.x, this.y, glowR, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = `rgba(${BG_COLOR[0]}, ${BG_COLOR[1]}, ${BG_COLOR[2]}, ${alpha})`;
+      ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  function initBg() {
+    resizeBg();
+    bgParticles = [];
+    for (let i = 0; i < BG_PARTICLE_COUNT; i++) bgParticles.push(new BgParticle());
+  }
+  function drawBgConnections() {
+    for (let i = 0; i < bgParticles.length; i++) {
+      for (let j = i + 1; j < bgParticles.length; j++) {
+        const dx = bgParticles[i].x - bgParticles[j].x;
+        const dy = bgParticles[i].y - bgParticles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < BG_CONNECT_DIST) {
+          const op = Math.pow(1 - dist / BG_CONNECT_DIST, 2) * 0.12;
+          ctx.strokeStyle = `rgba(${BG_COLOR[0]}, ${BG_COLOR[1]}, ${BG_COLOR[2]}, ${op})`;
+          ctx.lineWidth = 0.4;
+          ctx.beginPath();
+          ctx.moveTo(bgParticles[i].x, bgParticles[i].y);
+          ctx.lineTo(bgParticles[j].x, bgParticles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+  function animateBg() {
+    ctx.clearRect(0, 0, width, height);
+    drawBgConnections();
+    bgParticles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animateBg);
+  }
+  window.addEventListener('resize', initBg);
+  initBg(); animateBg();
+})();
+</script>
+</body>
+</html>
