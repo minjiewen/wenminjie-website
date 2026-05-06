@@ -117,19 +117,12 @@
   .image-medium img { width: 100%; display: block; }
   .image-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   .image-pair img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
-  .image-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
-  .image-trio img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
-  .image-quad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
-  .image-quad img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
 
-  /* GIFs special grid - 2 rows of mixed sizes */
+  /* GIFs special grid - 4 columns */
   .gif-showcase {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.75rem;
-  }
-  .gif-showcase.gif-showcase-5 {
-    grid-template-columns: repeat(5, 1fr);
   }
   .gif-showcase .gif-item { position: relative; }
   .gif-showcase img {
@@ -151,6 +144,10 @@
     padding: 3px 8px;
     text-transform: uppercase;
   }
+  .image-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .image-trio img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+  .image-quad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+  .image-quad img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
 
   .group-label {
     display: flex; align-items: center; gap: 1rem;
@@ -290,7 +287,7 @@
     .img-text-row.reverse > :first-child, .img-text-row.reverse > :last-child { order: initial; }
     .image-pair { grid-template-columns: 1fr; }
     .image-trio, .image-quad { grid-template-columns: 1fr 1fr; }
-    .gif-showcase, .gif-showcase.gif-showcase-5 { grid-template-columns: 1fr 1fr; }
+    .gif-showcase { grid-template-columns: 1fr 1fr; }
     .layers { grid-template-columns: 1fr; gap: 1.5rem; }
     .pull-quote { font-size: 24px; }
     .specs { grid-template-columns: 1fr 1fr; }
