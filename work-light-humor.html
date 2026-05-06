@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Light Humor of Plants — Wen Minjie</title>
-<meta name="description" content="The Light Humor of Plants by Wen Minjie — Data Visualisation Installation, 2022." />
+<meta name="description" content="The Light Humor of Plants — A data-driven interactive installation by Wen Minjie, 2022." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
@@ -69,19 +69,10 @@
     overflow: hidden;
     margin-bottom: 4rem;
   }
-  .work-hero img, .work-hero video {
+  .work-hero img {
     width: 100%; height: 100%;
     object-fit: cover;
     display: block;
-  }
-  .placeholder-hero {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #0d1410 0%, #0a0a0a 100%);
-    color: rgba(111, 232, 159, 0.4);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-    border: 0.5px dashed rgba(111, 232, 159, 0.2);
   }
 
   /* ===== Title block ===== */
@@ -114,94 +105,127 @@
     margin-bottom: 5rem;
   }
 
-  /* ===== Free-flowing content ===== */
+  /* ===== Content sections ===== */
   .work-content {
     display: flex;
     flex-direction: column;
     gap: 5rem;
   }
 
+  /* Section heading (green title like "A New Perspective on Life") */
+  .section-heading {
+    font-size: clamp(26px, 2.5vw, 32px);
+    font-weight: 400;
+    color: #6FE89F;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Standard text block */
   .text-block {
     max-width: 720px;
   }
   .text-block p {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.85;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 1.5rem;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 1.25rem;
   }
   .text-block p:last-child { margin-bottom: 0; }
   .text-block em { font-style: italic; color: #6FE89F; }
 
-  /* Centered text block (max-width but centered, used between images) */
-  .text-block.center {
-    margin: 0 auto;
-    text-align: left;
+  /* Pull-quote (highlighted green serif quote) */
+  .pull-quote {
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 44px);
+    line-height: 1.3;
+    color: #6FE89F;
+    max-width: 800px;
+    margin: 2rem 0;
+    letter-spacing: -0.01em;
   }
 
-  /* ===== Image — alternating left/right ===== */
-  .image-row {
+  /* Section with image-text two-column (image left, text right) */
+  .img-text-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
     align-items: center;
   }
-  .image-row.reverse > :first-child { order: 2; }
-  .image-row.reverse > :last-child { order: 1; }
-  .image-row img {
+  .img-text-row.reverse {
+    grid-template-columns: 1fr 1.2fr;
+  }
+  .img-text-row.reverse > :first-child { order: 2; }
+  .img-text-row.reverse > :last-child { order: 1; }
+  .img-text-row img {
     width: 100%;
     display: block;
   }
-  .image-row .text-block { max-width: none; }
 
   /* Single full-width image */
   .image-single {
     width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #1a1a1a;
     overflow: hidden;
   }
-  .image-single img, .image-single video {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
+  .image-single img {
+    width: 100%;
+    display: block;
   }
 
-  /* Half-width image (used in image-row) */
-  .image-half {
-    aspect-ratio: 4 / 3;
-    background: #1a1a1a;
-    overflow: hidden;
-  }
-  .image-half img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-  }
-
-  /* Two-column gallery */
+  /* 2-column gallery */
   .image-pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
   }
-  .image-pair .image-half { aspect-ratio: 1 / 1; }
+  .image-pair img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
 
-  /* Three-column gallery */
+  /* 3-column animation grid (for the move/animation series) */
   .image-trio {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 0.75rem;
   }
-  .image-trio .image-half { aspect-ratio: 4 / 5; }
+  .image-trio img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+  }
 
-  /* Placeholder styling */
-  .placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #0d1410 0%, #0a0a0a 100%);
-    color: rgba(111, 232, 159, 0.3);
+  /* 6-grid (for animation/move series) */
+  .image-six {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  .image-six .item {
+    position: relative;
+  }
+  .image-six img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+  }
+  .image-six .label {
+    position: absolute;
+    left: 12px;
+    bottom: 10px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-    border: 0.5px dashed rgba(111, 232, 159, 0.15);
+    font-size: 10px;
+    color: rgba(111, 232, 159, 0.85);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
   }
 
   /* ===== Video embed ===== */
@@ -210,17 +234,9 @@
     aspect-ratio: 16 / 9;
     background: #1a1a1a;
     overflow: hidden;
+    margin-top: 1rem;
   }
   .video-wrap iframe { width: 100%; height: 100%; border: 0; }
-  .video-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #0d1410 0%, #0a0a0a 100%);
-    color: rgba(111, 232, 159, 0.4);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-    border: 0.5px dashed rgba(111, 232, 159, 0.2);
-  }
 
   /* ===== Specs grid ===== */
   .specs {
@@ -247,29 +263,6 @@
     font-size: 14px;
     letter-spacing: 0.02em;
     text-transform: none;
-  }
-
-  /* ===== Credits block (collaborators / thanks) ===== */
-  .credits {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    max-width: 720px;
-    padding-top: 2rem;
-    border-top: 0.5px solid #1f1f1f;
-  }
-  .credits-block-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #6FE89F;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-  .credits-block p {
-    font-size: 14px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.7);
   }
 
   /* ===== Prev/Next nav ===== */
@@ -302,7 +295,7 @@
     font-weight: 300;
   }
 
-  /* ===== Footer with copyright ===== */
+  /* ===== Footer ===== */
   footer {
     position: relative;
     z-index: 2;
@@ -316,11 +309,7 @@
     gap: 2rem;
     align-items: end;
   }
-  .copyright {
-    font-size: 12px;
-    color: #555;
-    line-height: 1.8;
-  }
+  .copyright { font-size: 12px; color: #555; line-height: 1.8; }
   .footer-back {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
@@ -337,12 +326,17 @@
     .work-page { padding: 6rem 1.25rem 3rem; }
     .work-h { font-size: clamp(36px, 9vw, 56px); }
     .work-tag-line { gap: 12px; flex-direction: column; }
-    .image-row { grid-template-columns: 1fr; gap: 1.5rem; }
-    .image-row.reverse > :first-child,
-    .image-row.reverse > :last-child { order: initial; }
-    .image-trio { grid-template-columns: 1fr; }
+    .img-text-row, .img-text-row.reverse {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .img-text-row.reverse > :first-child,
+    .img-text-row.reverse > :last-child { order: initial; }
     .image-pair { grid-template-columns: 1fr; }
-    .credits { grid-template-columns: 1fr; gap: 2rem; }
+    .image-trio { grid-template-columns: 1fr; }
+    .image-six { grid-template-columns: 1fr 1fr; }
+    .pull-quote { font-size: 24px; }
+    .specs { grid-template-columns: 1fr 1fr; }
     .work-nav { grid-template-columns: 1fr; gap: 1.5rem; }
     .work-nav-item.next { text-align: left; align-items: flex-start; }
     footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
@@ -371,91 +365,156 @@
 
 <article class="work-page">
 
-  <!-- Hero -->
+  <!-- ============ HERO ============ -->
   <div class="work-hero">
-    <div class="placeholder-hero">— Hero image / GIF / video —</div>
+    <img src="images/The-Light-Humor-of-Plants-01main.jpg" alt="The Light Humor of Plants — exhibition view" />
   </div>
 
-  <!-- Title -->
+  <!-- ============ TITLE ============ -->
   <div class="work-num">→ Work 01 / 05</div>
   <h1 class="work-h"><em>The Light Humor</em><br>of Plants</h1>
   <div class="work-tag-line">
-    <span>Data Visualisation Installation</span>
+    <span>Data-driven Interactive Installation</span>
     <span>· 2022</span>
-    <span>· Plants · Arduino · Sensors</span>
+    <span>· Plants × Arduino × Sensors</span>
   </div>
 
-  <!-- Free-flowing content (text + images alternating) -->
+  <!-- ============ CONTENT ============ -->
   <div class="work-content">
 
-    <!-- Opening paragraph (full width text) -->
-    <div class="text-block">
-      <p>An exploration of organic life in virtual digital environments, based on Roy Ascott's "moist media". Plants generate algorithmic life forms through their own bioelectric signals and surrounding environmental data — temperature, humidity, light, CO₂, and human touch.</p>
+    <!-- ── Section 1: A New Perspective on Life ── -->
+    <div class="img-text-row">
+      <div class="image-single">
+        <img src="images/The-Light-Humor-of-Plants-11.jpg" alt="Particle visualization — yellow-green hybrid life forms" />
+      </div>
+      <div class="text-block">
+        <h2 class="section-heading">A New Perspective on Life</h2>
+        <p>Our era is undergoing rapid transformations, and the Twenty-first century is expected to mark the advent of biotechnological dominance. Amidst the burgeoning fields of genetic engineering and artificial intelligence, I find myself redefining the very notion of "life."</p>
+        <p>The convergence of art, computer science, and life sciences has endowed "life" with a more intricate essence. Moreover, the concept of "humans" — once the yardstick for all things — is undergoing decentralization, giving rise to the viewpoint of "non-human centrism."</p>
+        <p>The concept of the "Anthropocene" has prompted me to question whether humans truly represent the scale of all things. Do intelligent beings exist among the flora around us? Viewing these questions from a non-human perspective offers a distinct vantage point.</p>
+      </div>
     </div>
 
-    <!-- Single full-width image -->
+    <!-- ── Section 2: Plant Intelligence (long text + 4 exhibition shots) ── -->
+    <div class="text-block" style="max-width: 920px;">
+      <h2 class="section-heading">Plant Intelligence</h2>
+      <p>My work <em>The Light Humor of Plants</em> embodies my exploration of the aforementioned questions and serves as an investigation into presenting organic life systems within virtual digital environments. Simultaneously, this artwork explores novel interactions among nature, data, and humans. The fusion of organic life and mechanics endows mechanical and synthetic objects with lifelike qualities, while organic life gains more structure and design.</p>
+      <p>Contemplating organic life, I utilize plants as vessels and employ data visualization techniques to encapsulate external data and internal perceptions of organic life within the confines of "plants." This enables participants to engage in two-way communication with the artist and the artwork during the interaction, exploring how the "life phenomenon" of plants becomes a new channel for message transmission.</p>
+      <p>In everyday life, we rarely discern signals from plants. However, as creators, we can depict sensitive relationships through enhanced perceptions, merging faint signals from the natural world with digital technology. These connections drive us to create sensitive and poetic languages, allowing us to experience elements that are invisible yet tangibly present in the real world.</p>
+      <p>Creating interactive installations generates not only a steadfast, visual language but also a language of emotion. I translate the real-time life systems of existing plants into virtual digital environments. For the plant portion, I incorporate a sensory system that transmits the plant's perceived data to the digital system, where it is visualized.</p>
+    </div>
+
+    <!-- 4 exhibition photos in 2x2 grid -->
+    <div class="image-pair">
+      <img src="images/The-Light-Humor-of-Plants-09.jpg" alt="Installation — single plant module" />
+      <img src="images/The-Light-Humor-of-Plants-10.jpg" alt="Installation — wired plant on wall" />
+    </div>
+    <div class="image-pair">
+      <img src="images/The-Light-Humor-of-Plants-03.jpg" alt="Installation — Arduino on wall" />
+      <img src="images/The-Light-Humor-of-Plants-04.jpg" alt="Installation — display with plant" />
+    </div>
+
+    <!-- ── Section 3: Light Humor — close-up + body text ── -->
+    <div class="img-text-row reverse">
+      <div class="image-single">
+        <img src="images/The-Light-Humor-of-Plants-05.jpg" alt="Close-up — display with green plant" />
+      </div>
+      <div class="text-block">
+        <p><em>The Light Humor of Plants</em> is a data-driven interactive installation and a digital system composed of plants, creating a hybrid of plants and digital technology. Plants act as natural sensors, highly attuned to various forms of energy flow.</p>
+        <p>Our bodies generate constant static energy, which remains imperceptible. Plants respond by producing data changes in reaction to different touches. When humans touch plants, the intangible static energy affects the plant leaves and prompts responses.</p>
+        <p>Throughout the interaction, the anthropomorphized responses of plants will alter the human perception of plant visual imagery, providing a cinematic experience of "plant language."</p>
+      </div>
+    </div>
+
+    <!-- Animation system diagram -->
     <div class="image-single">
-      <div class="placeholder">— Process / detail image —</div>
+      <img src="images/The-Light-Humor-of-Plants-06.jpg" alt="Animation system — data mapping diagram" />
     </div>
 
-    <!-- Image left, text right -->
-    <div class="image-row">
-      <div class="image-half">
-        <div class="placeholder">— Detail / sketch —</div>
+    <div class="image-single">
+      <img src="images/The-Light-Humor-of-Plants-08.jpg" alt="Animation rules and L-system parameters" />
+    </div>
+
+    <!-- ── Section 4: Fostering Communication ── -->
+    <div class="text-block" style="max-width: 920px;">
+      <h2 class="section-heading">Fostering Communication</h2>
+      <p>My aspiration is for participants to sense the "language" of plants during interaction (observation). The lifelike forms generated algorithmically within the artwork are real-time visualizations of external data perceived by the plants. This system of representation empowers plants with the capacity to "speak."</p>
+      <p>On a physical level, the artwork's constant connection, real-time feedback, and continuous online presence establish a sense of "co-presence" between the audience's minds and bodies. The relationship between the artwork and the audience goes beyond mere observation; it involves a "bidirectional communication" of information — a process of creating culture and meaning. By encoding and decoding plant data, meaningful exchanges and negotiations occur between the audience and plants.</p>
+      <p>My utmost hope is that during "communication," participants will experience not only sensory feedback involving touch, hearing, and vision but will also foster accurate emotional exchange. This will lead to the realization that plants possess "intelligence" and "emotion."</p>
+    </div>
+
+    <!-- 6-grid of animation states with labels -->
+    <div class="image-six">
+      <div class="item">
+        <img src="images/The-Light-Humor-of-Plants-move01.jpg" alt="Humidity response" />
+        <span class="label">| Humidity</span>
       </div>
-      <div class="text-block">
-        <p>The work asks: when biological signals become a visual language, can we begin to read what plants communicate to each other and to us?</p>
+      <div class="item">
+        <img src="images/The-Light-Humor-of-Plants-move02.jpg" alt="Temperature response" />
+        <span class="label">| Temperature</span>
+      </div>
+      <div class="item">
+        <img src="images/The-Light-Humor-of-Plants-move03.jpg" alt="Carbon dioxide response" />
+        <span class="label">| Carbon Dioxide</span>
+      </div>
+      <div class="item">
+        <img src="images/The-Light-Humor-of-Plants-move04.jpg" alt="Light intensity response" />
+        <span class="label">| Light Intensity</span>
+      </div>
+      <div class="item">
+        <img src="images/The-Light-Humor-of-Plants-move05.jpg" alt="No human interaction" />
+        <span class="label">| No Human Interaction</span>
+      </div>
+      <div class="item">
+        <img src="images/The-Light-Humor-of-Plants-move06.jpg" alt="Interaction state" />
+        <span class="label">| Interaction</span>
       </div>
     </div>
 
-    <!-- Text right, image left (reverse) -->
-    <div class="image-row reverse">
-      <div class="image-half">
-        <div class="placeholder">— Exhibition site —</div>
-      </div>
-      <div class="text-block">
-        <p>A sensor array embedded in the substrate captures real-time changes in the plant's environment. These signals feed an L-system algorithm that grows organic, branching forms on screen — each visitor's touch becomes a perturbation, each shift in light a new generation.</p>
-      </div>
+    <!-- Pull quote -->
+    <div class="pull-quote">
+      "From lifelessness to life, from artificial to natural, from potentiality to actuality."
     </div>
 
-    <!-- Image trio (3 small images) -->
-    <div class="image-trio">
-      <div class="image-half"><div class="placeholder">— Detail 1 —</div></div>
-      <div class="image-half"><div class="placeholder">— Detail 2 —</div></div>
-      <div class="image-half"><div class="placeholder">— Detail 3 —</div></div>
+    <!-- Exhibition wide shot -->
+    <div class="image-single">
+      <img src="images/The-Light-Humor-of-Plants-02.jpg" alt="Exhibition view — gallery installation" />
     </div>
 
-    <!-- Closing paragraph -->
-    <div class="text-block">
-      <p>The installation has been shown in three exhibitions across China, where viewers often described the experience as "watching a plant dream." The piece sits at the intersection of bio-art, data visualization, and what Ascott called moist media — neither fully biological nor fully digital, but a hybrid space where the two find each other.</p>
+    <div class="image-single">
+      <img src="images/The-Light-Humor-of-Plants-07.jpg" alt="Animation states grid — humidity, temperature, light, CO2, no interaction, interaction" />
     </div>
 
-    <!-- Video -->
+    <!-- ── Video ── -->
+    <h2 class="section-heading" style="margin-top: 2rem;">Video</h2>
     <div class="video-wrap">
-      <div class="video-placeholder">— Video embed (YouTube / Bilibili / Vimeo) —</div>
+      <iframe
+        src="https://www.youtube.com/embed/37nMJSZzsa4?rel=0&modestbranding=1"
+        title="The Light Humor of Plants — video documentation"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
     </div>
 
-    
-
-    <!-- Specs -->
+    <!-- ── Specs ── -->
     <div class="specs">
       <div>Medium<strong>Plant + Arduino</strong></div>
-      <div>Sensors<strong>CO₂ / Touch / Light</strong></div>
+      <div>Sensors<strong>CO₂ / Touch / Light / Humidity / Temperature</strong></div>
       <div>Year<strong>2022</strong></div>
       <div>Status<strong>Exhibited</strong></div>
     </div>
 
   </div>
 
-  <!-- Prev / Next -->
+  <!-- ============ PREV / NEXT ============ -->
   <div class="work-nav">
     <a href="work-ecological-game.html" class="work-nav-item">
       <span class="work-nav-label">← Previous · 05</span>
-      <span class="work-nav-title">View previous work</span>
+      <span class="work-nav-title">Ecological Game Field</span>
     </a>
     <a href="work-plant-system.html" class="work-nav-item next">
       <span class="work-nav-label">Next · 02 →</span>
-      <span class="work-nav-title">View next work</span>
+      <span class="work-nav-title">Plant System</span>
     </a>
   </div>
 
