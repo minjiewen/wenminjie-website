@@ -75,15 +75,69 @@
     display: block;
   }
 
-  /* ===== Title block ===== */
-  .work-num {
+  /* ===== Project meta tags ===== */
+  .project-meta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 0.5px solid #1f1f1f;
+  }
+  .project-tag-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .project-pill {
+    display: inline-block;
+    background: #6FE89F;
+    color: #0a0a0a;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: #6FE89F;
-    letter-spacing: 0.25em;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    padding: 6px 14px;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    width: fit-content;
   }
+  .project-hashtags {
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+  .project-hashtags span { display: block; }
+  .project-material {
+    text-align: right;
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    max-width: 380px;
+  }
+  .project-material strong {
+    display: block;
+    color: #fff;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .project-type-pill {
+    display: inline-block;
+    background: #6FE89F;
+    color: #0a0a0a;
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    margin-top: 8px;
+  }
+
+  /* ===== Title block ===== */
   .work-h {
     font-size: clamp(48px, 6vw, 76px);
     font-weight: 300;
@@ -112,7 +166,6 @@
     gap: 5rem;
   }
 
-  /* Section heading (green title like "A New Perspective on Life") */
   .section-heading {
     font-size: clamp(26px, 2.5vw, 32px);
     font-weight: 400;
@@ -122,7 +175,6 @@
     margin-bottom: 1.5rem;
   }
 
-  /* Standard text block */
   .text-block {
     max-width: 720px;
   }
@@ -135,9 +187,7 @@
   .text-block p:last-child { margin-bottom: 0; }
   .text-block em { font-style: italic; color: #6FE89F; }
 
-  /* Pull-quote (highlighted green serif quote) */
   .pull-quote {
-    font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 400;
     font-size: clamp(28px, 3.5vw, 44px);
@@ -148,24 +198,17 @@
     letter-spacing: -0.01em;
   }
 
-  /* Section with image-text two-column (image left, text right) */
   .img-text-row {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 4rem;
     align-items: center;
   }
-  .img-text-row.reverse {
-    grid-template-columns: 1fr 1.2fr;
-  }
+  .img-text-row.reverse { grid-template-columns: 1fr 1.2fr; }
   .img-text-row.reverse > :first-child { order: 2; }
   .img-text-row.reverse > :last-child { order: 1; }
-  .img-text-row img {
-    width: 100%;
-    display: block;
-  }
+  .img-text-row img { width: 100%; display: block; }
 
-  /* Single full-width image */
   .image-single {
     width: 100%;
     overflow: hidden;
@@ -175,7 +218,17 @@
     display: block;
   }
 
-  /* 2-column gallery */
+  /* Constrained-width image (for low-res system diagrams) */
+  .image-medium {
+    max-width: 760px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .image-medium img {
+    width: 100%;
+    display: block;
+  }
+
   .image-pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -188,28 +241,12 @@
     display: block;
   }
 
-  /* 3-column animation grid (for the move/animation series) */
-  .image-trio {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-  }
-  .image-trio img {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* 6-grid (for animation/move series) */
   .image-six {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
   }
-  .image-six .item {
-    position: relative;
-  }
+  .image-six .item { position: relative; }
   .image-six img {
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -222,23 +259,100 @@
     bottom: 10px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: rgba(111, 232, 159, 0.85);
+    color: rgba(111, 232, 159, 0.95);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(0,0,0,0.8);
+    text-shadow: 0 0 10px rgba(0,0,0,0.9);
   }
 
-  /* ===== Video embed ===== */
-  .video-wrap {
+  /* ===== Video with poster ===== */
+  .video-poster {
+    position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
     background: #1a1a1a;
     overflow: hidden;
+    cursor: pointer;
     margin-top: 1rem;
   }
-  .video-wrap iframe { width: 100%; height: 100%; border: 0; }
+  .video-poster img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.4s ease, transform 0.6s ease;
+    filter: brightness(0.6);
+  }
+  .video-poster:hover img {
+    filter: brightness(0.75);
+    transform: scale(1.02);
+  }
+  .video-poster::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10,30,20,0.4) 0%, rgba(10,10,10,0.3) 100%);
+    pointer-events: none;
+  }
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: rgba(111, 232, 159, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 60px rgba(111, 232, 159, 0.5), 0 0 0 8px rgba(111, 232, 159, 0.15);
+    transition: all 0.4s ease;
+  }
+  .video-poster:hover .play-button {
+    transform: translate(-50%, -50%) scale(1.08);
+    box-shadow: 0 0 80px rgba(111, 232, 159, 0.7), 0 0 0 14px rgba(111, 232, 159, 0.2);
+  }
+  .play-button::after {
+    content: '';
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 14px 0 14px 22px;
+    border-color: transparent transparent transparent #0a0a0a;
+    margin-left: 6px;
+  }
+  .video-label {
+    position: absolute;
+    left: 24px;
+    bottom: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+  }
+  .video-label-r {
+    position: absolute;
+    right: 24px;
+    bottom: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+  }
+  .video-poster.playing img,
+  .video-poster.playing .play-button,
+  .video-poster.playing .video-label,
+  .video-poster.playing .video-label-r,
+  .video-poster.playing::before { display: none; }
+  .video-poster iframe {
+    width: 100%; height: 100%;
+    border: 0;
+    display: block;
+  }
 
-  /* ===== Specs grid ===== */
   .specs {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -265,7 +379,6 @@
     text-transform: none;
   }
 
-  /* ===== Prev/Next nav ===== */
   .work-nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -289,13 +402,8 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
   }
-  .work-nav-title {
-    font-size: 22px;
-    color: #fff;
-    font-weight: 300;
-  }
+  .work-nav-title { font-size: 22px; color: #fff; font-weight: 300; }
 
-  /* ===== Footer ===== */
   footer {
     position: relative;
     z-index: 2;
@@ -326,14 +434,14 @@
     .work-page { padding: 6rem 1.25rem 3rem; }
     .work-h { font-size: clamp(36px, 9vw, 56px); }
     .work-tag-line { gap: 12px; flex-direction: column; }
+    .project-meta { grid-template-columns: 1fr; gap: 1.5rem; }
+    .project-material { text-align: left; max-width: none; }
     .img-text-row, .img-text-row.reverse {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+      grid-template-columns: 1fr; gap: 1.5rem;
     }
     .img-text-row.reverse > :first-child,
     .img-text-row.reverse > :last-child { order: initial; }
     .image-pair { grid-template-columns: 1fr; }
-    .image-trio { grid-template-columns: 1fr; }
     .image-six { grid-template-columns: 1fr 1fr; }
     .pull-quote { font-size: 24px; }
     .specs { grid-template-columns: 1fr 1fr; }
@@ -341,6 +449,8 @@
     .work-nav-item.next { text-align: left; align-items: flex-start; }
     footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
     .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .play-button { width: 64px; height: 64px; }
+    .play-button::after { border-width: 10px 0 10px 16px; }
   }
 </style>
 </head>
@@ -370,8 +480,23 @@
     <img src="images/The-Light-Humor-of-Plants-01main.jpg" alt="The Light Humor of Plants — exhibition view" />
   </div>
 
+  <!-- ============ PROJECT META (like image 3) ============ -->
+  <div class="project-meta">
+    <div class="project-tag-row">
+      <span class="project-pill">Project 01</span>
+      <div class="project-hashtags">
+        <span>#Installation</span>
+        <span>#Interactive</span>
+      </div>
+    </div>
+    <div class="project-material">
+      <strong>Material</strong>
+      Plants, Arduino board, light sensor, temperature and humidity sensor, Touch sensor, capacitive sensor, CO₂ sensor, display, host
+      <span class="project-type-pill">Data Visualization Installation</span>
+    </div>
+  </div>
+
   <!-- ============ TITLE ============ -->
-  <div class="work-num">→ Work 01 / 05</div>
   <h1 class="work-h"><em>The Light Humor</em><br>of Plants</h1>
   <div class="work-tag-line">
     <span>Data-driven Interactive Installation</span>
@@ -395,7 +520,7 @@
       </div>
     </div>
 
-    <!-- ── Section 2: Plant Intelligence (long text + 4 exhibition shots) ── -->
+    <!-- ── Section 2: Plant Intelligence ── -->
     <div class="text-block" style="max-width: 920px;">
       <h2 class="section-heading">Plant Intelligence</h2>
       <p>My work <em>The Light Humor of Plants</em> embodies my exploration of the aforementioned questions and serves as an investigation into presenting organic life systems within virtual digital environments. Simultaneously, this artwork explores novel interactions among nature, data, and humans. The fusion of organic life and mechanics endows mechanical and synthetic objects with lifelike qualities, while organic life gains more structure and design.</p>
@@ -404,17 +529,17 @@
       <p>Creating interactive installations generates not only a steadfast, visual language but also a language of emotion. I translate the real-time life systems of existing plants into virtual digital environments. For the plant portion, I incorporate a sensory system that transmits the plant's perceived data to the digital system, where it is visualized.</p>
     </div>
 
-    <!-- 4 exhibition photos in 2x2 grid -->
+    <!-- 2x2 exhibition grid -->
     <div class="image-pair">
-      <img src="images/The-Light-Humor-of-Plants-09.jpg" alt="Installation — single plant module" />
-      <img src="images/The-Light-Humor-of-Plants-10.jpg" alt="Installation — wired plant on wall" />
+      <img src="images/The-Light-Humor-of-Plants-09.JPG" alt="Installation — single plant module" />
+      <img src="images/The-Light-Humor-of-Plants-10.gif" alt="Installation — wired plant on wall" />
     </div>
     <div class="image-pair">
       <img src="images/The-Light-Humor-of-Plants-03.jpg" alt="Installation — Arduino on wall" />
       <img src="images/The-Light-Humor-of-Plants-04.jpg" alt="Installation — display with plant" />
     </div>
 
-    <!-- ── Section 3: Light Humor — close-up + body text ── -->
+    <!-- ── Section 3: close-up + body text ── -->
     <div class="img-text-row reverse">
       <div class="image-single">
         <img src="images/The-Light-Humor-of-Plants-05.jpg" alt="Close-up — display with green plant" />
@@ -426,13 +551,13 @@
       </div>
     </div>
 
-    <!-- Animation system diagram -->
-    <div class="image-single">
+    <!-- System diagrams — constrained width since they have small text -->
+    <div class="image-medium">
       <img src="images/The-Light-Humor-of-Plants-06.jpg" alt="Animation system — data mapping diagram" />
     </div>
 
-    <div class="image-single">
-      <img src="images/The-Light-Humor-of-Plants-08.jpg" alt="Animation rules and L-system parameters" />
+    <div class="image-medium">
+      <img src="images/The-Light-Humor-of-Plants-08.JPG" alt="Animation rules and L-system parameters" />
     </div>
 
     <!-- ── Section 4: Fostering Communication ── -->
@@ -443,30 +568,30 @@
       <p>My utmost hope is that during "communication," participants will experience not only sensory feedback involving touch, hearing, and vision but will also foster accurate emotional exchange. This will lead to the realization that plants possess "intelligence" and "emotion."</p>
     </div>
 
-    <!-- 6-grid of animation states with labels -->
+    <!-- 6-grid animation states -->
     <div class="image-six">
       <div class="item">
-        <img src="images/The-Light-Humor-of-Plants-move01.jpg" alt="Humidity response" />
+        <img src="images/The-Light-Humor-of-Plants-move01.gif" alt="Humidity response" />
         <span class="label">| Humidity</span>
       </div>
       <div class="item">
-        <img src="images/The-Light-Humor-of-Plants-move02.jpg" alt="Temperature response" />
+        <img src="images/The-Light-Humor-of-Plants-move02.gif" alt="Temperature response" />
         <span class="label">| Temperature</span>
       </div>
       <div class="item">
-        <img src="images/The-Light-Humor-of-Plants-move03.jpg" alt="Carbon dioxide response" />
+        <img src="images/The-Light-Humor-of-Plants-move03.gif" alt="Carbon dioxide response" />
         <span class="label">| Carbon Dioxide</span>
       </div>
       <div class="item">
-        <img src="images/The-Light-Humor-of-Plants-move04.jpg" alt="Light intensity response" />
+        <img src="images/The-Light-Humor-of-Plants-move04.gif" alt="Light intensity response" />
         <span class="label">| Light Intensity</span>
       </div>
       <div class="item">
-        <img src="images/The-Light-Humor-of-Plants-move05.jpg" alt="No human interaction" />
+        <img src="images/The-Light-Humor-of-Plants-move05.gif" alt="No human interaction" />
         <span class="label">| No Human Interaction</span>
       </div>
       <div class="item">
-        <img src="images/The-Light-Humor-of-Plants-move06.jpg" alt="Interaction state" />
+        <img src="images/The-Light-Humor-of-Plants-move06.gif" alt="Interaction state" />
         <span class="label">| Interaction</span>
       </div>
     </div>
@@ -476,24 +601,23 @@
       "From lifelessness to life, from artificial to natural, from potentiality to actuality."
     </div>
 
-    <!-- Exhibition wide shot -->
+    <!-- Wide exhibition shot -->
     <div class="image-single">
       <img src="images/The-Light-Humor-of-Plants-02.jpg" alt="Exhibition view — gallery installation" />
     </div>
 
-    <div class="image-single">
+    <!-- System states grid — also constrained -->
+    <div class="image-medium">
       <img src="images/The-Light-Humor-of-Plants-07.jpg" alt="Animation states grid — humidity, temperature, light, CO2, no interaction, interaction" />
     </div>
 
-    <!-- ── Video ── -->
+    <!-- ── Video with poster ── -->
     <h2 class="section-heading" style="margin-top: 2rem;">Video</h2>
-    <div class="video-wrap">
-      <iframe
-        src="https://www.youtube.com/embed/37nMJSZzsa4?rel=0&modestbranding=1"
-        title="The Light Humor of Plants — video documentation"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
+    <div class="video-poster" id="videoPoster">
+      <img src="images/The-Light-Humor-of-Plants-01main.jpg" alt="Video preview — The Light Humor of Plants" />
+      <div class="play-button" aria-label="Play video"></div>
+      <span class="video-label">▸ Watch on YouTube</span>
+      <span class="video-label-r">2022 · Documentation · 03:45</span>
     </div>
 
     <!-- ── Specs ── -->
@@ -528,6 +652,17 @@
 </footer>
 
 <script>
+// ===== Click-to-play video poster =====
+(function() {
+  const poster = document.getElementById('videoPoster');
+  if (!poster) return;
+  poster.addEventListener('click', function() {
+    poster.classList.add('playing');
+    poster.innerHTML = '<iframe src="https://www.youtube.com/embed/37nMJSZzsa4?rel=0&modestbranding=1&autoplay=1" title="The Light Humor of Plants" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  });
+})();
+
+// ===== Background particles =====
 (function() {
   const canvas = document.getElementById('bgParticleCanvas');
   if (!canvas) return;
