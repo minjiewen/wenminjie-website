@@ -7,7 +7,7 @@
 <meta name="description" content="Super City — A permanent interactive exhibit at Hubei Science and Technology Museum. By Low-Tech Art Lab; Wen Minjie as project participant." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -40,42 +40,134 @@
 
   .work-page { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 8rem 3rem 4rem; }
 
+  /* ===== Hero — overlay style like image 2 ===== */
   .work-hero {
+    position: relative;
     width: 100%; aspect-ratio: 16 / 9;
     background: #1a1a1a; overflow: hidden;
     margin-bottom: 4rem;
   }
   .work-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-  /* ===== Project meta ===== */
-  .project-meta {
-    display: grid; grid-template-columns: 1fr auto;
-    gap: 2rem; align-items: start;
-    margin-bottom: 2rem; padding-bottom: 2rem;
-    border-bottom: 0.5px solid #1f1f1f;
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
   }
-  .project-tag-row { display: flex; flex-direction: column; gap: 8px; }
-  .project-pill {
-    display: inline-block; background: #6FE89F; color: #0a0a0a;
+  .hero-tl {
+    position: absolute;
+    top: 32px; left: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .hero-tl .pj-pill {
+    display: inline-block;
+    background: #6FE89F;
+    color: #0a0a0a;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.2em; padding: 6px 14px;
-    text-transform: uppercase; width: fit-content;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    padding: 5px 12px;
+    width: fit-content;
   }
-  .project-hashtags { font-style: italic; font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
-  .project-hashtags span { display: block; }
-  .project-material {
-    text-align: right; font-style: italic; font-size: 13px;
-    color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 380px;
+  .hero-tl .pj-tags {
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
   }
-  .project-material strong { display: block; color: #fff; font-style: normal; font-weight: 400; margin-bottom: 4px; }
-  .project-type-pill {
-    display: inline-block; background: #6FE89F; color: #0a0a0a;
-    font-style: italic; font-size: 13px; font-weight: 500;
-    padding: 6px 14px; margin-top: 8px;
+  .hero-tl .pj-tags span { display: block; }
+  .hero-tr {
+    position: absolute;
+    top: 32px; right: 32px;
+    text-align: right;
+    max-width: 380px;
+  }
+  .hero-tr .ml-label {
+    color: #fff;
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 600;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    margin-bottom: 4px;
+  }
+  .hero-tr .ml-value {
+    color: rgba(255,255,255,0.95);
+    font-style: italic;
+    font-size: 12px;
+    line-height: 1.5;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    margin-bottom: 10px;
+  }
+  .hero-tr .pj-type {
+    display: inline-block;
+    background: #6FE89F;
+    color: #0a0a0a;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 5px 12px;
+  }
+  .hero-title-block {
+    position: absolute;
+    bottom: 80px; left: 32px;
+    max-width: 60%;
+  }
+  .hero-title {
+    color: #6FE89F;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(36px, 5.5vw, 64px);
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+  .hero-desc {
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.55;
+    max-width: 580px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    background: rgba(10,10,10,0.35);
+    padding: 8px 0;
+  }
+  .hero-desc em {
+    font-style: italic;
+    color: #6FE89F;
+    font-weight: 500;
+  }
+  .hero-bottom-line {
+    position: absolute;
+    bottom: 32px; left: 32px; right: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 2rem;
+  }
+  .hero-quote {
+    color: #fff;
+    font-size: 11px;
+    font-style: italic;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    max-width: 60%;
+  }
+  .hero-meta-r {
+    text-align: right;
+    font-style: italic;
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  }
+  .hero-meta-r strong {
+    color: #fff;
+    font-weight: 500;
   }
 
-  /* ===== Title ===== */
+  /* ===== Title (below hero) ===== */
   .work-h {
     font-size: clamp(48px, 6vw, 76px); font-weight: 300;
     color: #fff; line-height: 1.05; letter-spacing: -0.02em;
@@ -87,10 +179,10 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px; color: #888;
     letter-spacing: 0.1em; text-transform: uppercase;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
   }
 
-  /* ===== Credits banner (special for team work) ===== */
+  /* ===== Credits banner ===== */
   .credits-banner {
     border-top: 0.5px solid #6FE89F;
     border-bottom: 0.5px solid #6FE89F;
@@ -100,16 +192,13 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
   }
-  .credit-item {}
   .credit-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px; color: #6FE89F;
     letter-spacing: 0.2em; text-transform: uppercase;
     margin-bottom: 8px;
   }
-  .credit-value {
-    font-size: 14px; color: #fff; line-height: 1.5;
-  }
+  .credit-value { font-size: 14px; color: #fff; line-height: 1.5; }
   .credit-value a { border-bottom: 0.5px solid #444; padding-bottom: 1px; }
   .credit-value a:hover { color: #6FE89F; border-color: #6FE89F; }
   .credit-role { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; font-style: italic; }
@@ -137,6 +226,7 @@
     margin: 2rem 0; letter-spacing: -0.01em;
   }
 
+  /* ===== Image-text row ===== */
   .img-text-row {
     display: grid; grid-template-columns: 1.2fr 1fr;
     gap: 4rem; align-items: center;
@@ -149,19 +239,72 @@
   .image-single { width: 100%; overflow: hidden; }
   .image-single img { width: 100%; display: block; }
 
-  .image-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .image-pair img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+  /* ===== Image grids — REWORKED for proper aspect ratios ===== */
+  .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .image-pair img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
 
-  .image-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
-  .image-trio img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+  .image-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  .image-trio img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
 
-  .image-quad { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-  .image-quad img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+  /* 4-column grid for thumbnails */
+  .image-quad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+  .image-quad img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Process grid (like image 2 bottom) — many small images */
+  .image-octo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+  .image-octo img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
 
   .image-medium { max-width: 760px; margin: 0 auto; overflow: hidden; }
   .image-medium img { width: 100%; display: block; }
 
-  /* ===== Group label (for separating sections) ===== */
+  /* Hero scenes — show full image without cropping (for design diagrams that have whitespace) */
+  .image-natural {
+    width: 100%;
+    background: #f5f5f5;
+    overflow: hidden;
+  }
+  .image-natural img {
+    width: 100%;
+    display: block;
+  }
+
+  /* ===== Group label (separator between sections) ===== */
   .group-label {
     display: flex; align-items: center; gap: 1rem;
     font-family: 'JetBrains Mono', monospace;
@@ -172,6 +315,45 @@
   .group-label::before, .group-label::after {
     content: ''; flex: 1; height: 0.5px;
     background: rgba(111, 232, 159, 0.3);
+  }
+
+  /* ===== Materials list (3 columns describing PCB / LED / Magnetic Fluid) ===== */
+  .materials-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .material-card {
+    border-top: 0.5px solid #6FE89F;
+    padding-top: 1.5rem;
+  }
+  .material-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #6FE89F;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.75rem;
+  }
+  .material-title {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+  .material-subtitle {
+    font-size: 13px;
+    font-style: italic;
+    color: #6FE89F;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  .material-desc {
+    font-size: 13px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.65);
   }
 
   .specs {
@@ -226,17 +408,23 @@
     .work-page { padding: 6rem 1.25rem 3rem; }
     .work-h { font-size: clamp(36px, 9vw, 56px); }
     .work-tag-line { gap: 12px; flex-direction: column; }
-    .project-meta { grid-template-columns: 1fr; gap: 1.5rem; }
-    .project-material { text-align: left; max-width: none; }
     .credits-banner { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.5rem 0; }
     .img-text-row, .img-text-row.reverse { grid-template-columns: 1fr; gap: 1.5rem; }
     .img-text-row.reverse > :first-child, .img-text-row.reverse > :last-child { order: initial; }
     .image-pair { grid-template-columns: 1fr; }
-    .image-trio { grid-template-columns: 1fr 1fr; }
+    .image-trio, .image-quad, .image-octo { grid-template-columns: 1fr 1fr; }
     .pull-quote { font-size: 24px; }
     .specs { grid-template-columns: 1fr 1fr; }
     .work-nav { grid-template-columns: 1fr; gap: 1.5rem; }
     .work-nav-item.next { text-align: left; align-items: flex-start; }
+    .materials-list { grid-template-columns: 1fr; gap: 1.5rem; }
+    .hero-tl, .hero-tr {
+      top: 16px; left: 16px; right: 16px; max-width: none;
+    }
+    .hero-tr { text-align: left; }
+    .hero-title-block { left: 16px; bottom: 60px; max-width: 90%; }
+    .hero-bottom-line { left: 16px; right: 16px; bottom: 16px; flex-direction: column; align-items: flex-start; gap: 8px; }
+    .hero-meta-r { text-align: left; }
     footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
     .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   }
@@ -263,49 +451,61 @@
 
 <article class="work-page">
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ HERO with overlay (like image 2 reference) ============ -->
   <div class="work-hero">
     <img src="images/city17.jpg" alt="Super City — Hubei Science and Technology Museum permanent exhibit" />
-  </div>
-
-  <!-- ============ PROJECT META ============ -->
-  <div class="project-meta">
-    <div class="project-tag-row">
-      <span class="project-pill">Project 04</span>
-      <div class="project-hashtags">
-        <span>#Permanent-Exhibit</span>
-        <span>#Interactive-Installation</span>
-        <span>#Team-Project</span>
+    <div class="hero-overlay">
+      <div class="hero-tl">
+        <span class="pj-pill">#PROJECT 4</span>
+        <span class="pj-tags">
+          <span>#Installation</span>
+          <span>#Interactive</span>
+        </span>
       </div>
-    </div>
-    <div class="project-material">
-      <strong>Material</strong>
-      Modular LED city forms, custom PCBs, sensors, projection mapping, ambient sound, real-time interactive system
-      <span class="project-type-pill">Interactive Installation</span>
+      <div class="hero-tr">
+        <div class="ml-label">Material:</div>
+        <div class="ml-value">Power control systems, light control systems, magnetic fluids, PCB circuit boards, transmission modules, custom keels, custom wood panelling</div>
+        <span class="pj-type">Transmedia Dynamic Installation</span>
+      </div>
+      <div class="hero-title-block">
+        <div class="hero-title">SUPER CITY</div>
+        <div class="hero-desc">
+          <em>Super City</em> is an electronic dynamic installation. Its design is inspired by the understanding of the operating mechanism of the city itself, transforming the functional modules of the "super project" into components of the installation, and presenting the effective operation of the city system through physical interaction and light animation.
+        </div>
+      </div>
+      <div class="hero-bottom-line">
+        <div class="hero-quote">"Social life in the 21st century is increasingly becoming life in a media city ……"</div>
+        <div class="hero-meta-r">
+          Prototype Design /<br>
+          Form Design /<br>
+          Production<br>
+          <strong>Year: 2021</strong>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- ============ TITLE ============ -->
   <h1 class="work-h">Super <em>City</em></h1>
   <div class="work-tag-line">
-    <span>Permanent Interactive Exhibit</span>
+    <span>Transmedia Dynamic Installation</span>
+    <span>· 2021</span>
     <span>· Hubei Science and Technology Museum</span>
-    <span>· Team Project</span>
   </div>
 
   <!-- ============ TEAM CREDITS BANNER ============ -->
   <div class="credits-banner">
-    <div class="credit-item">
+    <div>
       <div class="credit-label">→ Project By</div>
       <div class="credit-value"><a href="http://www.zhengda.tech/index.php/about/3" target="_blank" rel="noopener">Low-Tech Art Lab</a></div>
       <div class="credit-role">Founded by Zheng Da</div>
     </div>
-    <div class="credit-item">
+    <div>
       <div class="credit-label">→ My Role</div>
       <div class="credit-value">Project Participant</div>
       <div class="credit-role">Wen Minjie / 文敏婕</div>
     </div>
-    <div class="credit-item">
+    <div>
       <div class="credit-label">→ Venue</div>
       <div class="credit-value">Hubei Science and<br>Technology Museum</div>
       <div class="credit-role">Permanent collection</div>
@@ -316,36 +516,37 @@
   <div class="work-content">
 
     <!-- ── Section 1: Concept ── -->
-    <div class="img-text-row">
-      <div class="image-single">
-        <img src="images/city02.png" alt="Super City — installation view" />
-      </div>
-      <div class="text-block">
-        <h2 class="section-heading">A City That Listens</h2>
-        <p><em>Super City</em> is a permanent interactive exhibit at Hubei Science and Technology Museum, designed and built by Low-Tech Art Lab. The work imagines the city not as architecture, but as a living organism that responds to visitor presence — a small urban ecology shaped by sound, light, and movement.</p>
-        <p>This project was developed under the direction of Low-Tech Art Lab, founded by artist Zheng Da. As a project participant, I contributed to the creative development and on-site implementation of the work.</p>
-      </div>
+    <div class="text-block" style="max-width: 920px;">
+      <h2 class="section-heading">Concept</h2>
+      <p>The concept of <em>Super City</em> extends from "Super Engineering" — the permanent exhibition at Hubei Provincial Science and Technology Museum. A super city is the most complex artefact on Earth: countless systems silently sustain its operation, and yet those of us within it rarely sense their effort.</p>
+      <p>While the "Super Engineering" hall asks how vast urban projects work, our <em>Super City</em> installation reframes the question. The existence and evolution of a city is here understood as a <em>mutual construction</em> between human and non-human actors. Using human-introduced electronic components and our understanding of urban operating mechanisms, we translate the city's functional modules into components of an installation — its operation made visible through physical interaction, light animation, and the motion of magnetic fluids.</p>
     </div>
 
-    <!-- Hero scenes / multiple views -->
+    <!-- Hero scene — installation overview -->
+    <div class="image-single">
+      <img src="images/city02.png" alt="Super City — installation overview" />
+    </div>
+
+    <!-- 2 wide views -->
     <div class="image-pair">
       <img src="images/city03.JPG" alt="Super City — wide view 1" />
       <img src="images/city04.JPG" alt="Super City — wide view 2" />
     </div>
 
+    <!-- ── Section 2: Two Forms of Display ── -->
+    <div class="text-block" style="max-width: 920px;">
+      <h2 class="section-heading">Two Forms of Display</h2>
+      <p>The work runs through two visual languages — light, and magnetic fluid. The data's own algorithm becomes the visual medium, and through the changes of light and the motion of magnetic fluid, a dialogue between human and machine is completed.</p>
+      <p>Technology is the key that realises this logic. Through a combination of software and hardware, <em>Super City</em> achieves real-time control over the dynamic installation.</p>
+    </div>
+
+    <!-- 2 detail shots -->
     <div class="image-pair">
       <img src="images/city05.jpg" alt="Super City — installation detail" />
       <img src="images/city06.jpg" alt="Super City — interactive zone" />
     </div>
 
-    <!-- ── Section 2: Experience ── -->
-    <div class="text-block" style="max-width: 920px;">
-      <h2 class="section-heading">An Interactive Urban Experience</h2>
-      <p>The installation invites visitors to become part of the city's nervous system. Sound, motion, and proximity all become inputs — light patterns ripple across the modular structures, ambient soundscapes shift, and the city responds in continuously evolving ways.</p>
-      <p>As a permanent exhibit in a science museum, <em>Super City</em> serves not only as an artwork but as a public interface — where children, families, and curious visitors discover that the boundary between observer and city is porous.</p>
-    </div>
-
-    <!-- Triple gallery -->
+    <!-- 3 view grid -->
     <div class="image-trio">
       <img src="images/city07.jpg" alt="Super City — view 7" />
       <img src="images/city08.jpg" alt="Super City — view 8" />
@@ -358,17 +559,17 @@
       <img src="images/city12.jpg" alt="Super City — view 12" />
     </div>
 
-    <!-- Reverse image-text -->
+    <!-- Reverse text-image -->
     <div class="img-text-row reverse">
       <div class="image-single">
         <img src="images/city13.jpg" alt="Super City — atmospheric view" />
       </div>
       <div class="text-block">
-        <p>The work draws on Low-Tech Art Lab's signature approach: combining custom-designed integrated circuit boards, modular hardware systems, and inter-disciplinary creative methods. From DEMO prototype to final implementation, every layer of the installation is purpose-built.</p>
+        <p>During design, we explored displays and acrylic models as the visual modules. In the final production, we chose <em>PCB boards, LED light strips, and magnetic fluids</em> as the primary visual elements.</p>
       </div>
     </div>
 
-    <!-- More views -->
+    <!-- 2 more view pairs -->
     <div class="image-pair">
       <img src="images/city14.jpg" alt="Super City — view 14" />
       <img src="images/city15.jpg" alt="Super City — view 15" />
@@ -380,13 +581,41 @@
     </div>
 
     <!-- ════════════════════════════════════════════ -->
+    <!-- ── Three Materials                          ── -->
+    <!-- ════════════════════════════════════════════ -->
+    <div>
+      <div class="group-label">— Three Materials of Super City —</div>
+      <div class="materials-list">
+        <div class="material-card">
+          <div class="material-num">/ 01</div>
+          <div class="material-title">PCB Boards</div>
+          <div class="material-subtitle">The bricks of the city</div>
+          <div class="material-desc">Recycled PCBs form the foundation. Their irregular electronic components naturally suggest the rise and fall of urban districts, while their history of having served the city itself gives them an intrinsic urban quality.</div>
+        </div>
+        <div class="material-card">
+          <div class="material-num">/ 02</div>
+          <div class="material-title">LED Strips</div>
+          <div class="material-subtitle">Roads, traffic, and energy flow</div>
+          <div class="material-desc">Hard-shelled LED strips, 50cm modules with single-pixel control, surround the architectural models like rectangles of moving light — simulating the ceaseless flow of urban traffic and the prosperity of the city.</div>
+        </div>
+        <div class="material-card">
+          <div class="material-num">/ 03</div>
+          <div class="material-title">Magnetic Fluid</div>
+          <div class="material-subtitle">A living current</div>
+          <div class="material-desc">A liquid that flows like water but responds magnetically. Without magnets, it is a glossy black droplet; under field, it rises into spikes along magnetic field lines. The city becomes alive.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════ -->
     <!-- ── LOGIC GROUP — system architecture       ── -->
     <!-- ════════════════════════════════════════════ -->
     <div>
       <div class="group-label">— System Logic —</div>
       <div class="text-block" style="max-width: 920px; margin-bottom: 2rem;">
         <h2 class="section-heading">The Logic Beneath</h2>
-        <p>Underneath the visible city is a layered logic — sensor inputs feeding micro-controllers, micro-controllers feeding a real-time visualization engine, the engine feeding ambient sound and light. Low-Tech Art Lab's custom PCBs handle the conversion between physical signal and digital response.</p>
+        <p>The visual creation runs on TouchDesigner — a node-based real-time visual programming environment for new-media work. As a transmedia dynamic installation, <em>Super City</em> achieves software-hardware interconnection: Arduino boards transmit data, the DMX protocol bridges software to hardware, and TouchDesigner controls the installation in real time.</p>
+        <p>The magnetic fluid module is built from fluid tubes, lead-screw slides, servo motors, magnets, Arduino boards, and aluminium fittings. Each motor is uniquely numbered so it can be addressed individually — TouchDesigner then choreographs motion speed, timing, and the relative position of fluid in each tube.</p>
       </div>
 
       <div class="image-medium">
@@ -407,19 +636,21 @@
       <div class="group-label">— Installation Details —</div>
       <div class="text-block" style="max-width: 920px; margin-bottom: 2rem;">
         <h2 class="section-heading">Close-up</h2>
-        <p>Construction, lighting modules, mechanical detailing, sensor integration — the close-up reveals how the city is built.</p>
+        <p>From the sketch, to the iterative form-finding, to the final structural mock-up: the installation evolved through dozens of intermediate stages. Below, a sample of the development process.</p>
+      </div>
+
+      <!-- 2x2 of process iteration shots -->
+      <div class="image-pair">
+        <img src="images/xijie01.jpg" alt="Process — concept sketch" />
+        <img src="images/xijie02.png" alt="Process — block massing" />
       </div>
 
       <div class="image-pair">
-        <img src="images/xijie01.jpg" alt="Detail — 01" />
-        <img src="images/xijie02.png" alt="Detail — 02" />
+        <img src="images/xijie03.png" alt="Process — refined block" />
+        <img src="images/xijie04.jpg" alt="Process — iteration view" />
       </div>
 
-      <div class="image-pair">
-        <img src="images/xijie03.png" alt="Detail — 03" />
-        <img src="images/xijie04.jpg" alt="Detail — 04" />
-      </div>
-
+      <!-- 4-up grid for the smaller process images -->
       <div class="image-quad">
         <img src="images/xijie05.jpg" alt="Detail — 05" />
         <img src="images/xijie06.png" alt="Detail — 06" />
@@ -430,7 +661,7 @@
 
     <!-- Pull quote -->
     <div class="pull-quote">
-      "A city is most alive when its boundaries become permeable to the people inside it."
+      "Social life in the 21st century is increasingly becoming life in a media city."
     </div>
 
     <!-- ── Specs ── -->
@@ -438,7 +669,7 @@
       <div>Type<strong>Permanent exhibit</strong></div>
       <div>Venue<strong>Hubei Science and Technology Museum</strong></div>
       <div>Team<strong>Low-Tech Art Lab</strong></div>
-      <div>Role<strong>Project participant</strong></div>
+      <div>Year<strong>2021</strong></div>
     </div>
 
   </div>
