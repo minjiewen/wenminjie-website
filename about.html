@@ -4,81 +4,47 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>About — Wen Minjie 文敏婕</title>
-<meta name="description" content="About Wen Minjie — PhD researcher at QUT" />
+<meta name="description" content="Researcher and artist exploring plant intelligence, eco-art practice, and the technological mediation of human–plant relationships in the built environment." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    background: #0a0a0a;
-    color: #d4d4d4;
+    background: #0a0a0a; color: #d4d4d4;
     font-family: 'Inter', -apple-system, sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
+    font-weight: 300; line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    min-height: 100vh;
+    overflow-x: hidden; min-height: 100vh;
   }
   a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
   ::selection { background: #6FE89F; color: #0a0a0a; }
 
   .bg-canvas {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.45;
+    position: fixed; inset: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none; opacity: 0.45;
   }
 
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: start;
-    padding: 1.75rem 2.5rem;
-    gap: 2rem;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: start; padding: 1.75rem 2.5rem; gap: 2rem;
     background: linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0) 100%);
     backdrop-filter: blur(8px);
   }
-  .logo {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 17px;
-    font-weight: 400;
-    color: #fff;
-  }
+  .logo { font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 400; color: #fff; }
   .logo a:hover { color: #6FE89F; }
-  .menu {
-    display: flex;
-    justify-content: center;
-    gap: 56px;
-    font-size: 16px;
-    font-weight: 400;
-    color: #fff;
-  }
-  .menu a:hover { color: #6FE89F; }
-  .menu a.active { color: #6FE89F; }
-  .contact-info {
-    font-size: 15px;
-    color: #fff;
-    line-height: 1.7;
-    text-align: right;
-  }
+  .menu { display: flex; justify-content: center; gap: 56px; font-size: 16px; font-weight: 400; color: #fff; }
+  .menu a:hover, .menu a.active { color: #6FE89F; }
+  .contact-info { font-size: 15px; color: #fff; line-height: 1.7; text-align: right; }
   .contact-info-l { font-size: 15px; margin-bottom: 4px; }
   .contact-info a:hover { color: #6FE89F; }
 
-  /* Page content */
   .page {
-    position: relative;
-    z-index: 2;
-    padding: 9rem 3rem 6rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    position: relative; z-index: 2;
+    padding: 8rem 3rem 6rem;
+    max-width: 1200px; margin: 0 auto;
   }
   .page-header {
     margin-bottom: 5rem;
@@ -87,124 +53,222 @@
   }
   .page-tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #6FE89F;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.25em; text-transform: uppercase;
     margin-bottom: 1rem;
   }
   .page-title {
-    font-size: clamp(48px, 6vw, 72px);
-    font-weight: 300;
-    color: #fff;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
+    font-size: clamp(48px, 6vw, 72px); font-weight: 300;
+    color: #fff; line-height: 1.05; letter-spacing: -0.02em;
+    margin-bottom: 1rem;
   }
   .page-title em { font-style: italic; color: #6FE89F; }
-  .page-sub {
-    font-size: 16px;
-    color: rgba(255,255,255,0.65);
-    max-width: 580px;
-    line-height: 1.8;
+  .page-subtitle {
+    font-size: 17px; color: rgba(255,255,255,0.6);
+    max-width: 700px; line-height: 1.7;
   }
 
-  /* Exhibition list */
-  .exhibition-list { display: flex; flex-direction: column; gap: 0; }
-  .ex-item {
-    display: grid;
-    grid-template-columns: 100px 1fr 200px;
-    gap: 2rem;
-    padding: 2rem 0;
-    border-bottom: 0.5px solid #1f1f1f;
-    align-items: baseline;
-    transition: padding 0.4s ease;
-    cursor: pointer;
-  }
-  .ex-item:hover { padding-left: 1rem; }
-  .ex-item:hover .ex-title { color: #6FE89F; }
-  .ex-year {
+  .section { margin-bottom: 5rem; }
+  .section-label {
+    display: flex; align-items: center; gap: 1rem;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .section-label::before {
+    content: ''; width: 24px; height: 0.5px;
+    background: rgba(111, 232, 159, 0.6);
+  }
+  .section-h {
+    font-size: clamp(28px, 3vw, 36px); font-weight: 300;
+    color: #fff; margin-bottom: 2.5rem;
+    line-height: 1.2; letter-spacing: -0.01em;
+  }
+  .section-h em { font-style: italic; color: #6FE89F; }
+
+  .bio p {
+    font-size: 17px; line-height: 1.85;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 1.5rem; max-width: 720px;
+  }
+  .bio p:last-child { margin-bottom: 0; }
+  .bio em { font-style: italic; color: #6FE89F; }
+
+  .two-col {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 5rem; align-items: start;
+  }
+  .info-card {
+    border-top: 0.5px solid #6FE89F;
+    padding-top: 1.5rem;
+  }
+  .info-card h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #6FE89F;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .info-card p, .info-card a {
+    font-size: 14px; line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+  }
+  .info-card a:hover { color: #6FE89F; }
+  .info-card + .info-card { margin-top: 2.5rem; }
+
+  .entry {
+    display: grid; grid-template-columns: 130px 1fr;
+    gap: 2rem; padding: 1.75rem 0;
+    border-bottom: 0.5px solid #1a1a1a;
+  }
+  .entry:last-child { border-bottom: none; }
+  .entry-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.1em; padding-top: 4px;
+  }
+  .entry-title {
+    font-size: 16px; color: #fff;
+    font-weight: 400; line-height: 1.45;
+    margin-bottom: 0.5rem;
+  }
+  .entry-title em { font-style: italic; color: #6FE89F; font-weight: 400; }
+  .entry-meta {
+    font-size: 13px; color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+  .entry-meta strong { color: #fff; font-weight: 400; }
+  .entry-meta + .entry-meta { margin-top: 0.3rem; }
+  .entry-status-pill {
+    display: inline-block;
+    background: #6FE89F; color: #0a0a0a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.18em;
+    padding: 3px 9px; text-transform: uppercase;
+    margin-left: 8px; vertical-align: 1px;
+  }
+  .entry-status-pill.in-progress {
+    background: transparent; color: #6FE89F;
+    border: 0.5px solid #6FE89F;
+  }
+  .entry-status-pill.cssci {
+    background: rgba(111, 232, 159, 0.15);
     color: #6FE89F;
-    letter-spacing: 0.1em;
+    border: 0.5px solid #6FE89F;
   }
-  .ex-title {
-    font-size: 22px;
-    font-weight: 300;
+  .entry-doi {
+    display: inline-block; margin-top: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.05em;
+  }
+  .entry-doi:hover { color: #b4ffce; }
+
+  .pub-featured {
+    border: 0.5px solid #6FE89F;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    background: rgba(111, 232, 159, 0.03);
+  }
+  .pub-featured-tag {
+    display: inline-block;
+    background: #6FE89F; color: #0a0a0a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.2em; padding: 4px 12px;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+  }
+  .pub-featured h3 {
+    font-size: clamp(20px, 2vw, 26px); font-weight: 400;
+    color: #fff; line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+  .pub-featured h3 em { font-style: italic; color: #6FE89F; }
+  .pub-featured-meta {
+    font-size: 14px; color: rgba(255,255,255,0.7);
+    line-height: 1.85; margin-bottom: 0.5rem;
+  }
+  .pub-featured-meta strong { color: #fff; font-weight: 400; }
+
+  .cv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+
+  /* Awards two-col */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2.5rem;
+  }
+
+  /* Skills tag list */
+  .skill-block { margin-bottom: 2rem; }
+  .skill-block h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #6FE89F;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 0.85rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tags span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: rgba(255,255,255,0.7);
+    letter-spacing: 0.08em;
+    padding: 5px 11px;
+    border: 0.5px solid rgba(111, 232, 159, 0.3);
+  }
+  .skill-tags span:hover {
+    border-color: #6FE89F;
     color: #fff;
-    line-height: 1.4;
-    transition: color 0.3s ease;
-  }
-  .ex-title em { font-style: italic; }
-  .ex-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #888;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-align: right;
-    line-height: 1.6;
   }
 
-  .placeholder {
-    background: rgba(111, 232, 159, 0.04);
-    border: 0.5px dashed rgba(111, 232, 159, 0.3);
-    padding: 3rem;
-    border-radius: 8px;
-    text-align: center;
-    margin-top: 4rem;
+  .keyword-cloud {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 1rem;
   }
-  .placeholder-text {
+  .keyword-cloud span {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: rgba(111, 232, 159, 0.7);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    font-size: 11px; color: rgba(255,255,255,0.7);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 6px 12px;
+    border: 0.5px solid rgba(111, 232, 159, 0.3);
   }
 
-/* ===== Copyright footer ===== */
   footer {
-    position: relative;
-    z-index: 2;
+    position: relative; z-index: 2;
     padding: 4rem 3rem 2.5rem;
     border-top: 0.5px solid #1f1f1f;
     margin: 0 3rem;
   }
   .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
-    align-items: end;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 2rem; align-items: end;
   }
-  .copyright {
-    font-size: 12px;
-    color: #555;
-    line-height: 1.8;
-  }
+  .copyright { font-size: 12px; color: #555; line-height: 1.8; }
   .footer-back {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #6FE89F;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.15em; text-transform: uppercase;
   }
   .footer-back:hover { color: #b4ffce; }
-  @media (max-width: 768px) {
-    footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
-    .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  }
 
   @media (max-width: 768px) {
     nav { grid-template-columns: 1fr auto; padding: 1rem 1.25rem; gap: 1rem; }
     .menu { display: none; }
     .contact-info { font-size: 13px; }
-    .page { padding: 7rem 1.25rem 4rem; }
-    .ex-item { grid-template-columns: 1fr; gap: 0.5rem; }
-    .ex-meta { text-align: left; }
+    .page { padding: 6rem 1.25rem 3rem; }
+    .page-title { font-size: clamp(36px, 9vw, 56px); }
+    .two-col { grid-template-columns: 1fr; gap: 3rem; }
+    .cv-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .awards-grid { grid-template-columns: 1fr; gap: 0; }
+    .entry { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.5rem 0; }
+    .entry-date { padding-top: 0; font-size: 10px; }
+    .pub-featured { padding: 1.75rem 1.5rem; }
     footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
     .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-}
+  }
 </style>
 </head>
 <body>
@@ -222,41 +286,67 @@
   </div>
   <div class="contact-info">
     <div class="contact-info-l">Contact</div>
-    <div><a href="mailto:your.email@example.com">Email</a></div>
+    <div><a href="mailto:minjie.wen@hdr.qut.edu.au">Email</a></div>
   </div>
 </nav>
 
-<section class="page">
+<div class="page">
+
   <header class="page-header">
-    <div class="page-tag">— Section 05</div>
-    <h1 class="page-title"><em>About</em><br>the practice.</h1>
-    <p class="page-sub">A doctoral practice between architecture, art, and the more-than-human world.</p>
+    <div class="page-tag">// About</div>
+    <h1 class="page-title">Designing <em>with</em> the<br/>more-than-human.</h1>
+    <p class="page-subtitle">Researcher and artist exploring plant intelligence, eco-art practice, and the technological mediation of human–plant relationships in the built environment.</p>
   </header>
 
-    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; max-width: 900px;">
-    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #666; letter-spacing: 0.18em; text-transform: uppercase; line-height: 2;">
-      <div>About<br>关于</div>
-    </div>
-    <div>
-      <p style="font-size: 17px; line-height: 1.85; color: rgba(255,255,255,0.85); margin-bottom: 1.75rem;">
-        I am a first-year PhD researcher at QUT's School of Architecture and Built Environment, supervised by Dr. Yasu Santo, Prof. Marcus Foth, and Dr. Susan Loh.
-      </p>
-      <p style="font-size: 17px; line-height: 1.85; color: rgba(255,255,255,0.85); margin-bottom: 1.75rem;">
-        My research investigates how technologically mediated systems can support <em style="color: #6FE89F; font-style: italic;">reciprocal</em> interactions between humans and native Australian plants in urban environments — using Research through Design as the overarching methodology, framed by more-than-human theory and restorative environment theory.
-      </p>
-      <p style="font-size: 17px; line-height: 1.85; color: rgba(255,255,255,0.85); margin-bottom: 1.75rem;">
-        Before Brisbane, I trained in Digital Media Arts and Intelligent Design in China, with practice in installation art and human–plant interaction systems.
-      </p>
+  
+  <div class="two-col">
+    <div class="bio">
+      <p>I am a researcher and artist working at the intersection of <em>plant intelligence</em>, ecological art, and interactive installation. My practice explores how technological mediation can reshape the relationship between humans, plants, and the built environment — moving away from anthropocentric design toward <em>multi-species coexistence</em>.</p>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem; margin-top: 3rem; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #666; letter-spacing: 0.15em; text-transform: uppercase;">
-        <div>Affiliation<br><strong style="display: block; color: #fff; font-weight: 400; margin-top: 6px; font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 0.02em; text-transform: none;">QUT, Brisbane</strong></div>
-        <div>Field<br><strong style="display: block; color: #fff; font-weight: 400; margin-top: 6px; font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 0.02em; text-transform: none;">HPI / RtD</strong></div>
-        <div>Languages<br><strong style="display: block; color: #fff; font-weight: 400; margin-top: 6px; font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 0.02em; text-transform: none;">EN · 中文</strong></div>
-        <div>ORCID<br><a href="https://orcid.org/0009-0002-5132-0250" target="_blank" style="display: block; color: #6FE89F; font-weight: 400; margin-top: 6px; font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 0.02em; text-transform: none;">0009-0002-5132-0250</a></div>
+      <p>My research engages with <em>more-than-human theory</em>, <em>restorative environment theory</em>, and <em>research through design</em> as core methodological frames. Across installations and cross-media works, I treat plants not as decoration or instruments, but as <em>agents</em> with their own intentionality — exploring how machines can act as translators rather than tools, and how the slow time of plants can become legible in human-scale environments.</p>
+
+      <p>My work spans <em>eco-installations</em>, <em>cross-media interactive art</em>, <em>data visualization installations</em>, and <em>multisensory environments</em>. I am particularly interested in how interactive systems can mediate between non-human agency and human perception, and how the spaces we build can become sites of ecological reciprocity rather than extraction.</p>
+
+      <p>I hold an M.A. in <em>Intelligent Design</em> and a B.A. in <em>Digital Media Arts</em> from <em>Central China Normal University</em>, with an exchange semester in Human-Computer Interaction at the State University of New York. I currently work and conduct research at <em>Queensland University of Technology</em>, based in Brisbane, Australia.</p>
+
+      <div class="keyword-cloud">
+        <span>Plant-Machine Coexistence</span>
+        <span>More-than-Human</span>
+        <span>Bio Art</span>
+        <span>Built Environment</span>
+        <span>Human-Plant Interaction</span>
+        <span>Interaction Design</span>
+        <span>Mediated Sensory Systems</span>
+        <span>Object-Oriented Design</span>
       </div>
     </div>
+
+    <aside>
+      <div class="info-card">
+        <h4>Based in</h4>
+        <p>Brisbane, Australia</p>
+      </div>
+      <div class="info-card">
+        <h4>Affiliation</h4>
+        <p>Queensland University of Technology<br/>Faculty of Engineering</p>
+      </div>
+      <div class="info-card">
+        <h4>ORCID</h4>
+        <p><a href="https://orcid.org/0009-0002-5132-0250" target="_blank" rel="noopener">0009-0002-5132-0250 ↗</a></p>
+      </div>
+      <div class="info-card">
+        <h4>Languages</h4>
+        <p>Mandarin Chinese · English (IELTS 6.5)</p>
+      </div>
+      <div class="info-card">
+        <h4>Get in touch</h4>
+        <p><a href="mailto:minjie.wen@hdr.qut.edu.au">minjie.wen@hdr.qut.edu.au</a></p>
+      </div>
+    </aside>
   </div>
-</section>
+
+
+</div>
 
 <footer>
   <div class="footer-grid">
@@ -272,40 +362,31 @@
   const ctx = canvas.getContext('2d');
   let width, height;
   let bgParticles = [];
-
   const BG_PARTICLE_COUNT = 60;
   const BG_CONNECT_DIST = 180;
   const BG_COLOR = [80, 200, 130];
 
   function resizeBg() {
     const dpr = window.devicePixelRatio || 1;
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
+    width = window.innerWidth; height = window.innerHeight;
+    canvas.width = width * dpr; canvas.height = height * dpr;
+    canvas.style.width = width + 'px'; canvas.style.height = height + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
   class BgParticle {
     constructor() {
-      this.x = Math.random() * width;
-      this.y = Math.random() * height;
-      this.vx = (Math.random() - 0.5) * 0.15;
-      this.vy = (Math.random() - 0.5) * 0.15;
+      this.x = Math.random() * width; this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.15; this.vy = (Math.random() - 0.5) * 0.15;
       this.radius = Math.random() * 1.2 + 0.4;
       this.opacity = Math.random() * 0.4 + 0.2;
       this.pulse = Math.random() * Math.PI * 2;
     }
     update() {
       this.x += this.vx; this.y += this.vy;
-      this.vx += (Math.random() - 0.5) * 0.01;
-      this.vy += (Math.random() - 0.5) * 0.01;
+      this.vx += (Math.random() - 0.5) * 0.01; this.vy += (Math.random() - 0.5) * 0.01;
       this.vx *= 0.99; this.vy *= 0.99;
-      if (this.x < 0) this.x = width;
-      if (this.x > width) this.x = 0;
-      if (this.y < 0) this.y = height;
-      if (this.y > height) this.y = 0;
+      if (this.x < 0) this.x = width; if (this.x > width) this.x = 0;
+      if (this.y < 0) this.y = height; if (this.y > height) this.y = 0;
       this.pulse += 0.01;
     }
     draw() {
@@ -321,8 +402,7 @@
     }
   }
   function initBg() {
-    resizeBg();
-    bgParticles = [];
+    resizeBg(); bgParticles = [];
     for (let i = 0; i < BG_PARTICLE_COUNT; i++) bgParticles.push(new BgParticle());
   }
   function drawBgConnections() {

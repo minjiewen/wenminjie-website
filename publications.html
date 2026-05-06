@@ -3,82 +3,48 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Publications — Wen Minjie 文敏婕</title>
-<meta name="description" content="Publications and writings by Wen Minjie" />
+<title>Research & Publications — Wen Minjie 文敏婕</title>
+<meta name="description" content="Peer-reviewed research, preprints, design patents, and forthcoming work — focused on plant intelligence, more-than-human design, and the artistic practice of moist media." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    background: #0a0a0a;
-    color: #d4d4d4;
+    background: #0a0a0a; color: #d4d4d4;
     font-family: 'Inter', -apple-system, sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
+    font-weight: 300; line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    min-height: 100vh;
+    overflow-x: hidden; min-height: 100vh;
   }
   a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
   ::selection { background: #6FE89F; color: #0a0a0a; }
 
   .bg-canvas {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.45;
+    position: fixed; inset: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none; opacity: 0.45;
   }
 
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: start;
-    padding: 1.75rem 2.5rem;
-    gap: 2rem;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: start; padding: 1.75rem 2.5rem; gap: 2rem;
     background: linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0) 100%);
     backdrop-filter: blur(8px);
   }
-  .logo {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 17px;
-    font-weight: 400;
-    color: #fff;
-  }
+  .logo { font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 400; color: #fff; }
   .logo a:hover { color: #6FE89F; }
-  .menu {
-    display: flex;
-    justify-content: center;
-    gap: 56px;
-    font-size: 16px;
-    font-weight: 400;
-    color: #fff;
-  }
-  .menu a:hover { color: #6FE89F; }
-  .menu a.active { color: #6FE89F; }
-  .contact-info {
-    font-size: 15px;
-    color: #fff;
-    line-height: 1.7;
-    text-align: right;
-  }
+  .menu { display: flex; justify-content: center; gap: 56px; font-size: 16px; font-weight: 400; color: #fff; }
+  .menu a:hover, .menu a.active { color: #6FE89F; }
+  .contact-info { font-size: 15px; color: #fff; line-height: 1.7; text-align: right; }
   .contact-info-l { font-size: 15px; margin-bottom: 4px; }
   .contact-info a:hover { color: #6FE89F; }
 
-  /* Page content */
   .page {
-    position: relative;
-    z-index: 2;
-    padding: 9rem 3rem 6rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    position: relative; z-index: 2;
+    padding: 8rem 3rem 6rem;
+    max-width: 1200px; margin: 0 auto;
   }
   .page-header {
     margin-bottom: 5rem;
@@ -87,124 +53,222 @@
   }
   .page-tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #6FE89F;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.25em; text-transform: uppercase;
     margin-bottom: 1rem;
   }
   .page-title {
-    font-size: clamp(48px, 6vw, 72px);
-    font-weight: 300;
-    color: #fff;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
+    font-size: clamp(48px, 6vw, 72px); font-weight: 300;
+    color: #fff; line-height: 1.05; letter-spacing: -0.02em;
+    margin-bottom: 1rem;
   }
   .page-title em { font-style: italic; color: #6FE89F; }
-  .page-sub {
-    font-size: 16px;
-    color: rgba(255,255,255,0.65);
-    max-width: 580px;
-    line-height: 1.8;
+  .page-subtitle {
+    font-size: 17px; color: rgba(255,255,255,0.6);
+    max-width: 700px; line-height: 1.7;
   }
 
-  /* Exhibition list */
-  .exhibition-list { display: flex; flex-direction: column; gap: 0; }
-  .ex-item {
-    display: grid;
-    grid-template-columns: 100px 1fr 200px;
-    gap: 2rem;
-    padding: 2rem 0;
-    border-bottom: 0.5px solid #1f1f1f;
-    align-items: baseline;
-    transition: padding 0.4s ease;
-    cursor: pointer;
-  }
-  .ex-item:hover { padding-left: 1rem; }
-  .ex-item:hover .ex-title { color: #6FE89F; }
-  .ex-year {
+  .section { margin-bottom: 5rem; }
+  .section-label {
+    display: flex; align-items: center; gap: 1rem;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .section-label::before {
+    content: ''; width: 24px; height: 0.5px;
+    background: rgba(111, 232, 159, 0.6);
+  }
+  .section-h {
+    font-size: clamp(28px, 3vw, 36px); font-weight: 300;
+    color: #fff; margin-bottom: 2.5rem;
+    line-height: 1.2; letter-spacing: -0.01em;
+  }
+  .section-h em { font-style: italic; color: #6FE89F; }
+
+  .bio p {
+    font-size: 17px; line-height: 1.85;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 1.5rem; max-width: 720px;
+  }
+  .bio p:last-child { margin-bottom: 0; }
+  .bio em { font-style: italic; color: #6FE89F; }
+
+  .two-col {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 5rem; align-items: start;
+  }
+  .info-card {
+    border-top: 0.5px solid #6FE89F;
+    padding-top: 1.5rem;
+  }
+  .info-card h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #6FE89F;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .info-card p, .info-card a {
+    font-size: 14px; line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+  }
+  .info-card a:hover { color: #6FE89F; }
+  .info-card + .info-card { margin-top: 2.5rem; }
+
+  .entry {
+    display: grid; grid-template-columns: 130px 1fr;
+    gap: 2rem; padding: 1.75rem 0;
+    border-bottom: 0.5px solid #1a1a1a;
+  }
+  .entry:last-child { border-bottom: none; }
+  .entry-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.1em; padding-top: 4px;
+  }
+  .entry-title {
+    font-size: 16px; color: #fff;
+    font-weight: 400; line-height: 1.45;
+    margin-bottom: 0.5rem;
+  }
+  .entry-title em { font-style: italic; color: #6FE89F; font-weight: 400; }
+  .entry-meta {
+    font-size: 13px; color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+  .entry-meta strong { color: #fff; font-weight: 400; }
+  .entry-meta + .entry-meta { margin-top: 0.3rem; }
+  .entry-status-pill {
+    display: inline-block;
+    background: #6FE89F; color: #0a0a0a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.18em;
+    padding: 3px 9px; text-transform: uppercase;
+    margin-left: 8px; vertical-align: 1px;
+  }
+  .entry-status-pill.in-progress {
+    background: transparent; color: #6FE89F;
+    border: 0.5px solid #6FE89F;
+  }
+  .entry-status-pill.cssci {
+    background: rgba(111, 232, 159, 0.15);
     color: #6FE89F;
-    letter-spacing: 0.1em;
+    border: 0.5px solid #6FE89F;
   }
-  .ex-title {
-    font-size: 22px;
-    font-weight: 300;
+  .entry-doi {
+    display: inline-block; margin-top: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.05em;
+  }
+  .entry-doi:hover { color: #b4ffce; }
+
+  .pub-featured {
+    border: 0.5px solid #6FE89F;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    background: rgba(111, 232, 159, 0.03);
+  }
+  .pub-featured-tag {
+    display: inline-block;
+    background: #6FE89F; color: #0a0a0a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.2em; padding: 4px 12px;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+  }
+  .pub-featured h3 {
+    font-size: clamp(20px, 2vw, 26px); font-weight: 400;
+    color: #fff; line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+  .pub-featured h3 em { font-style: italic; color: #6FE89F; }
+  .pub-featured-meta {
+    font-size: 14px; color: rgba(255,255,255,0.7);
+    line-height: 1.85; margin-bottom: 0.5rem;
+  }
+  .pub-featured-meta strong { color: #fff; font-weight: 400; }
+
+  .cv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+
+  /* Awards two-col */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2.5rem;
+  }
+
+  /* Skills tag list */
+  .skill-block { margin-bottom: 2rem; }
+  .skill-block h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #6FE89F;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 0.85rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tags span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: rgba(255,255,255,0.7);
+    letter-spacing: 0.08em;
+    padding: 5px 11px;
+    border: 0.5px solid rgba(111, 232, 159, 0.3);
+  }
+  .skill-tags span:hover {
+    border-color: #6FE89F;
     color: #fff;
-    line-height: 1.4;
-    transition: color 0.3s ease;
-  }
-  .ex-title em { font-style: italic; }
-  .ex-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #888;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-align: right;
-    line-height: 1.6;
   }
 
-  .placeholder {
-    background: rgba(111, 232, 159, 0.04);
-    border: 0.5px dashed rgba(111, 232, 159, 0.3);
-    padding: 3rem;
-    border-radius: 8px;
-    text-align: center;
-    margin-top: 4rem;
+  .keyword-cloud {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 1rem;
   }
-  .placeholder-text {
+  .keyword-cloud span {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: rgba(111, 232, 159, 0.7);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    font-size: 11px; color: rgba(255,255,255,0.7);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 6px 12px;
+    border: 0.5px solid rgba(111, 232, 159, 0.3);
   }
 
-/* ===== Copyright footer ===== */
   footer {
-    position: relative;
-    z-index: 2;
+    position: relative; z-index: 2;
     padding: 4rem 3rem 2.5rem;
     border-top: 0.5px solid #1f1f1f;
     margin: 0 3rem;
   }
   .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
-    align-items: end;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 2rem; align-items: end;
   }
-  .copyright {
-    font-size: 12px;
-    color: #555;
-    line-height: 1.8;
-  }
+  .copyright { font-size: 12px; color: #555; line-height: 1.8; }
   .footer-back {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #6FE89F;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.15em; text-transform: uppercase;
   }
   .footer-back:hover { color: #b4ffce; }
-  @media (max-width: 768px) {
-    footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
-    .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  }
 
   @media (max-width: 768px) {
     nav { grid-template-columns: 1fr auto; padding: 1rem 1.25rem; gap: 1rem; }
     .menu { display: none; }
     .contact-info { font-size: 13px; }
-    .page { padding: 7rem 1.25rem 4rem; }
-    .ex-item { grid-template-columns: 1fr; gap: 0.5rem; }
-    .ex-meta { text-align: left; }
+    .page { padding: 6rem 1.25rem 3rem; }
+    .page-title { font-size: clamp(36px, 9vw, 56px); }
+    .two-col { grid-template-columns: 1fr; gap: 3rem; }
+    .cv-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .awards-grid { grid-template-columns: 1fr; gap: 0; }
+    .entry { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.5rem 0; }
+    .entry-date { padding-top: 0; font-size: 10px; }
+    .pub-featured { padding: 1.75rem 1.5rem; }
     footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
     .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-}
+  }
 </style>
 </head>
 <body>
@@ -222,41 +286,120 @@
   </div>
   <div class="contact-info">
     <div class="contact-info-l">Contact</div>
-    <div><a href="mailto:your.email@example.com">Email</a></div>
+    <div><a href="mailto:minjie.wen@hdr.qut.edu.au">Email</a></div>
   </div>
 </nav>
 
-<section class="page">
+<div class="page">
+
   <header class="page-header">
-    <div class="page-tag">— Section 03</div>
-    <h1 class="page-title"><em>Publications</em><br>&amp; writing.</h1>
-    <p class="page-sub">Peer-reviewed papers, scoping reviews, and academic writings on human–plant interaction and more-than-human design.</p>
+    <div class="page-tag">// Research & Publications</div>
+    <h1 class="page-title">Reading. Writing. <em>Re-thinking</em>.</h1>
+    <p class="page-subtitle">Peer-reviewed research, preprints, design patents, and forthcoming work — focused on plant intelligence, more-than-human design, and the artistic practice of moist media.</p>
   </header>
 
-    <div class="exhibition-list">
+  
+  <section class="section">
+    <div class="section-label">— In Progress —</div>
+    <h2 class="section-h"><em>Forthcoming</em> publications</h2>
 
-    <article class="ex-item">
-      <div class="ex-year">2026</div>
+    <div class="pub-featured">
+      <span class="pub-featured-tag">In Preparation</span>
+      <h3>Who Benefits? <em>A Scoping Review and Taxonomy of Human–Plant Interactions in Urban Environments</em></h3>
+      <div class="pub-featured-meta"><strong>WEN Minjie</strong></div>
+      <div class="pub-featured-meta">A scoping review developing a five-category taxonomy of beneficiary structures in human–plant interaction (HPI) artworks: <em>Anthropocentric</em>, <em>Phytocentric</em>, <em>Relational</em>, <em>Ecocentric</em>, and <em>Indeterminate</em> benefit. The paper analyzes more than fifty works across academic literature, specialist media-art archives, and curated artwork documentation.</div>
+      <div class="pub-featured-meta" style="margin-top: 0.75rem;"><strong>Status:</strong> Manuscript in preparation — Frontiers Research Topic <em>"Re-Imagining Mediated Human–Building Interaction and Sensory Environments: Volume II."</em></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">— Journal Articles —</div>
+    <h2 class="section-h">Peer-reviewed <em>research</em></h2>
+
+    <!-- 1. Preprint 2025 -->
+    <div class="entry">
+      <div class="entry-date">2025 / 12</div>
       <div>
-        <div class="ex-title">Mediated reciprocal interactions between humans and native Australian plants <em>(working title)</em></div>
+        <div class="entry-title">How People's Appreciation of Installation Art Is Affected by the Environment and their Information about the Artworks <span class="entry-status-pill">Preprint</span></div>
+        <div class="entry-meta"><strong>Contributors:</strong> ZHANG Wenhan; <strong>WEN Minjie</strong>; FANG Xing; ZHENG Da</div>
+        <div class="entry-meta">Research Square — Preprint, 19 December 2025</div>
+        <a href="https://doi.org/10.21203/rs.3.rs-8390644/v1" target="_blank" rel="noopener" class="entry-doi">DOI: 10.21203/rs.3.rs-8390644/v1 ↗</a>
       </div>
-      <div class="ex-meta">Frontiers · Vol. II<br>Forthcoming</div>
-    </article>
+    </div>
 
-    <article class="ex-item">
-      <div class="ex-year">2026</div>
+    <!-- 2. Plant Perspectives 2024-2025 -->
+    <div class="entry">
+      <div class="entry-date">2024 / 25</div>
       <div>
-        <div class="ex-title">Who benefits? <em>A scoping review of beneficiaries in human–plant interaction art</em></div>
+        <div class="entry-title"><em>Plant Intelligence in Moist Spaces:</em> Designing Data Visualisations of Botanical Life <span class="entry-status-pill">Published</span></div>
+        <div class="entry-meta"><strong>WEN Minjie</strong> (sole author)</div>
+        <div class="entry-meta">Plant Perspectives, 2 (1): 216–232</div>
+        <div class="entry-meta">Examines the concept of <em>"moist media"</em> — born at the intersection of dry digital media and wet biological systems — and explores data-visualisation as a means of expanding human–plant communication.</div>
+        <a href="https://doi.org/10.3197/WHPPP.63845494909728" target="_blank" rel="noopener" class="entry-doi">DOI: 10.3197/WHPPP.63845494909728 ↗</a>
       </div>
-      <div class="ex-meta">Scoping Review · In Preparation</div>
-    </article>
+    </div>
 
-  </div>
+    <!-- 3. Art Magazine 2024 CSSCI -->
+    <div class="entry">
+      <div class="entry-date">2024 / 06</div>
+      <div>
+        <div class="entry-title">Practical Explorations in the Art of Artificial Intelligence — Creative Reflections Based on <em>Luster of Unknown Universe</em> <span class="entry-status-pill cssci">CSSCI · Published</span></div>
+        <div class="entry-meta"><strong>Contributors:</strong> ZHENG Da; <strong>WEN Minjie</strong></div>
+        <div class="entry-meta">Art Magazine (美术), 2024, (06): 48–50</div>
+        <div class="entry-meta">Analyzes how the work transitions from "Modern Origami" to "Data-based Physical Interaction" to "Intelligent Creation System" — characterising it as <em>processual</em>, <em>computable</em>, and <em>systematic</em>.</div>
+        <div class="entry-meta" style="margin-top: 0.5rem;">Other ID: 10.13864/j.cnki.cn11-1311/j.007425</div>
+      </div>
+    </div>
 
-  <div class="placeholder">
-    <div class="placeholder-text">— More publications to be added —</div>
-  </div>
-</section>
+    <!-- 4. Changjiang Review 2023 -->
+    <div class="entry">
+      <div class="entry-date">2023 / 04</div>
+      <div>
+        <div class="entry-title">"Artist" and "Laboratory": <em>A New Paradigm of Art Production from an Interdisciplinary Perspective</em> <span class="entry-status-pill">Published</span></div>
+        <div class="entry-meta"><strong>Contributors:</strong> ZHENG Da; AI Jing; <strong>WEN Minjie</strong></div>
+        <div class="entry-meta">Changjiang Literary and Artistic Review, 2023, (04): 8–15</div>
+        <div class="entry-meta">Treats artistic creation as an experimental practice, exploring the symbiotic relationship between <em>"machine,"</em> <em>"nature,"</em> and <em>"human being"</em> within a "Low Tech + Art + Lab" framework.</div>
+      </div>
+    </div>
+
+    <!-- 5. BLINK 2023 -->
+    <div class="entry">
+      <div class="entry-date">2023 / 07</div>
+      <div>
+        <div class="entry-title">The Realm of Intertwined Figures and Life: <em>Plant Intelligence in Moist Space</em> <span class="entry-status-pill">Published</span></div>
+        <div class="entry-meta"><strong>WEN Minjie</strong> (sole author)</div>
+        <div class="entry-meta">BLINK, July 2023</div>
+        <div class="entry-meta">Rethinks the concept of "life" against the backdrop of genetic engineering and AI; introduces a non-anthropocentric perspective on the Anthropocene — asking whether things look different when seen from a non-human viewpoint.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">— Patent —</div>
+    <h2 class="section-h">Granted <em>design patent</em></h2>
+
+    <div class="entry">
+      <div class="entry-date">2023 / 03</div>
+      <div>
+        <div class="entry-title"><em>Interactive Display</em> — Design Patent <span class="entry-status-pill">Granted</span></div>
+        <div class="entry-meta"><strong>Patentee:</strong> WEN Minjie</div>
+        <div class="entry-meta">Sponsor: State Intellectual Property Office, China</div>
+        <div class="entry-meta">A hardware-based screen kit for data visualisation, comprising a display, Arduino board, and sensor system.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">— Profile —</div>
+    <h2 class="section-h">Identifiers</h2>
+    <div class="info-card" style="max-width: 600px;">
+      <h4>ORCID</h4>
+      <p><a href="https://orcid.org/0009-0002-5132-0250" target="_blank" rel="noopener">https://orcid.org/0009-0002-5132-0250 ↗</a></p>
+    </div>
+  </section>
+
+
+</div>
 
 <footer>
   <div class="footer-grid">
@@ -272,40 +415,31 @@
   const ctx = canvas.getContext('2d');
   let width, height;
   let bgParticles = [];
-
   const BG_PARTICLE_COUNT = 60;
   const BG_CONNECT_DIST = 180;
   const BG_COLOR = [80, 200, 130];
 
   function resizeBg() {
     const dpr = window.devicePixelRatio || 1;
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
+    width = window.innerWidth; height = window.innerHeight;
+    canvas.width = width * dpr; canvas.height = height * dpr;
+    canvas.style.width = width + 'px'; canvas.style.height = height + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
   class BgParticle {
     constructor() {
-      this.x = Math.random() * width;
-      this.y = Math.random() * height;
-      this.vx = (Math.random() - 0.5) * 0.15;
-      this.vy = (Math.random() - 0.5) * 0.15;
+      this.x = Math.random() * width; this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.15; this.vy = (Math.random() - 0.5) * 0.15;
       this.radius = Math.random() * 1.2 + 0.4;
       this.opacity = Math.random() * 0.4 + 0.2;
       this.pulse = Math.random() * Math.PI * 2;
     }
     update() {
       this.x += this.vx; this.y += this.vy;
-      this.vx += (Math.random() - 0.5) * 0.01;
-      this.vy += (Math.random() - 0.5) * 0.01;
+      this.vx += (Math.random() - 0.5) * 0.01; this.vy += (Math.random() - 0.5) * 0.01;
       this.vx *= 0.99; this.vy *= 0.99;
-      if (this.x < 0) this.x = width;
-      if (this.x > width) this.x = 0;
-      if (this.y < 0) this.y = height;
-      if (this.y > height) this.y = 0;
+      if (this.x < 0) this.x = width; if (this.x > width) this.x = 0;
+      if (this.y < 0) this.y = height; if (this.y > height) this.y = 0;
       this.pulse += 0.01;
     }
     draw() {
@@ -321,8 +455,7 @@
     }
   }
   function initBg() {
-    resizeBg();
-    bgParticles = [];
+    resizeBg(); bgParticles = [];
     for (let i = 0; i < BG_PARTICLE_COUNT; i++) bgParticles.push(new BgParticle());
   }
   function drawBgConnections() {

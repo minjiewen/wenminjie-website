@@ -4,81 +4,47 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>CV — Wen Minjie 文敏婕</title>
-<meta name="description" content="Curriculum Vitae of Wen Minjie" />
+<meta name="description" content="Education, research projects, awards, scholarships, and skills. For exhibition record see Exhibitions; for publications see Research & Publications." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    background: #0a0a0a;
-    color: #d4d4d4;
+    background: #0a0a0a; color: #d4d4d4;
     font-family: 'Inter', -apple-system, sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
+    font-weight: 300; line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    min-height: 100vh;
+    overflow-x: hidden; min-height: 100vh;
   }
   a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
   ::selection { background: #6FE89F; color: #0a0a0a; }
 
   .bg-canvas {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.45;
+    position: fixed; inset: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none; opacity: 0.45;
   }
 
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: start;
-    padding: 1.75rem 2.5rem;
-    gap: 2rem;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: start; padding: 1.75rem 2.5rem; gap: 2rem;
     background: linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0) 100%);
     backdrop-filter: blur(8px);
   }
-  .logo {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 17px;
-    font-weight: 400;
-    color: #fff;
-  }
+  .logo { font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 400; color: #fff; }
   .logo a:hover { color: #6FE89F; }
-  .menu {
-    display: flex;
-    justify-content: center;
-    gap: 56px;
-    font-size: 16px;
-    font-weight: 400;
-    color: #fff;
-  }
-  .menu a:hover { color: #6FE89F; }
-  .menu a.active { color: #6FE89F; }
-  .contact-info {
-    font-size: 15px;
-    color: #fff;
-    line-height: 1.7;
-    text-align: right;
-  }
+  .menu { display: flex; justify-content: center; gap: 56px; font-size: 16px; font-weight: 400; color: #fff; }
+  .menu a:hover, .menu a.active { color: #6FE89F; }
+  .contact-info { font-size: 15px; color: #fff; line-height: 1.7; text-align: right; }
   .contact-info-l { font-size: 15px; margin-bottom: 4px; }
   .contact-info a:hover { color: #6FE89F; }
 
-  /* Page content */
   .page {
-    position: relative;
-    z-index: 2;
-    padding: 9rem 3rem 6rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    position: relative; z-index: 2;
+    padding: 8rem 3rem 6rem;
+    max-width: 1200px; margin: 0 auto;
   }
   .page-header {
     margin-bottom: 5rem;
@@ -87,124 +53,222 @@
   }
   .page-tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #6FE89F;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.25em; text-transform: uppercase;
     margin-bottom: 1rem;
   }
   .page-title {
-    font-size: clamp(48px, 6vw, 72px);
-    font-weight: 300;
-    color: #fff;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
+    font-size: clamp(48px, 6vw, 72px); font-weight: 300;
+    color: #fff; line-height: 1.05; letter-spacing: -0.02em;
+    margin-bottom: 1rem;
   }
   .page-title em { font-style: italic; color: #6FE89F; }
-  .page-sub {
-    font-size: 16px;
-    color: rgba(255,255,255,0.65);
-    max-width: 580px;
-    line-height: 1.8;
+  .page-subtitle {
+    font-size: 17px; color: rgba(255,255,255,0.6);
+    max-width: 700px; line-height: 1.7;
   }
 
-  /* Exhibition list */
-  .exhibition-list { display: flex; flex-direction: column; gap: 0; }
-  .ex-item {
-    display: grid;
-    grid-template-columns: 100px 1fr 200px;
-    gap: 2rem;
-    padding: 2rem 0;
-    border-bottom: 0.5px solid #1f1f1f;
-    align-items: baseline;
-    transition: padding 0.4s ease;
-    cursor: pointer;
-  }
-  .ex-item:hover { padding-left: 1rem; }
-  .ex-item:hover .ex-title { color: #6FE89F; }
-  .ex-year {
+  .section { margin-bottom: 5rem; }
+  .section-label {
+    display: flex; align-items: center; gap: 1rem;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .section-label::before {
+    content: ''; width: 24px; height: 0.5px;
+    background: rgba(111, 232, 159, 0.6);
+  }
+  .section-h {
+    font-size: clamp(28px, 3vw, 36px); font-weight: 300;
+    color: #fff; margin-bottom: 2.5rem;
+    line-height: 1.2; letter-spacing: -0.01em;
+  }
+  .section-h em { font-style: italic; color: #6FE89F; }
+
+  .bio p {
+    font-size: 17px; line-height: 1.85;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 1.5rem; max-width: 720px;
+  }
+  .bio p:last-child { margin-bottom: 0; }
+  .bio em { font-style: italic; color: #6FE89F; }
+
+  .two-col {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 5rem; align-items: start;
+  }
+  .info-card {
+    border-top: 0.5px solid #6FE89F;
+    padding-top: 1.5rem;
+  }
+  .info-card h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #6FE89F;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .info-card p, .info-card a {
+    font-size: 14px; line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+  }
+  .info-card a:hover { color: #6FE89F; }
+  .info-card + .info-card { margin-top: 2.5rem; }
+
+  .entry {
+    display: grid; grid-template-columns: 130px 1fr;
+    gap: 2rem; padding: 1.75rem 0;
+    border-bottom: 0.5px solid #1a1a1a;
+  }
+  .entry:last-child { border-bottom: none; }
+  .entry-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.1em; padding-top: 4px;
+  }
+  .entry-title {
+    font-size: 16px; color: #fff;
+    font-weight: 400; line-height: 1.45;
+    margin-bottom: 0.5rem;
+  }
+  .entry-title em { font-style: italic; color: #6FE89F; font-weight: 400; }
+  .entry-meta {
+    font-size: 13px; color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+  .entry-meta strong { color: #fff; font-weight: 400; }
+  .entry-meta + .entry-meta { margin-top: 0.3rem; }
+  .entry-status-pill {
+    display: inline-block;
+    background: #6FE89F; color: #0a0a0a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.18em;
+    padding: 3px 9px; text-transform: uppercase;
+    margin-left: 8px; vertical-align: 1px;
+  }
+  .entry-status-pill.in-progress {
+    background: transparent; color: #6FE89F;
+    border: 0.5px solid #6FE89F;
+  }
+  .entry-status-pill.cssci {
+    background: rgba(111, 232, 159, 0.15);
     color: #6FE89F;
-    letter-spacing: 0.1em;
+    border: 0.5px solid #6FE89F;
   }
-  .ex-title {
-    font-size: 22px;
-    font-weight: 300;
+  .entry-doi {
+    display: inline-block; margin-top: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.05em;
+  }
+  .entry-doi:hover { color: #b4ffce; }
+
+  .pub-featured {
+    border: 0.5px solid #6FE89F;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    background: rgba(111, 232, 159, 0.03);
+  }
+  .pub-featured-tag {
+    display: inline-block;
+    background: #6FE89F; color: #0a0a0a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.2em; padding: 4px 12px;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+  }
+  .pub-featured h3 {
+    font-size: clamp(20px, 2vw, 26px); font-weight: 400;
+    color: #fff; line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+  .pub-featured h3 em { font-style: italic; color: #6FE89F; }
+  .pub-featured-meta {
+    font-size: 14px; color: rgba(255,255,255,0.7);
+    line-height: 1.85; margin-bottom: 0.5rem;
+  }
+  .pub-featured-meta strong { color: #fff; font-weight: 400; }
+
+  .cv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+
+  /* Awards two-col */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2.5rem;
+  }
+
+  /* Skills tag list */
+  .skill-block { margin-bottom: 2rem; }
+  .skill-block h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #6FE89F;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 0.85rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tags span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: rgba(255,255,255,0.7);
+    letter-spacing: 0.08em;
+    padding: 5px 11px;
+    border: 0.5px solid rgba(111, 232, 159, 0.3);
+  }
+  .skill-tags span:hover {
+    border-color: #6FE89F;
     color: #fff;
-    line-height: 1.4;
-    transition: color 0.3s ease;
-  }
-  .ex-title em { font-style: italic; }
-  .ex-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #888;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-align: right;
-    line-height: 1.6;
   }
 
-  .placeholder {
-    background: rgba(111, 232, 159, 0.04);
-    border: 0.5px dashed rgba(111, 232, 159, 0.3);
-    padding: 3rem;
-    border-radius: 8px;
-    text-align: center;
-    margin-top: 4rem;
+  .keyword-cloud {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 1rem;
   }
-  .placeholder-text {
+  .keyword-cloud span {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: rgba(111, 232, 159, 0.7);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    font-size: 11px; color: rgba(255,255,255,0.7);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 6px 12px;
+    border: 0.5px solid rgba(111, 232, 159, 0.3);
   }
 
-/* ===== Copyright footer ===== */
   footer {
-    position: relative;
-    z-index: 2;
+    position: relative; z-index: 2;
     padding: 4rem 3rem 2.5rem;
     border-top: 0.5px solid #1f1f1f;
     margin: 0 3rem;
   }
   .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
-    align-items: end;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 2rem; align-items: end;
   }
-  .copyright {
-    font-size: 12px;
-    color: #555;
-    line-height: 1.8;
-  }
+  .copyright { font-size: 12px; color: #555; line-height: 1.8; }
   .footer-back {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #6FE89F;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.15em; text-transform: uppercase;
   }
   .footer-back:hover { color: #b4ffce; }
-  @media (max-width: 768px) {
-    footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
-    .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  }
 
   @media (max-width: 768px) {
     nav { grid-template-columns: 1fr auto; padding: 1rem 1.25rem; gap: 1rem; }
     .menu { display: none; }
     .contact-info { font-size: 13px; }
-    .page { padding: 7rem 1.25rem 4rem; }
-    .ex-item { grid-template-columns: 1fr; gap: 0.5rem; }
-    .ex-meta { text-align: left; }
+    .page { padding: 6rem 1.25rem 3rem; }
+    .page-title { font-size: clamp(36px, 9vw, 56px); }
+    .two-col { grid-template-columns: 1fr; gap: 3rem; }
+    .cv-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .awards-grid { grid-template-columns: 1fr; gap: 0; }
+    .entry { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.5rem 0; }
+    .entry-date { padding-top: 0; font-size: 10px; }
+    .pub-featured { padding: 1.75rem 1.5rem; }
     footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
     .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-}
+  }
 </style>
 </head>
 <body>
@@ -222,41 +286,348 @@
   </div>
   <div class="contact-info">
     <div class="contact-info-l">Contact</div>
-    <div><a href="mailto:your.email@example.com">Email</a></div>
+    <div><a href="mailto:minjie.wen@hdr.qut.edu.au">Email</a></div>
   </div>
 </nav>
 
-<section class="page">
+<div class="page">
+
   <header class="page-header">
-    <div class="page-tag">— Section 04</div>
-    <h1 class="page-title">Curriculum<br><em>Vitae</em>.</h1>
-    <p class="page-sub">Education, research, and practice. ORCID: 0009-0002-5132-0250.</p>
+    <div class="page-tag">// Curriculum Vitae</div>
+    <h1 class="page-title">Curriculum <em>Vitae</em>.</h1>
+    <p class="page-subtitle">Education, research projects, awards, scholarships, and skills. For exhibition record see Exhibitions; for publications see Research & Publications.</p>
   </header>
 
-    <div class="exhibition-list">
+  
+  <!-- ====== EDUCATION ====== -->
+  <section class="section">
+    <div class="section-label">— Education —</div>
+    <h2 class="section-h">Academic <em>training</em></h2>
 
-    <article class="ex-item">
-      <div class="ex-year">2026 →</div>
+    <div class="entry">
+      <div class="entry-date">2022 / 09<br/>2025 / 06</div>
       <div>
-        <div class="ex-title">PhD Researcher <em>· Architecture &amp; Built Environment</em></div>
+        <div class="entry-title">M.A. <em>Intelligent Design</em></div>
+        <div class="entry-meta"><strong>Central China Normal University</strong> · Wuhan, Hubei, China</div>
+        <div class="entry-meta">Average Score: 88.95 / 100 · <em>Ranking 1st</em></div>
+        <div class="entry-meta">Selected courses: World History of Modern Design (87) · History of Aesthetic Thought in Chinese Arts and Crafts (93)</div>
       </div>
-      <div class="ex-meta">Queensland University of Technology<br>Brisbane, Australia</div>
-    </article>
+    </div>
 
-    <article class="ex-item">
-      <div class="ex-year">2020 — 2023</div>
+    <div class="entry">
+      <div class="entry-date">2024 / 08<br/>2025 / 01</div>
       <div>
-        <div class="ex-title">Master <em>· Digital Media Arts &amp; Intelligent Design</em></div>
+        <div class="entry-title">Exchange Student — <em>Human-Computer Interaction</em></div>
+        <div class="entry-meta"><strong>State University of New York at Oswego</strong> · Oswego, New York, USA</div>
       </div>
-      <div class="ex-meta">Central China Normal University<br>Wuhan, China</div>
-    </article>
+    </div>
 
-  </div>
+    <div class="entry">
+      <div class="entry-date">2018 / 09<br/>2022 / 06</div>
+      <div>
+        <div class="entry-title">B.A. <em>Digital Media Arts</em></div>
+        <div class="entry-meta"><strong>Central China Normal University</strong> · Wuhan, Hubei, China</div>
+        <div class="entry-meta">Average Score: 88.61 / 100 · <em>Ranking 1st</em></div>
+        <div class="entry-meta">Selected courses: Game Level Design (91) · Art Coding & Game Engine (95) · New Media Interactive Design (95) · Digital Imaging & Video Effects (98)</div>
+      </div>
+    </div>
+  </section>
 
-  <div class="placeholder">
-    <div class="placeholder-text">— Full CV available on request · ORCID 0009-0002-5132-0250 —</div>
-  </div>
-</section>
+  <!-- ====== RESEARCH INTERESTS ====== -->
+  <section class="section">
+    <div class="section-label">— Research Interests —</div>
+    <h2 class="section-h">Areas of <em>focus</em></h2>
+    <div class="keyword-cloud">
+      <span>Intelligent Design</span>
+      <span>Bio-Design</span>
+      <span>Transmedia Interactive Art</span>
+      <span>Non-Anthropocentric Design</span>
+      <span>Plant-Machine Coexistence</span>
+      <span>More-than-Human Theory</span>
+      <span>Moist Media</span>
+    </div>
+  </section>
+
+  <!-- ====== RESEARCH EXPERIENCE ====== -->
+  <section class="section">
+    <div class="section-label">— Research Experience —</div>
+    <h2 class="section-h">Funded <em>projects</em></h2>
+
+    <div class="entry">
+      <div class="entry-date">2023 / 06<br/>2024 / 06</div>
+      <div>
+        <div class="entry-title"><em>Plant Intelligent Design in Moist Media Context</em> — Principal Investigator <span class="entry-status-pill cssci">PI</span></div>
+        <div class="entry-meta">Funded by: Basic Research Operating Expenses for Central Universities (Graduate Education Innovation Funding Program)</div>
+        <div class="entry-meta">Project No. 2023CXZZ115</div>
+        <div class="entry-meta">A practice-based investigation into the type, technology, and expressive potential of "wet media" art — exploring data visualisation as a tool for artistic expression in the moist-media context.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-date">2024 / 01<br/>2024 / 09</div>
+      <div>
+        <div class="entry-title">2024 NSF General Program in the Arts — <em>Submission Writing</em></div>
+        <div class="entry-meta">Establishes "design through artificial intelligence" as a systematic methodology — a process-based aesthetic system grounded in interdisciplinary lab practice, emphasising decentralised, multi-subject collaborative design between human and machine.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-date">2023 / 06<br/>2023 / 12</div>
+      <div>
+        <div class="entry-title">National Art Fund — <em>Data Visualisation Artistic Creative Talent Training in the Intelligent Era</em></div>
+        <div class="entry-meta">Project participant. Responsible for mid-term media promotion, financial settlement, project closure, and preparation of project summary report.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-date">2021 / 04<br/>2021 / 12</div>
+      <div>
+        <div class="entry-title"><em>Super City</em> — Permanent Installation, Hubei Science and Technology Museum</div>
+        <div class="entry-meta">Conceptual research, prototype design, and post-production material research — including the cross-media application of magnetic fluid as a new material.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== AWARDS ====== -->
+  <section class="section">
+    <div class="section-label">— Honours & Awards —</div>
+    <h2 class="section-h">Selected <em>recognitions</em></h2>
+
+    <div class="awards-grid">
+      <div>
+        <div class="entry">
+          <div class="entry-date">2023 / 12</div>
+          <div>
+            <div class="entry-title">Cross-Strait Digital Art Design — <em>Masterpiece Award</em></div>
+            <div class="entry-meta">Cross-Strait Exchange Promotion Association · Taiwan Tourism and Culture Association</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">2023 / 08</div>
+          <div>
+            <div class="entry-title">Oriental Design Award — <em>National First Prize</em></div>
+            <div class="entry-meta">National University Innovation Design Competition · CCPIT</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">2023 / 06</div>
+          <div>
+            <div class="entry-title">Milan Design Week Outstanding Works — <em>National First Prize</em></div>
+            <div class="entry-meta">China Association for International Exchange in Education · China Society of Higher Education</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">2023 / 08</div>
+          <div>
+            <div class="entry-title">"Challenge Cup" Innovation Competition — <em>Bronze Award</em></div>
+            <div class="entry-meta">Project: <em>Plant Enjoy Technology — Creating a Symbiotic Space between People and Plants</em> (CCUN2023ZT027)</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">2023 / 04</div>
+          <div>
+            <div class="entry-title">Zimei Scholarship — <em>Excellence Award</em></div>
+            <div class="entry-meta">Hubei Artists Association · Hubei Academy of Fine Arts</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">2023 / 03</div>
+          <div>
+            <div class="entry-title">8th "Creating Youth" — <em>International New Media Merit Award</em></div>
+            <div class="entry-meta">Shanghai Municipal Education Commission</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">2023 / 02</div>
+          <div>
+            <div class="entry-title">4th Hong Kong Contemporary Design Awards — <em>Silver Award</em></div>
+            <div class="entry-meta">Hong Kong Art &amp; Design Association</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="entry">
+          <div class="entry-date">2022 / 12</div>
+          <div>
+            <div class="entry-title">Dragon Star Green Design Competition — <em>Bronze Award</em></div>
+            <div class="entry-meta">Hebei University of Science and Technology · Beijing Green Design Promotion Association</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">2022 / 09</div>
+          <div>
+            <div class="entry-title">Renovators Global Youth Creativity — <em>Concept Award (Top 20)</em></div>
+            <div class="entry-meta">OPPO · School of Intermedia Art, China Academy of Art</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">2022 / 08</div>
+          <div>
+            <div class="entry-title">10th NCDA — <em>Provincial First / National Third Prize</em></div>
+            <div class="entry-meta">Talent Exchange Center, Ministry of Industry and Information Technology</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">2022 / 06</div>
+          <div>
+            <div class="entry-title">Asian Cultural Center International Residency — <em>Shortlist</em></div>
+            <div class="entry-meta">Korea</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">2022 / 06</div>
+          <div>
+            <div class="entry-title">15th CUCDC — <em>Provincial First / National Third Prize</em></div>
+            <div class="entry-meta">China University Student Computer Design Competition</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">2020 / 05</div>
+          <div>
+            <div class="entry-title">National Class A — <em>Student Innovation &amp; Entrepreneurship</em></div>
+            <div class="entry-meta">"Ridge Beast Revival" — Artistic Innovation Practice of Chinese Traditional Culture (Completed)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SCHOLARSHIPS ====== -->
+  <section class="section">
+    <div class="section-label">— Scholarships —</div>
+    <h2 class="section-h">Academic <em>distinctions</em></h2>
+
+    <div class="awards-grid">
+      <div>
+        <div class="entry">
+          <div class="entry-date">2024 / 10</div>
+          <div>
+            <div class="entry-title">National Scholarship <span class="entry-status-pill">Graduate</span></div>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="entry-date">2023 / 10</div>
+          <div>
+            <div class="entry-title">First Prize Scholarship <span class="entry-status-pill">Master's</span></div>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="entry-date">2022 / 10</div>
+          <div>
+            <div class="entry-title">First Prize Scholarship <span class="entry-status-pill">Master's</span></div>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="entry-date">2021 / 10</div>
+          <div>
+            <div class="entry-title">National Scholarship <span class="entry-status-pill">Undergraduate</span></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="entry">
+          <div class="entry-date">2020 / 10</div>
+          <div>
+            <div class="entry-title">National Encouragement Scholarship <span class="entry-status-pill">Undergraduate</span></div>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="entry-date">2020 / 10</div>
+          <div>
+            <div class="entry-title">Outstanding Minority Students Scholarship <span class="entry-status-pill">Undergraduate</span></div>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="entry-date">2019 / 10</div>
+          <div>
+            <div class="entry-title">National Encouragement Scholarship <span class="entry-status-pill">Undergraduate</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SKILLS ====== -->
+  <section class="section">
+    <div class="section-label">— Skills —</div>
+    <h2 class="section-h">Tools <em>&amp;</em> proficiencies</h2>
+
+    <div class="skill-block">
+      <h4>Languages</h4>
+      <div class="skill-tags">
+        <span>Chinese (Native)</span>
+        <span>English — IELTS 6.5</span>
+        <span>CET-4: 430</span>
+        <span>Duolingo: 115</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <h4>Software &amp; Coding</h4>
+      <div class="skill-tags">
+        <span>TouchDesigner</span>
+        <span>Arduino</span>
+        <span>Processing</span>
+        <span>UE4</span>
+        <span>C4D</span>
+        <span>Maya</span>
+        <span>Photoshop</span>
+        <span>Illustrator</span>
+        <span>Premiere</span>
+        <span>Midjourney</span>
+        <span>LaTeX</span>
+        <span>SPSS</span>
+        <span>Zotero</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <h4>Certifications</h4>
+      <div class="skill-tags">
+        <span>Mandarin Proficiency — Grade 2A</span>
+        <span>Teacher's License — Higher Secondary Art</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PROFILE ====== -->
+  <section class="section">
+    <div class="section-label">— Profile —</div>
+    <h2 class="section-h">Identifiers &amp; <em>contact</em></h2>
+    <div class="cv-grid">
+      <div class="info-card">
+        <h4>ORCID</h4>
+        <p><a href="https://orcid.org/0009-0002-5132-0250" target="_blank" rel="noopener">0009-0002-5132-0250 ↗</a></p>
+      </div>
+      <div class="info-card">
+        <h4>Email</h4>
+        <p><a href="mailto:minjie.wen@hdr.qut.edu.au">minjie.wen@hdr.qut.edu.au</a></p>
+      </div>
+      <div class="info-card">
+        <h4>Website</h4>
+        <p><a href="http://www.wenminjie.space">wenminjie.space</a></p>
+      </div>
+      <div class="info-card">
+        <h4>Phone</h4>
+        <p>+61 0413 534 558</p>
+      </div>
+    </div>
+  </section>
+
+
+</div>
 
 <footer>
   <div class="footer-grid">
@@ -272,40 +643,31 @@
   const ctx = canvas.getContext('2d');
   let width, height;
   let bgParticles = [];
-
   const BG_PARTICLE_COUNT = 60;
   const BG_CONNECT_DIST = 180;
   const BG_COLOR = [80, 200, 130];
 
   function resizeBg() {
     const dpr = window.devicePixelRatio || 1;
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
+    width = window.innerWidth; height = window.innerHeight;
+    canvas.width = width * dpr; canvas.height = height * dpr;
+    canvas.style.width = width + 'px'; canvas.style.height = height + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
   class BgParticle {
     constructor() {
-      this.x = Math.random() * width;
-      this.y = Math.random() * height;
-      this.vx = (Math.random() - 0.5) * 0.15;
-      this.vy = (Math.random() - 0.5) * 0.15;
+      this.x = Math.random() * width; this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.15; this.vy = (Math.random() - 0.5) * 0.15;
       this.radius = Math.random() * 1.2 + 0.4;
       this.opacity = Math.random() * 0.4 + 0.2;
       this.pulse = Math.random() * Math.PI * 2;
     }
     update() {
       this.x += this.vx; this.y += this.vy;
-      this.vx += (Math.random() - 0.5) * 0.01;
-      this.vy += (Math.random() - 0.5) * 0.01;
+      this.vx += (Math.random() - 0.5) * 0.01; this.vy += (Math.random() - 0.5) * 0.01;
       this.vx *= 0.99; this.vy *= 0.99;
-      if (this.x < 0) this.x = width;
-      if (this.x > width) this.x = 0;
-      if (this.y < 0) this.y = height;
-      if (this.y > height) this.y = 0;
+      if (this.x < 0) this.x = width; if (this.x > width) this.x = 0;
+      if (this.y < 0) this.y = height; if (this.y > height) this.y = 0;
       this.pulse += 0.01;
     }
     draw() {
@@ -321,8 +683,7 @@
     }
   }
   function initBg() {
-    resizeBg();
-    bgParticles = [];
+    resizeBg(); bgParticles = [];
     for (let i = 0; i < BG_PARTICLE_COUNT; i++) bgParticles.push(new BgParticle());
   }
   function drawBgConnections() {
