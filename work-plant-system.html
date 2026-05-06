@@ -447,6 +447,19 @@
     .play-button { width: 64px; height: 64px; }
     .play-button::after { border-width: 10px 0 10px 16px; }
   }
+
+  /* ===== Group label (separator) ===== */
+  .group-label {
+    display: flex; align-items: center; gap: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .group-label::before, .group-label::after {
+    content: ''; flex: 1; height: 0.5px;
+    background: rgba(111, 232, 159, 0.3);
+  }
 </style>
 </head>
 <body>
@@ -605,6 +618,47 @@
     <div class="arch-grid">
       <img src="images/Plant-System-14.png" alt="Spatial position diagram" />
       <img src="images/Plant-System-15.png" alt="Overall installation view" />
+    </div>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- ── EXHIBITION SETUP (16, 17, 18)            ── -->
+    <!-- ════════════════════════════════════════════ -->
+    <div>
+      <div class="group-label">— Exhibition Setup —</div>
+      <div class="text-block" style="max-width: 920px; margin-bottom: 2rem;">
+        <h2 class="section-heading">Setting Up</h2>
+        <p>The installation was assembled in stages — modules positioned, plants brought in, sensors calibrated, screens linked. Each setup adapts to the geometry of the host space.</p>
+      </div>
+
+      <div class="image-pair">
+        <img src="images/Plant-System-16.JPG" alt="Exhibition setup — collage" />
+        <img src="images/Plant-System-17.JPG" alt="Exhibition setup — plants in place" />
+      </div>
+
+      <div class="image-single" style="margin-top: 0.75rem;">
+        <img src="images/Plant-System-18.JPG" alt="Exhibition setup — overview" />
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- ── WORKSHOP (19, 20, 21, 22)                ── -->
+    <!-- ════════════════════════════════════════════ -->
+    <div>
+      <div class="group-label">— Workshop —</div>
+      <div class="text-block" style="max-width: 920px; margin-bottom: 2rem;">
+        <h2 class="section-heading">Public Workshop</h2>
+        <p>Beyond the exhibition, the work was extended into a series of public workshops — visitors invited to engage with plant kinship through making, dialogue, and reflection.</p>
+      </div>
+
+      <div class="image-pair">
+        <img src="images/Plant-System-19.jpg" alt="Workshop — collage 1" />
+        <img src="images/Plant-System-20.jpg" alt="Workshop — collage 2" />
+      </div>
+
+      <div class="image-pair" style="margin-top: 0.75rem;">
+        <img src="images/Plant-System-21.jpg" alt="Workshop — collage 3" />
+        <img src="images/Plant-System-22.jpg" alt="Workshop — collage 4" />
+      </div>
     </div>
 
     <!-- ── Closing reflection ── -->
