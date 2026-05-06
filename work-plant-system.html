@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Plant System — Wen Minjie</title>
-<meta name="description" content="Plant System by Wen Minjie — Cross-media Interactive Installation, 2024." />
+<meta name="description" content="Plant System — A cross-media interactive installation exploring plant sociality and kinship. By Wen Minjie, 2024." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
@@ -69,30 +69,69 @@
     overflow: hidden;
     margin-bottom: 4rem;
   }
-  .work-hero img, .work-hero video {
+  .work-hero img {
     width: 100%; height: 100%;
     object-fit: cover;
     display: block;
   }
-  .placeholder-hero {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #0d1410 0%, #0a0a0a 100%);
-    color: rgba(111, 232, 159, 0.4);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-    border: 0.5px dashed rgba(111, 232, 159, 0.2);
-  }
 
-  /* ===== Title block ===== */
-  .work-num {
+  /* ===== Project meta ===== */
+  .project-meta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 0.5px solid #1f1f1f;
+  }
+  .project-tag-row { display: flex; flex-direction: column; gap: 8px; }
+  .project-pill {
+    display: inline-block;
+    background: #6FE89F;
+    color: #0a0a0a;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: #6FE89F;
-    letter-spacing: 0.25em;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    padding: 6px 14px;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    width: fit-content;
   }
+  .project-hashtags {
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+  .project-hashtags span { display: block; }
+  .project-material {
+    text-align: right;
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    max-width: 380px;
+  }
+  .project-material strong {
+    display: block;
+    color: #fff;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .project-type-pill {
+    display: inline-block;
+    background: #6FE89F;
+    color: #0a0a0a;
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    margin-top: 8px;
+  }
+
+  /* ===== Title ===== */
   .work-h {
     font-size: clamp(48px, 6vw, 76px);
     font-weight: 300;
@@ -114,115 +153,200 @@
     margin-bottom: 5rem;
   }
 
-  /* ===== Free-flowing content ===== */
+  /* ===== Content ===== */
   .work-content {
     display: flex;
     flex-direction: column;
     gap: 5rem;
   }
 
-  .text-block {
-    max-width: 720px;
-  }
-  .text-block p {
-    font-size: 17px;
-    line-height: 1.85;
-    color: rgba(255,255,255,0.85);
+  .section-heading {
+    font-size: clamp(26px, 2.5vw, 32px);
+    font-weight: 400;
+    color: #6FE89F;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
     margin-bottom: 1.5rem;
+  }
+
+  .text-block { max-width: 720px; }
+  .text-block p {
+    font-size: 16px;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 1.25rem;
   }
   .text-block p:last-child { margin-bottom: 0; }
   .text-block em { font-style: italic; color: #6FE89F; }
 
-  /* Centered text block (max-width but centered, used between images) */
-  .text-block.center {
-    margin: 0 auto;
-    text-align: left;
+  .pull-quote {
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 44px);
+    line-height: 1.3;
+    color: #6FE89F;
+    max-width: 800px;
+    margin: 2rem 0;
+    letter-spacing: -0.01em;
   }
 
-  /* ===== Image — alternating left/right ===== */
-  .image-row {
+  .img-text-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
     align-items: center;
   }
-  .image-row.reverse > :first-child { order: 2; }
-  .image-row.reverse > :last-child { order: 1; }
-  .image-row img {
+  .img-text-row.reverse { grid-template-columns: 1fr 1.2fr; }
+  .img-text-row.reverse > :first-child { order: 2; }
+  .img-text-row.reverse > :last-child { order: 1; }
+  .img-text-row img { width: 100%; display: block; }
+
+  .image-single { width: 100%; overflow: hidden; }
+  .image-single img { width: 100%; display: block; }
+
+  .image-medium {
+    max-width: 760px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .image-medium img { width: 100%; display: block; }
+
+  .image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .image-pair img {
     width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
     display: block;
   }
-  .image-row .text-block { max-width: none; }
 
-  /* Single full-width image */
-  .image-single {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #1a1a1a;
-    overflow: hidden;
+  /* ===== Question list (for plant sociality questions) ===== */
+  .question-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 3rem;
+    max-width: 920px;
+    margin-top: 1.5rem;
   }
-  .image-single img, .image-single video {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
+  .question-list .q {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    padding: 14px 0;
+    border-top: 0.5px solid #1f1f1f;
+    position: relative;
+    padding-left: 24px;
+  }
+  .question-list .q::before {
+    content: '?';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    color: #6FE89F;
+    font-size: 13px;
+    font-weight: 500;
   }
 
-  /* Half-width image (used in image-row) */
-  .image-half {
-    aspect-ratio: 4 / 3;
-    background: #1a1a1a;
-    overflow: hidden;
-  }
-  .image-half img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-  }
-
-  /* Two-column gallery */
-  .image-pair {
+  /* ===== Architecture grid (for design diagrams) ===== */
+  .arch-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
   }
-  .image-pair .image-half { aspect-ratio: 1 / 1; }
-
-  /* Three-column gallery */
-  .image-trio {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .image-trio .image-half { aspect-ratio: 4 / 5; }
-
-  /* Placeholder styling */
-  .placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #0d1410 0%, #0a0a0a 100%);
-    color: rgba(111, 232, 159, 0.3);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-    border: 0.5px dashed rgba(111, 232, 159, 0.15);
+  .arch-grid img {
+    width: 100%;
+    background: #f5f5f5;
+    display: block;
   }
 
-  /* ===== Video embed ===== */
-  .video-wrap {
+  /* ===== Video poster ===== */
+  .video-poster {
+    position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
     background: #1a1a1a;
     overflow: hidden;
+    cursor: pointer;
+    margin-top: 1rem;
   }
-  .video-wrap iframe { width: 100%; height: 100%; border: 0; }
-  .video-placeholder {
+  .video-poster img {
     width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #0d1410 0%, #0a0a0a 100%);
-    color: rgba(111, 232, 159, 0.4);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-    border: 0.5px dashed rgba(111, 232, 159, 0.2);
+    object-fit: cover;
+    display: block;
+    transition: filter 0.4s ease, transform 0.6s ease;
+    filter: brightness(0.6);
   }
+  .video-poster:hover img {
+    filter: brightness(0.75);
+    transform: scale(1.02);
+  }
+  .video-poster::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10,30,20,0.4) 0%, rgba(10,10,10,0.3) 100%);
+    pointer-events: none;
+  }
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: rgba(111, 232, 159, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 60px rgba(111, 232, 159, 0.5), 0 0 0 8px rgba(111, 232, 159, 0.15);
+    transition: all 0.4s ease;
+  }
+  .video-poster:hover .play-button {
+    transform: translate(-50%, -50%) scale(1.08);
+    box-shadow: 0 0 80px rgba(111, 232, 159, 0.7), 0 0 0 14px rgba(111, 232, 159, 0.2);
+  }
+  .play-button::after {
+    content: '';
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 14px 0 14px 22px;
+    border-color: transparent transparent transparent #0a0a0a;
+    margin-left: 6px;
+  }
+  .video-label {
+    position: absolute;
+    left: 24px;
+    bottom: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+  }
+  .video-label-r {
+    position: absolute;
+    right: 24px;
+    bottom: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+  }
+  .video-poster.playing img,
+  .video-poster.playing .play-button,
+  .video-poster.playing .video-label,
+  .video-poster.playing .video-label-r,
+  .video-poster.playing::before { display: none; }
+  .video-poster iframe { width: 100%; height: 100%; border: 0; display: block; }
 
-  /* ===== Specs grid ===== */
   .specs {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -249,30 +373,6 @@
     text-transform: none;
   }
 
-  /* ===== Credits block (collaborators / thanks) ===== */
-  .credits {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    max-width: 720px;
-    padding-top: 2rem;
-    border-top: 0.5px solid #1f1f1f;
-  }
-  .credits-block-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #6FE89F;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-  .credits-block p {
-    font-size: 14px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.7);
-  }
-
-  /* ===== Prev/Next nav ===== */
   .work-nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -296,13 +396,8 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
   }
-  .work-nav-title {
-    font-size: 22px;
-    color: #fff;
-    font-weight: 300;
-  }
+  .work-nav-title { font-size: 22px; color: #fff; font-weight: 300; }
 
-  /* ===== Footer with copyright ===== */
   footer {
     position: relative;
     z-index: 2;
@@ -316,11 +411,7 @@
     gap: 2rem;
     align-items: end;
   }
-  .copyright {
-    font-size: 12px;
-    color: #555;
-    line-height: 1.8;
-  }
+  .copyright { font-size: 12px; color: #555; line-height: 1.8; }
   .footer-back {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
@@ -337,16 +428,24 @@
     .work-page { padding: 6rem 1.25rem 3rem; }
     .work-h { font-size: clamp(36px, 9vw, 56px); }
     .work-tag-line { gap: 12px; flex-direction: column; }
-    .image-row { grid-template-columns: 1fr; gap: 1.5rem; }
-    .image-row.reverse > :first-child,
-    .image-row.reverse > :last-child { order: initial; }
-    .image-trio { grid-template-columns: 1fr; }
+    .project-meta { grid-template-columns: 1fr; gap: 1.5rem; }
+    .project-material { text-align: left; max-width: none; }
+    .img-text-row, .img-text-row.reverse {
+      grid-template-columns: 1fr; gap: 1.5rem;
+    }
+    .img-text-row.reverse > :first-child,
+    .img-text-row.reverse > :last-child { order: initial; }
     .image-pair { grid-template-columns: 1fr; }
-    .credits { grid-template-columns: 1fr; gap: 2rem; }
+    .arch-grid { grid-template-columns: 1fr; }
+    .question-list { grid-template-columns: 1fr; gap: 0; }
+    .pull-quote { font-size: 24px; }
+    .specs { grid-template-columns: 1fr 1fr; }
     .work-nav { grid-template-columns: 1fr; gap: 1.5rem; }
     .work-nav-item.next { text-align: left; align-items: flex-start; }
     footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
     .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .play-button { width: 64px; height: 64px; }
+    .play-button::after { border-width: 10px 0 10px 16px; }
   }
 </style>
 </head>
@@ -371,91 +470,182 @@
 
 <article class="work-page">
 
-  <!-- Hero -->
+  <!-- ============ HERO ============ -->
   <div class="work-hero">
-    <div class="placeholder-hero">— Hero image / GIF / video —</div>
+    <img src="images/Plant-System-01main.jpg" alt="Plant System — exhibition view" />
   </div>
 
-  <!-- Title -->
-  <div class="work-num">→ Work 02 / 05</div>
+  <!-- ============ PROJECT META ============ -->
+  <div class="project-meta">
+    <div class="project-tag-row">
+      <span class="project-pill">Project 02</span>
+      <div class="project-hashtags">
+        <span>#Installation</span>
+        <span>#Interactive</span>
+        <span>#Cross-media</span>
+      </div>
+    </div>
+    <div class="project-material">
+      <strong>Material</strong>
+      Plants, displays, custom modular structures, capacitive sensors, real-time data system, interactive cross-media platform
+      <span class="project-type-pill">Cross-media Interactive Installation</span>
+    </div>
+  </div>
+
+  <!-- ============ TITLE ============ -->
   <h1 class="work-h">Plant <em>System</em></h1>
   <div class="work-tag-line">
     <span>Cross-media Interactive Installation</span>
     <span>· 2024</span>
-    <span>· 5 monitors · Plants · Sensors</span>
+    <span>· Plants × Displays × Modular Structure</span>
   </div>
 
-  <!-- Free-flowing content (text + images alternating) -->
+  <!-- ============ CONTENT ============ -->
   <div class="work-content">
 
-    <!-- Opening paragraph (full width text) -->
-    <div class="text-block">
-      <p>A simulation of root-system kinship between plants. The work reveals plant sociality and the blurred line between self and not-self — and asks how invasive species reshape the dynamics of an entire ecosystem.</p>
+    <!-- ── Section 1: Sociality and modes of communication ── -->
+    <div class="img-text-row">
+      <div class="image-single">
+        <img src="images/Plant-System-03.jpg" alt="Plant System — large display with particle visualization" />
+      </div>
+      <div class="text-block">
+        <h2 class="section-heading">Sociality and Modes of Communication</h2>
+        <p><em>Plant System</em> is a cross-media interactive installation that explores the ways in which sociality and communication occur in the ecology of plants.</p>
+        <p>In the plant world, there are mechanisms of kinship recognition whereby plants can transmit signals to each other and recognise similar genotypes. The root system of plants, like a kind of intelligent network, is one of the ways in which they transmit information.</p>
+        <p>This transmission involves the recognition of <em>self</em> and <em>non-self</em>, and determines whether plants compete or cooperate. The intervention of alien species can also lead to the transfer of information between animals and plants.</p>
+      </div>
     </div>
 
-    <!-- Single full-width image -->
+    <!-- Two large exhibition shots side by side -->
+    <div class="image-pair">
+      <img src="images/Plant-System-04.jpg" alt="Vertical display module with surrounding plants" />
+      <img src="images/Plant-System-05.jpg" alt="Full exhibition view — modular installation" />
+    </div>
+
+    <!-- ── Section 2: Family-related Behaviour ── -->
+    <div class="text-block" style="max-width: 920px;">
+      <h2 class="section-heading">Family-related Behaviour</h2>
+      <p>By simulating the interaction of root systems between plants, the work attempts to reveal the characteristics of plant sociality, especially <em>kinship behaviour</em>. Viewers will experience first-hand the ways in which plants communicate with each other, understand the blurred lines between self and not-self, and reflect on the ways in which invasive species can alter the dynamics of entire ecosystems.</p>
+      <p>Linking the communicability of plants to their social nature provides viewers with a unique perspective and encourages them to rethink our connection to the natural world. More than just a work of art, <em>Plant System</em> is a medium that calls attention to the social and ecological balance of plants — it asks viewers to look at the plant world in a new way and realise the subtle, deep connection between us and the natural world.</p>
+    </div>
+
+    <!-- Visitor + System interaction -->
+    <div class="img-text-row reverse">
+      <div class="image-single">
+        <img src="images/Plant-System-06.jpg" alt="Visitors interacting with the plants" />
+      </div>
+      <div class="text-block">
+        <p>The work invites visitors to step into the role of an outsider entering an ecosystem of plants — to observe what happens when their own presence becomes another signal in the network.</p>
+        <p>Each module pairs a living plant with a screen that visualizes the plant's real-time response. As visitors approach, lean in, or touch nearby surfaces, the visualizations shift — what was an isolated organism becomes part of a community in negotiation.</p>
+      </div>
+    </div>
+
+    <!-- Architecture / design diagrams -->
+    <div class="image-medium">
+      <img src="images/Plant-System-07.jpg" alt="3D modular structure design" />
+    </div>
+
+    <!-- ── Question section: sociality reflections ── -->
+    <div class="text-block" style="max-width: 920px;">
+      <h2 class="section-heading">Reflections on Plant Sociality</h2>
+      <p>Throughout the development of this work, a series of questions emerged — questions about how we make sense of plant communication, kinship, and the ethics of treating plants as social agents:</p>
+    </div>
+
+    <div class="question-list">
+      <div class="q">What are the manifestations of same-race and different-race behaviour?</div>
+      <div class="q">How do we think about the ethics of plant "sociality"?</div>
+      <div class="q">How are reflexive modes of knowledge about sociality, interaction and communication shaped?</div>
+      <div class="q">The plant turn — what happens when we analyse plants as agents of human sociality?</div>
+      <div class="q">How can we change the way we look at the plant world?</div>
+      <div class="q">How are communicative ideologies about plants and humans shaped?</div>
+      <div class="q">How can one perceive the kinship of a plant?</div>
+      <div class="q">How are "family" attributes represented in plants?</div>
+      <div class="q">What is the interpretation of "sociality" in plants?</div>
+      <div class="q">What does plant sociality mean in the age of bio-intelligence?</div>
+      <div class="q">What are the behavioural patterns of plant–human relatives?</div>
+      <div class="q">How can we rationally involve people in plant ecological communication?</div>
+    </div>
+
+    <!-- Site/Plan diagrams -->
+    <div class="img-text-row">
+      <div class="image-single">
+        <img src="images/Plant-System-08.jpg" alt="Field study site — exhibition with description panel" />
+      </div>
+      <div class="text-block">
+        <p>The work has been exhibited as both a stand-alone immersive installation and as part of broader plant-art research showcases — each iteration tuning the spatial layout and the density of modules to the unique character of the room.</p>
+      </div>
+    </div>
+
+    <!-- Site plan / layout diagrams -->
+    <div class="arch-grid">
+      <img src="images/Plant-System-09.jpg" alt="Plan grid with numbered modules" />
+      <img src="images/Plant-System-10.jpg" alt="3D site layout — wireframe view" />
+    </div>
+
+    <!-- More installation details -->
     <div class="image-single">
-      <div class="placeholder">— Process / detail image —</div>
+      <img src="images/Plant-System-02.jpg" alt="Installation detail — plant and display" />
     </div>
 
-    <!-- Image left, text right -->
-    <div class="image-row">
-      <div class="image-half">
-        <div class="placeholder">— Detail / sketch —</div>
-      </div>
-      <div class="text-block">
-        <p>Inspired by recent biological research showing plants can recognize kin through root chemistry, the installation translates this invisible negotiation into something audible, visible, and felt. Five monitors arranged across a room each show the root network of one plant; when one plant detects a neighbor, lines of light begin to weave between displays.</p>
-      </div>
+    <!-- Design / construction documents -->
+    <div class="text-block" style="max-width: 920px;">
+      <h2 class="section-heading">Construction &amp; Spatial Design</h2>
+      <p>The modular structure was designed to scale from intimate single-cell encounters to room-sized installations. Each unit acts as both a habitat for a plant and a vessel for the screen that interprets it.</p>
     </div>
 
-    <!-- Text right, image left (reverse) -->
-    <div class="image-row reverse">
-      <div class="image-half">
-        <div class="placeholder">— Exhibition site —</div>
-      </div>
-      <div class="text-block">
-        <p>Visitors walk through the installation as if walking through an underground forest. Their proximity is sensed by capacitive antennas in the floor, and the plants respond — withdrawing, reaching out, or maintaining distance based on patterns drawn from real soil-microbiome data.</p>
-      </div>
+    <div class="image-medium">
+      <img src="images/Plant-System-11.jpg" alt="Section view of the modular structure" />
     </div>
 
-    <!-- Image trio (3 small images) -->
-    <div class="image-trio">
-      <div class="image-half"><div class="placeholder">— Detail 1 —</div></div>
-      <div class="image-half"><div class="placeholder">— Detail 2 —</div></div>
-      <div class="image-half"><div class="placeholder">— Detail 3 —</div></div>
+    <div class="arch-grid">
+      <img src="images/Plant-System-12.jpg" alt="Axonometric view with colour coding" />
+      <img src="images/Plant-System-13.jpg" alt="Dimensional details" />
     </div>
 
-    <!-- Closing paragraph -->
-    <div class="text-block">
-      <p>The piece is a meditation on what philosopher Donna Haraway calls "making kin" — the ethical practice of recognizing other species as relatives, not resources. By making kin recognition visible, the work proposes plants as social beings worth listening to.</p>
+    <div class="arch-grid">
+      <img src="images/Plant-System-14.jpg" alt="Spatial position diagram" />
+      <img src="images/Plant-System-15.jpg" alt="Overall installation view" />
     </div>
 
-    <!-- Video -->
-    <div class="video-wrap">
-      <div class="video-placeholder">— Video embed (YouTube / Bilibili / Vimeo) —</div>
+    <!-- ── Closing reflection ── -->
+    <div class="text-block" style="max-width: 920px;">
+      <h2 class="section-heading">Back to Plants, Getting to Know Plants</h2>
+      <p>My utmost hope is that during "communication," participants will experience not only sensory feedback involving touch, hearing, and vision but will also foster accurate emotional exchange. This will lead to the realization that plants possess <em>"intelligence"</em> and <em>"emotion."</em></p>
     </div>
 
-    
+    <!-- Pull quote -->
+    <div class="pull-quote">
+      "From lifelessness to life, from artificial to natural, from potentiality to actuality."
+    </div>
 
-    <!-- Specs -->
+    <!-- ── Video ── -->
+    <h2 class="section-heading" style="margin-top: 2rem;">Video</h2>
+    <div class="video-poster" id="videoPoster">
+      <img src="images/Plant-System-01main.jpg" alt="Video preview — Plant System" />
+      <div class="play-button" aria-label="Play video"></div>
+      <span class="video-label">▸ Watch on YouTube</span>
+      <span class="video-label-r">2024 · Documentation</span>
+    </div>
+
+    <!-- ── Specs ── -->
     <div class="specs">
-      <div>Scale<strong>Room-size</strong></div>
-      <div>Displays<strong>5 monitors</strong></div>
+      <div>Scale<strong>Room-size installation</strong></div>
+      <div>Components<strong>Plants + displays + modules</strong></div>
       <div>Year<strong>2024</strong></div>
       <div>Status<strong>Exhibited</strong></div>
     </div>
 
   </div>
 
-  <!-- Prev / Next -->
+  <!-- ============ PREV / NEXT ============ -->
   <div class="work-nav">
     <a href="work-light-humor.html" class="work-nav-item">
       <span class="work-nav-label">← Previous · 01</span>
-      <span class="work-nav-title">View previous work</span>
+      <span class="work-nav-title">The Light Humor of Plants</span>
     </a>
     <a href="work-serenity.html" class="work-nav-item next">
       <span class="work-nav-label">Next · 03 →</span>
-      <span class="work-nav-title">View next work</span>
+      <span class="work-nav-title">Serenity Sensorium</span>
     </a>
   </div>
 
@@ -469,6 +659,17 @@
 </footer>
 
 <script>
+// ===== Click-to-play video poster =====
+(function() {
+  const poster = document.getElementById('videoPoster');
+  if (!poster) return;
+  poster.addEventListener('click', function() {
+    poster.classList.add('playing');
+    poster.innerHTML = '<iframe src="https://www.youtube.com/embed/7SM72fEgLHE?rel=0&modestbranding=1&autoplay=1" title="Plant System" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  });
+})();
+
+// ===== Background particles =====
 (function() {
   const canvas = document.getElementById('bgParticleCanvas');
   if (!canvas) return;
