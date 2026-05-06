@@ -128,6 +128,9 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 0.75rem;
   }
+  .gif-showcase.gif-showcase-5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
   .gif-showcase .gif-item { position: relative; }
   .gif-showcase img {
     width: 100%;
@@ -287,7 +290,7 @@
     .img-text-row.reverse > :first-child, .img-text-row.reverse > :last-child { order: initial; }
     .image-pair { grid-template-columns: 1fr; }
     .image-trio, .image-quad { grid-template-columns: 1fr 1fr; }
-    .gif-showcase { grid-template-columns: 1fr 1fr; }
+    .gif-showcase, .gif-showcase.gif-showcase-5 { grid-template-columns: 1fr 1fr; }
     .layers { grid-template-columns: 1fr; gap: 1.5rem; }
     .pull-quote { font-size: 24px; }
     .specs { grid-template-columns: 1fr 1fr; }
@@ -373,8 +376,7 @@
       <img src="images/plant03.jpg" alt="Installation — full system" />
     </div>
 
-    <div class="image-pair">
-      <img src="images/plant05.jpg" alt="Installation — green flask close" />
+    <div class="image-single">
       <img src="images/plant04.jpg" alt="Installation — flask detail" />
     </div>
 
@@ -388,13 +390,13 @@
         <p>The installation is rarely still. Light shifts. Fluid moves. Resource flows are choreographed by the AI in real time. These short loops capture the system at different moments of negotiation.</p>
       </div>
 
-      <div class="gif-showcase">
+      <div class="gif-showcase gif-showcase-5">
         <div class="gif-item">
           <img src="images/plant-GIF.gif" alt="System animation 1" />
           <span class="gif-badge">▸ GIF</span>
         </div>
         <div class="gif-item">
-          <img src="images/plant-GIF 01.gif" alt="System animation 2" />
+          <img src="images/plant-GIF01.gif" alt="System animation 2" />
           <span class="gif-badge">▸ GIF</span>
         </div>
         <div class="gif-item">
@@ -402,7 +404,11 @@
           <span class="gif-badge">▸ GIF</span>
         </div>
         <div class="gif-item">
-          <img src="images/plant02.gif" alt="System animation 4" />
+          <img src="images/plant-GIF04.gif" alt="System animation 4" />
+          <span class="gif-badge">▸ GIF</span>
+        </div>
+        <div class="gif-item">
+          <img src="images/plant02.gif" alt="System animation 5" />
           <span class="gif-badge">▸ GIF</span>
         </div>
       </div>
@@ -418,7 +424,23 @@
       <h2 class="section-heading">Object-Oriented Design</h2>
       <p>This work embodies the core principle of object-oriented design: it breaks from human-centric thinking and treats <em>plants and machines as agents with their own intentionality</em>, rather than as passive objects.</p>
       <p>The plants are no longer decoration or utility — they become participants whose growth itself constitutes a form of expression. The machine is no longer pure execution of human will — it has limited but real autonomous judgement, acting as an intermediary.</p>
-      <p>Plants grow on a slow, cyclical timescale — fundamentally different from human perception or technological time. To bridge this gap, the system uses a <em>multi-layered time-mapping mechanism</em>: cameras continuously capture micro-changes, AI converts them into data streams, and the lighting and nutrient systems respond immediately. The plant's slow growth becomes legible at the human scale — without being forced to abandon its own rhythm.</p>
+    </div>
+
+    <!-- More installation shots -->
+    <div class="img-text-row reverse">
+      <div class="image-single">
+        <img src="images/plant06.png" alt="Close detail — purple light layer" />
+      </div>
+      <div class="text-block">
+        <h2 class="section-heading">Time Mapping</h2>
+        <p>Plants grow on a slow, cyclical timescale — fundamentally different from human perception or technological time. To bridge this gap, the system uses a <em>multi-layered time-mapping mechanism</em>.</p>
+        <p>Cameras continuously capture micro-changes in plant form. AI converts these changes into data streams, triggering immediate responses from the lighting and nutrient systems. The plant's slow growth becomes legible at the human scale — without being forced to abandon its own rhythm.</p>
+      </div>
+    </div>
+
+    <div class="image-pair">
+      <img src="images/plant08.jpg" alt="Installation — viewing angle" />
+      <img src="images/plant10.png" alt="Installation — lit setup" />
     </div>
 
     <!-- ════════════════════════════════════════════ -->
