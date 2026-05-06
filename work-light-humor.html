@@ -241,19 +241,29 @@
     display: block;
   }
 
-  .image-six {
+  .image-five {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .image-five .row-of-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .image-five .row-of-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
   }
-  .image-six .item { position: relative; }
-  .image-six img {
+  .image-five .item { position: relative; }
+  .image-five img {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     display: block;
   }
-  .image-six .label {
+  .image-five .label {
     position: absolute;
     left: 12px;
     bottom: 10px;
@@ -442,7 +452,8 @@
     .img-text-row.reverse > :first-child,
     .img-text-row.reverse > :last-child { order: initial; }
     .image-pair { grid-template-columns: 1fr; }
-    .image-six { grid-template-columns: 1fr 1fr; }
+    .image-five .row-of-2,
+    .image-five .row-of-3 { grid-template-columns: 1fr 1fr; }
     .pull-quote { font-size: 24px; }
     .specs { grid-template-columns: 1fr 1fr; }
     .work-nav { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -568,31 +579,31 @@
       <p>My utmost hope is that during "communication," participants will experience not only sensory feedback involving touch, hearing, and vision but will also foster accurate emotional exchange. This will lead to the realization that plants possess "intelligence" and "emotion."</p>
     </div>
 
-    <!-- 6-grid animation states -->
-    <div class="image-six">
-      <div class="item">
-        <img src="images/The-Light-Humor-of-Plants-move01.gif" alt="Humidity response" />
-        <span class="label">| Humidity</span>
+    <!-- 5 animation states (2 + 3 layout) -->
+    <div class="image-five">
+      <div class="row-of-2">
+        <div class="item">
+          <img src="images/The-Light-Humor-of-Plants-move01.gif" alt="Humidity response" />
+          <span class="label">| Humidity</span>
+        </div>
+        <div class="item">
+          <img src="images/The-Light-Humor-of-Plants-move02.gif" alt="Temperature response" />
+          <span class="label">| Temperature</span>
+        </div>
       </div>
-      <div class="item">
-        <img src="images/The-Light-Humor-of-Plants-move02.gif" alt="Temperature response" />
-        <span class="label">| Temperature</span>
-      </div>
-      <div class="item">
-        <img src="images/The-Light-Humor-of-Plants-move03.gif" alt="Carbon dioxide response" />
-        <span class="label">| Carbon Dioxide</span>
-      </div>
-      <div class="item">
-        <img src="images/The-Light-Humor-of-Plants-move04.gif" alt="Light intensity response" />
-        <span class="label">| Light Intensity</span>
-      </div>
-      <div class="item">
-        <img src="images/The-Light-Humor-of-Plants-move05.gif" alt="No human interaction" />
-        <span class="label">| No Human Interaction</span>
-      </div>
-      <div class="item">
-        <img src="images/The-Light-Humor-of-Plants-move06.gif" alt="Interaction state" />
-        <span class="label">| Interaction</span>
+      <div class="row-of-3">
+        <div class="item">
+          <img src="images/The-Light-Humor-of-Plants-move03.gif" alt="Carbon dioxide response" />
+          <span class="label">| Carbon Dioxide</span>
+        </div>
+        <div class="item">
+          <img src="images/The-Light-Humor-of-Plants-move04.gif" alt="Light intensity response" />
+          <span class="label">| Light Intensity</span>
+        </div>
+        <div class="item">
+          <img src="images/The-Light-Humor-of-Plants-move05.gif" alt="No human interaction" />
+          <span class="label">| No Human Interaction</span>
+        </div>
       </div>
     </div>
 
