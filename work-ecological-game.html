@@ -4,44 +4,29 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Ecological Game Field — Wen Minjie</title>
-<meta name="description" content="Ecological Game Field by Wen Minjie — Plant–Machine Interactive Installation, 2025." />
+<meta name="description" content="Ecological Game Field — A plant-machine collaborative interactive installation. By Wen Minjie, 2025." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    background: #0a0a0a;
-    color: #d4d4d4;
+    background: #0a0a0a; color: #d4d4d4;
     font-family: 'Inter', -apple-system, sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
+    font-weight: 300; line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    min-height: 100vh;
+    overflow-x: hidden; min-height: 100vh;
   }
   a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
   ::selection { background: #6FE89F; color: #0a0a0a; }
 
-  .bg-canvas {
-    position: fixed;
-    inset: 0;
-    width: 100%; height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.45;
-  }
+  .bg-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.45; }
 
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: start;
-    padding: 1.75rem 2.5rem;
-    gap: 2rem;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: start; padding: 1.75rem 2.5rem; gap: 2rem;
     background: linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0) 100%);
     backdrop-filter: blur(8px);
   }
@@ -53,280 +38,251 @@
   .contact-info-l { font-size: 15px; margin-bottom: 4px; }
   .contact-info a:hover { color: #6FE89F; }
 
-  .work-page {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 8rem 3rem 4rem;
-  }
+  .work-page { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 8rem 3rem 4rem; }
 
-  /* ===== Hero ===== */
   .work-hero {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #1a1a1a;
-    overflow: hidden;
+    width: 100%; aspect-ratio: 16 / 9;
+    background: #1a1a1a; overflow: hidden;
     margin-bottom: 4rem;
   }
-  .work-hero img, .work-hero video {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
+  .work-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ===== Project meta ===== */
+  .project-meta {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 2rem; align-items: start;
+    margin-bottom: 2rem; padding-bottom: 2rem;
+    border-bottom: 0.5px solid #1f1f1f;
   }
-  .placeholder-hero {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #0d1410 0%, #0a0a0a 100%);
-    color: rgba(111, 232, 159, 0.4);
+  .project-tag-row { display: flex; flex-direction: column; gap: 8px; }
+  .project-pill {
+    display: inline-block; background: #6FE89F; color: #0a0a0a;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-    border: 0.5px dashed rgba(111, 232, 159, 0.2);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.2em; padding: 6px 14px;
+    text-transform: uppercase; width: fit-content;
+  }
+  .project-hashtags { font-style: italic; font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+  .project-hashtags span { display: block; }
+  .project-material {
+    text-align: right; font-style: italic; font-size: 13px;
+    color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 380px;
+  }
+  .project-material strong { display: block; color: #fff; font-style: normal; font-weight: 400; margin-bottom: 4px; }
+  .project-type-pill {
+    display: inline-block; background: #6FE89F; color: #0a0a0a;
+    font-style: italic; font-size: 13px; font-weight: 500;
+    padding: 6px 14px; margin-top: 8px;
   }
 
-  /* ===== Title block ===== */
-  .work-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #6FE89F;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
   .work-h {
-    font-size: clamp(48px, 6vw, 76px);
-    font-weight: 300;
-    color: #fff;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
+    font-size: clamp(48px, 6vw, 76px); font-weight: 300;
+    color: #fff; line-height: 1.05; letter-spacing: -0.02em;
     margin-bottom: 1.5rem;
   }
   .work-h em { font-style: italic; color: #6FE89F; }
   .work-tag-line {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
+    display: flex; gap: 24px; flex-wrap: wrap;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: #888;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-size: 12px; color: #888;
+    letter-spacing: 0.1em; text-transform: uppercase;
     margin-bottom: 5rem;
   }
 
-  /* ===== Free-flowing content ===== */
-  .work-content {
-    display: flex;
-    flex-direction: column;
-    gap: 5rem;
+  .work-content { display: flex; flex-direction: column; gap: 5rem; }
+
+  .section-heading {
+    font-size: clamp(26px, 2.5vw, 32px); font-weight: 400;
+    color: #6FE89F; line-height: 1.3;
+    letter-spacing: -0.005em; margin-bottom: 1.5rem;
   }
 
-  .text-block {
-    max-width: 720px;
-  }
+  .text-block { max-width: 720px; }
   .text-block p {
-    font-size: 17px;
-    line-height: 1.85;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 1.5rem;
+    font-size: 16px; line-height: 1.85;
+    color: rgba(255,255,255,0.82); margin-bottom: 1.25rem;
   }
   .text-block p:last-child { margin-bottom: 0; }
   .text-block em { font-style: italic; color: #6FE89F; }
 
-  /* Centered text block (max-width but centered, used between images) */
-  .text-block.center {
-    margin: 0 auto;
-    text-align: left;
+  .pull-quote {
+    font-style: italic; font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 44px); line-height: 1.3;
+    color: #6FE89F; max-width: 800px;
+    margin: 2rem 0; letter-spacing: -0.01em;
   }
 
-  /* ===== Image — alternating left/right ===== */
-  .image-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
+  .img-text-row {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 4rem; align-items: center;
   }
-  .image-row.reverse > :first-child { order: 2; }
-  .image-row.reverse > :last-child { order: 1; }
-  .image-row img {
-    width: 100%;
-    display: block;
-  }
-  .image-row .text-block { max-width: none; }
+  .img-text-row.reverse { grid-template-columns: 1fr 1.2fr; }
+  .img-text-row.reverse > :first-child { order: 2; }
+  .img-text-row.reverse > :last-child { order: 1; }
+  .img-text-row img { width: 100%; display: block; }
 
-  /* Single full-width image */
-  .image-single {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #1a1a1a;
-    overflow: hidden;
+  .image-single { width: 100%; overflow: hidden; }
+  .image-single img { width: 100%; display: block; }
+
+  .image-medium { max-width: 820px; margin: 0 auto; overflow: hidden; }
+  .image-medium img { width: 100%; display: block; }
+
+  .image-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .image-pair img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+
+  .image-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .image-trio img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+
+  .image-quad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+  .image-quad img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+
+  /* ===== Group label ===== */
+  .group-label {
+    display: flex; align-items: center; gap: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
   }
-  .image-single img, .image-single video {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
+  .group-label::before, .group-label::after {
+    content: ''; flex: 1; height: 0.5px;
+    background: rgba(111, 232, 159, 0.3);
   }
 
-  /* Half-width image (used in image-row) */
-  .image-half {
-    aspect-ratio: 4 / 3;
-    background: #1a1a1a;
-    overflow: hidden;
-  }
-  .image-half img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-  }
-
-  /* Two-column gallery */
-  .image-pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-  .image-pair .image-half { aspect-ratio: 1 / 1; }
-
-  /* Three-column gallery */
-  .image-trio {
+  /* ===== Three-layer architecture cards ===== */
+  .layers {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .image-trio .image-half { aspect-ratio: 4 / 5; }
-
-  /* Placeholder styling */
-  .placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #0d1410 0%, #0a0a0a 100%);
-    color: rgba(111, 232, 159, 0.3);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-    border: 0.5px dashed rgba(111, 232, 159, 0.15);
-  }
-
-  /* ===== Video embed ===== */
-  .video-wrap {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #1a1a1a;
-    overflow: hidden;
-  }
-  .video-wrap iframe { width: 100%; height: 100%; border: 0; }
-  .video-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #0d1410 0%, #0a0a0a 100%);
-    color: rgba(111, 232, 159, 0.4);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-    border: 0.5px dashed rgba(111, 232, 159, 0.2);
-  }
-
-  /* ===== Specs grid ===== */
-  .specs {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.5rem 3rem;
-    max-width: 720px;
-    padding-top: 2rem;
-    border-top: 0.5px solid #1f1f1f;
-  }
-  .specs > div {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #666;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-  .specs strong {
-    display: block;
-    color: #fff;
-    font-weight: 400;
-    margin-top: 6px;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    letter-spacing: 0.02em;
-    text-transform: none;
-  }
-
-  /* ===== Credits block (collaborators / thanks) ===== */
-  .credits {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    max-width: 720px;
-    padding-top: 2rem;
-    border-top: 0.5px solid #1f1f1f;
-  }
-  .credits-block-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #6FE89F;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-  .credits-block p {
-    font-size: 14px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.7);
-  }
-
-  /* ===== Prev/Next nav ===== */
-  .work-nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    margin-top: 7rem;
-    padding-top: 3rem;
-    border-top: 0.5px solid #1f1f1f;
+    max-width: 1100px;
+    margin: 0 auto;
   }
-  .work-nav-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    transition: opacity 0.3s ease;
+  .layer-card {
+    border-top: 0.5px solid #6FE89F;
+    padding-top: 1.5rem;
   }
-  .work-nav-item:hover { opacity: 0.7; }
-  .work-nav-item.next { text-align: right; align-items: flex-end; }
-  .work-nav-label {
+  .layer-num {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: #6FE89F;
     letter-spacing: 0.2em;
-    text-transform: uppercase;
+    margin-bottom: 0.75rem;
   }
-  .work-nav-title {
-    font-size: 22px;
+  .layer-title {
+    font-size: 18px;
     color: #fff;
-    font-weight: 300;
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+  .layer-desc {
+    font-size: 13px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.65);
   }
 
-  /* ===== Footer with copyright ===== */
+  /* ===== Video poster ===== */
+  .video-poster {
+    position: relative; width: 100%; aspect-ratio: 16 / 9;
+    background: #1a1a1a; overflow: hidden; cursor: pointer;
+    margin-top: 1rem;
+  }
+  .video-poster img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: filter 0.4s ease, transform 0.6s ease;
+    filter: brightness(0.6);
+  }
+  .video-poster:hover img { filter: brightness(0.75); transform: scale(1.02); }
+  .video-poster::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,30,20,0.4) 0%, rgba(10,10,10,0.3) 100%);
+    pointer-events: none;
+  }
+  .play-button {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    background: rgba(111, 232, 159, 0.95);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 60px rgba(111, 232, 159, 0.5), 0 0 0 8px rgba(111, 232, 159, 0.15);
+    transition: all 0.4s ease;
+  }
+  .video-poster:hover .play-button {
+    transform: translate(-50%, -50%) scale(1.08);
+    box-shadow: 0 0 80px rgba(111, 232, 159, 0.7), 0 0 0 14px rgba(111, 232, 159, 0.2);
+  }
+  .play-button::after {
+    content: ''; width: 0; height: 0;
+    border-style: solid;
+    border-width: 14px 0 14px 22px;
+    border-color: transparent transparent transparent #0a0a0a;
+    margin-left: 6px;
+  }
+  .video-label {
+    position: absolute; left: 24px; bottom: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: rgba(255,255,255,0.85);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+  }
+  .video-label-r {
+    position: absolute; right: 24px; bottom: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: rgba(255,255,255,0.6);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+  }
+  .video-poster.playing img,
+  .video-poster.playing .play-button,
+  .video-poster.playing .video-label,
+  .video-poster.playing .video-label-r,
+  .video-poster.playing::before { display: none; }
+  .video-poster iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+  .specs {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem 3rem; max-width: 720px;
+    padding-top: 2rem; border-top: 0.5px solid #1f1f1f;
+  }
+  .specs > div {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #666;
+    letter-spacing: 0.15em; text-transform: uppercase;
+  }
+  .specs strong {
+    display: block; color: #fff; font-weight: 400;
+    margin-top: 6px; font-family: 'Inter', sans-serif;
+    font-size: 14px; letter-spacing: 0.02em; text-transform: none;
+  }
+
+  .work-nav {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem; margin-top: 7rem;
+    padding-top: 3rem; border-top: 0.5px solid #1f1f1f;
+  }
+  .work-nav-item { display: flex; flex-direction: column; gap: 0.5rem; transition: opacity 0.3s ease; }
+  .work-nav-item:hover { opacity: 0.7; }
+  .work-nav-item.next { text-align: right; align-items: flex-end; }
+  .work-nav-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #6FE89F;
+    letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .work-nav-title { font-size: 22px; color: #fff; font-weight: 300; }
+
   footer {
-    position: relative;
-    z-index: 2;
+    position: relative; z-index: 2;
     padding: 4rem 3rem 2.5rem;
-    border-top: 0.5px solid #1f1f1f;
-    margin: 0 3rem;
+    border-top: 0.5px solid #1f1f1f; margin: 0 3rem;
   }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
-    align-items: end;
-  }
-  .copyright {
-    font-size: 12px;
-    color: #555;
-    line-height: 1.8;
-  }
+  .footer-grid { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; }
+  .copyright { font-size: 12px; color: #555; line-height: 1.8; }
   .footer-back {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #6FE89F;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    font-size: 11px; color: #6FE89F;
+    letter-spacing: 0.15em; text-transform: uppercase;
   }
   .footer-back:hover { color: #b4ffce; }
 
@@ -337,16 +293,21 @@
     .work-page { padding: 6rem 1.25rem 3rem; }
     .work-h { font-size: clamp(36px, 9vw, 56px); }
     .work-tag-line { gap: 12px; flex-direction: column; }
-    .image-row { grid-template-columns: 1fr; gap: 1.5rem; }
-    .image-row.reverse > :first-child,
-    .image-row.reverse > :last-child { order: initial; }
-    .image-trio { grid-template-columns: 1fr; }
+    .project-meta { grid-template-columns: 1fr; gap: 1.5rem; }
+    .project-material { text-align: left; max-width: none; }
+    .img-text-row, .img-text-row.reverse { grid-template-columns: 1fr; gap: 1.5rem; }
+    .img-text-row.reverse > :first-child, .img-text-row.reverse > :last-child { order: initial; }
     .image-pair { grid-template-columns: 1fr; }
-    .credits { grid-template-columns: 1fr; gap: 2rem; }
+    .image-trio, .image-quad { grid-template-columns: 1fr 1fr; }
+    .layers { grid-template-columns: 1fr; gap: 1.5rem; }
+    .pull-quote { font-size: 24px; }
+    .specs { grid-template-columns: 1fr 1fr; }
     .work-nav { grid-template-columns: 1fr; gap: 1.5rem; }
     .work-nav-item.next { text-align: left; align-items: flex-start; }
     footer { margin: 0 1.25rem; padding: 3rem 0 2rem; }
     .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .play-button { width: 64px; height: 64px; }
+    .play-button::after { border-width: 10px 0 10px 16px; }
   }
 </style>
 </head>
@@ -371,91 +332,251 @@
 
 <article class="work-page">
 
-  <!-- Hero -->
+  <!-- ============ HERO ============ -->
   <div class="work-hero">
-    <div class="placeholder-hero">— Hero image / GIF / video —</div>
+    <img src="images/plant07.png" alt="Ecological Game Field — main installation view" />
   </div>
 
-  <!-- Title -->
-  <div class="work-num">→ Work 05 / 05</div>
+  <!-- ============ PROJECT META ============ -->
+  <div class="project-meta">
+    <div class="project-tag-row">
+      <span class="project-pill">Project 05</span>
+      <div class="project-hashtags">
+        <span>#Plant-Machine-Coexistence</span>
+        <span>#Object-Oriented-Design</span>
+        <span>#AI-Mediated</span>
+      </div>
+    </div>
+    <div class="project-material">
+      <strong>Material</strong>
+      Sunflower seedlings, glass round-bottom flasks, full-spectrum LED, EMG sensors, temperature/humidity sensors, AI vision (camera + algorithm), Arduino, automated drip irrigation, thermal printer
+      <span class="project-type-pill">Plant-Machine Collaborative Installation</span>
+    </div>
+  </div>
+
+  <!-- ============ TITLE ============ -->
   <h1 class="work-h">Ecological <em>Game Field</em></h1>
   <div class="work-tag-line">
-    <span>Plant–Machine Interactive Installation</span>
+    <span>Plant-Machine Collaborative Installation</span>
     <span>· 2025</span>
-    <span>· Plants · AI camera · Light · Nutrient</span>
+    <span>· Object-Oriented Design Practice</span>
   </div>
 
-  <!-- Free-flowing content (text + images alternating) -->
+  <!-- ============ CONTENT ============ -->
   <div class="work-content">
 
-    <!-- Opening paragraph (full width text) -->
-    <div class="text-block">
-      <p>Plants are given a voice through machines. An AI vision system reads their growth state and redistributes light and nutrients in a decentralised manner — forming a network where plants negotiate, cooperate, and survive together.</p>
-    </div>
-
-    <!-- Single full-width image -->
-    <div class="image-single">
-      <div class="placeholder">— Process / detail image —</div>
-    </div>
-
-    <!-- Image left, text right -->
-    <div class="image-row">
-      <div class="image-half">
-        <div class="placeholder">— Detail / sketch —</div>
+    <!-- ── Section 1: Concept ── -->
+    <div class="img-text-row">
+      <div class="image-single">
+        <img src="images/plant-Rendering.png" alt="Ecological Game Field — concept rendering" />
       </div>
       <div class="text-block">
-        <p>A challenge to traditional subject-object boundaries: who is the agent in this system, and who is the resource? The work proposes that machines can be intermediaries, not masters. Cameras observe, AI interprets, but the plants themselves remain the protagonists of the system.</p>
+        <h2 class="section-heading">Re-imagining the Plant–Machine Relationship</h2>
+        <p><em>Ecological Game Field</em> is an interactive installation built on the principle of <em>plant-machine collaboration</em>. Within the system, plants are given the ability to express their own needs — they send "ecological proposals" through the machine.</p>
+        <p>An AI vision system continuously monitors plant growth indicators via high-precision cameras, transforming biological states into data. When the AI detects an imbalance, a <em>resource allocation mechanism</em> is triggered: light, nutrients, and water are redistributed in a decentralised network, allowing plants to build cooperative relationships within competition.</p>
+        <p>The machine here is neither tool nor servant. It is a <em>translator</em> and <em>mediator</em> — responding to plant needs while regulating overall ecological balance. Together, plants and machine form a symbiotic relationship that challenges the traditional subject-object boundary.</p>
       </div>
     </div>
 
-    <!-- Text right, image left (reverse) -->
-    <div class="image-row reverse">
-      <div class="image-half">
-        <div class="placeholder">— Exhibition site —</div>
-      </div>
-      <div class="text-block">
-        <p>High-precision cameras continuously monitor leaf color, growth stage, and electrical signals from the plants. When the system detects that a plant is under-resourced, light and nutrient solution are redirected — but the redirection is governed by a decentralized algorithm that respects each plant's state, not a top-down optimization.</p>
-      </div>
+    <!-- Atmospheric installation shots -->
+    <div class="image-pair">
+      <img src="images/plant01.jpg" alt="Installation view — blue light atmosphere" />
+      <img src="images/plant02.gif" alt="Installation in motion" />
     </div>
 
-    <!-- Image trio (3 small images) -->
+    <div class="image-pair">
+      <img src="images/plant03.jpg" alt="Installation — full system" />
+      <img src="images/plant04.jpg" alt="Installation — flask detail" />
+    </div>
+
+    <!-- ── Section 2: Object-Oriented Design ── -->
+    <div class="text-block" style="max-width: 920px;">
+      <h2 class="section-heading">Object-Oriented Design</h2>
+      <p>This work embodies the core principle of object-oriented design: it breaks from human-centric thinking and treats <em>plants and machines as agents with their own intentionality</em>, rather than as passive objects.</p>
+      <p>The plants are no longer decoration or utility — they become participants whose growth itself constitutes a form of expression. The machine is no longer pure execution of human will — it has limited but real autonomous judgement, acting as an intermediary. Through this <em>translation mechanism</em>, plant states become visible; plants influence their environment through their own changes; and the machine converts those intentions into resource decisions.</p>
+    </div>
+
+    <!-- Animation gifs -->
     <div class="image-trio">
-      <div class="image-half"><div class="placeholder">— Detail 1 —</div></div>
-      <div class="image-half"><div class="placeholder">— Detail 2 —</div></div>
-      <div class="image-half"><div class="placeholder">— Detail 3 —</div></div>
+      <img src="images/plant-GIF.gif" alt="System in motion 1" />
+      <img src="images/plant-GIF 01.gif" alt="System in motion 2" />
+      <img src="images/plant-GIF02.jpg" alt="System in motion 3" />
     </div>
 
-    <!-- Closing paragraph -->
-    <div class="text-block">
-      <p>The result is a strange ecology: plants whose needs are heard but not solved, machines that respond but do not control. It is a small experiment in what post-anthropocentric design might look like in practice — not a utopia, but a working negotiation.</p>
+    <!-- More installation views -->
+    <div class="img-text-row reverse">
+      <div class="image-single">
+        <img src="images/plant05.jpg" alt="Close detail — green flask under light" />
+      </div>
+      <div class="text-block">
+        <h2 class="section-heading">Time Mapping</h2>
+        <p>Plants grow on a slow, cyclical timescale — fundamentally different from human perception or technological time. To bridge this gap, the system uses a <em>multi-layered time-mapping mechanism</em>.</p>
+        <p>Cameras continuously capture micro-changes in plant form. AI converts these changes into data streams, triggering immediate responses from the lighting and nutrient systems. The plant's slow growth becomes legible at the human scale — without being forced to abandon its own rhythm.</p>
+      </div>
     </div>
 
-    <!-- Video -->
-    <div class="video-wrap">
-      <div class="video-placeholder">— Video embed (YouTube / Bilibili / Vimeo) —</div>
+    <div class="image-pair">
+      <img src="images/plant06.jpg" alt="Installation — light layer detail" />
+      <img src="images/plant08.jpg" alt="Installation — viewing angle" />
     </div>
 
-    
+    <!-- ════════════════════════════════════════════ -->
+    <!-- ── PRELIMINARY EXPERIMENTS                  ── -->
+    <!-- ════════════════════════════════════════════ -->
+    <div>
+      <div class="group-label">— Preliminary Light Experiments —</div>
+      <div class="text-block" style="max-width: 920px; margin-bottom: 2rem;">
+        <h2 class="section-heading">How Light Steers Growth</h2>
+        <p>Before building the installation, we ran a series of experiments to understand how plants respond to controlled light. Two-week-old sunflower seedlings were placed under fixed unilateral light sources to measure their <em>phototropic response</em>.</p>
+        <p>Within 24 hours, stems bent visibly toward the light — average angles of 1°–2°. After 72 hours, the angle had increased to 4°–8°, with leaves rotating to maximize photosynthetic surface area. When the light source was alternated, plants adapted dynamically, but rotations more frequent than once every 6 hours caused growth disorder.</p>
+        <p>These data established the safe parameters for AI-driven light modulation in <em>Ecological Game Field</em> — fast enough to engage in negotiation, slow enough not to stress the plant.</p>
+      </div>
 
-    <!-- Specs -->
+      <div class="image-pair">
+        <img src="images/plant-light.png" alt="Light experiment — seedling array" />
+        <img src="images/plant-light01.png" alt="Light experiment — angle measurement" />
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- ── STRUCTURE                                ── -->
+    <!-- ════════════════════════════════════════════ -->
+    <div>
+      <div class="group-label">— Prototype Structure —</div>
+      <div class="text-block" style="max-width: 920px; margin-bottom: 2rem;">
+        <h2 class="section-heading">Built Around the Plant</h2>
+        <p>The installation uses transparent materials and a metal frame so that plant growth — including the root system inside round-bottom flasks — remains fully visible. The aesthetic is laboratory-like, deliberately emphasising the experimental and the scientific.</p>
+        <p>Modular components include: a full-spectrum LED system, plant carriers (round-bottom flasks), nutrient nozzles, transparent water tubing, cameras, a cross-shaped support structure, and a thermal printer that prints the AI's real-time descriptions of plant states.</p>
+      </div>
+
+      <div class="image-medium">
+        <img src="images/plant-Structure.jpg" alt="Structural diagram — overall system" />
+      </div>
+
+      <div class="image-pair" style="margin-top: 0.75rem;">
+        <img src="images/plant-Structure01.jpg" alt="Structural detail 1" />
+        <img src="images/plant-Structure02.jpg" alt="Structural detail 2" />
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- ── THREE-LAYER LOGIC                       ── -->
+    <!-- ════════════════════════════════════════════ -->
+    <div>
+      <div class="group-label">— Three-Layer Decision Logic —</div>
+      <div class="text-block" style="max-width: 920px; margin-bottom: 2rem;">
+        <h2 class="section-heading">A Tripartite Decision Mechanism</h2>
+        <p>The collaborative decision system has three layers — sensing, AI arbitration, and execution-feedback. Resources are allocated through a "voting" mechanism: every plant has a voice, but final decisions consider collective wellbeing.</p>
+      </div>
+
+      <div class="layers">
+        <div class="layer-card">
+          <div class="layer-num">/ Layer 01</div>
+          <div class="layer-title">Signal Sensing</div>
+          <div class="layer-desc">EMG sensors capture plant electrical signals; environmental sensors track temperature and humidity. The sensing layer turns biology into a continuous information stream.</div>
+        </div>
+        <div class="layer-card">
+          <div class="layer-num">/ Layer 02</div>
+          <div class="layer-title">AI Arbitration</div>
+          <div class="layer-desc">Every 3 hours, the AI analyses plant signals, environmental data, and growth state. When indicators fall below threshold, the AI rebalances — not by overriding plants, but by interpreting their proposals.</div>
+        </div>
+        <div class="layer-card">
+          <div class="layer-num">/ Layer 03</div>
+          <div class="layer-title">Execution &amp; Feedback</div>
+          <div class="layer-desc">Decisions become physical action: light fields shift; nutrients flow; positions adjust. The intervention is recorded; the cycle continues.</div>
+        </div>
+      </div>
+
+      <div class="image-medium" style="margin-top: 2rem;">
+        <img src="images/plant-logic.png" alt="System logic — overall decision flow" />
+      </div>
+
+      <div class="image-medium" style="margin-top: 0.75rem;">
+        <img src="images/plant-logic01.png" alt="System logic — AI arbitration detail" />
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- ── MAKING / WORKING PROCESS                 ── -->
+    <!-- ════════════════════════════════════════════ -->
+    <div>
+      <div class="group-label">— Building the Field —</div>
+      <div class="text-block" style="max-width: 920px; margin-bottom: 2rem;">
+        <h2 class="section-heading">In the Studio</h2>
+        <p>The construction process involved iterative testing of every component — from the geometry of the flask supports, to the precise angle of the LED arrays, to the calibration of the AI vision system.</p>
+      </div>
+
+      <div class="image-quad">
+        <img src="images/plant-working.jpg" alt="Working — calibration" />
+        <img src="images/plant-working02.jpg" alt="Working — installation" />
+        <img src="images/plant-working03.jpg" alt="Working — detail check" />
+        <img src="images/plant-working04.jpg" alt="Working — final assembly" />
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- ── DETAIL                                  ── -->
+    <!-- ════════════════════════════════════════════ -->
+    <div>
+      <div class="group-label">— Close-up —</div>
+
+      <div class="image-pair">
+        <img src="images/plant-xijie.png" alt="Detail — system close-up" />
+        <img src="images/plant-GIF03.gif" alt="Detail — animated state" />
+      </div>
+
+      <div class="image-trio" style="margin-top: 0.75rem;">
+        <img src="images/plant09.jpg" alt="Detail 9" />
+        <img src="images/plant10.png" alt="Detail 10" />
+        <img src="images/plant11.jpg" alt="Detail 11" />
+      </div>
+
+      <div class="image-pair" style="margin-top: 0.75rem;">
+        <img src="images/plant12.jpg" alt="Detail 12" />
+        <img src="images/plant13.jpg" alt="Detail 13" />
+      </div>
+    </div>
+
+    <!-- ── Closing reflection ── -->
+    <div class="text-block" style="max-width: 920px;">
+      <h2 class="section-heading">A Field of Multi-Species Negotiation</h2>
+      <p>When AI describes a plant, the description is not a copy of reality — it is a glimpse of how technical media perceives non-human life. When that description is printed onto paper, the plant gains another mode of being: an organic body, then digital information, then a physical text.</p>
+      <p>The plant is no longer a passive object of observation. Through its symbiosis with the machine, it becomes a subject in artistic practice — its growth, its form, its responses all become driving forces of the system. <em>Ecological Game Field</em> proposes a vision of post-human aesthetics where multi-species negotiation, rather than human dominion, is the foundation of art.</p>
+    </div>
+
+    <!-- Pull quote -->
+    <div class="pull-quote">
+      "If one day the machine no longer describes, and the plant no longer greens, has the work itself lost its life?"
+    </div>
+
+    <!-- ── Video ── -->
+    <h2 class="section-heading" style="margin-top: 2rem;">Video</h2>
+    <div class="video-poster" id="videoPoster">
+      <img src="images/plant07.png" alt="Video preview — Ecological Game Field" />
+      <div class="play-button" aria-label="Play video"></div>
+      <span class="video-label">▸ Watch on YouTube</span>
+      <span class="video-label-r">2025 · Documentation</span>
+    </div>
+
+    <!-- ── Specs ── -->
     <div class="specs">
-      <div>System<strong>AI camera × plants</strong></div>
-      <div>Resource<strong>Light / nutrient</strong></div>
+      <div>System<strong>3-layer plant-machine collaboration</strong></div>
+      <div>AI<strong>Computer vision + decision algorithm</strong></div>
       <div>Year<strong>2025</strong></div>
-      <div>Status<strong>Exhibited</strong></div>
+      <div>Status<strong>Research Practice</strong></div>
     </div>
 
   </div>
 
-  <!-- Prev / Next -->
+  <!-- ============ PREV / NEXT ============ -->
   <div class="work-nav">
     <a href="work-super-city.html" class="work-nav-item">
       <span class="work-nav-label">← Previous · 04</span>
-      <span class="work-nav-title">View previous work</span>
+      <span class="work-nav-title">Super City</span>
     </a>
     <a href="work-light-humor.html" class="work-nav-item next">
       <span class="work-nav-label">Next · 01 →</span>
-      <span class="work-nav-title">View next work</span>
+      <span class="work-nav-title">The Light Humor of Plants</span>
     </a>
   </div>
 
@@ -469,6 +590,15 @@
 </footer>
 
 <script>
+(function() {
+  const poster = document.getElementById('videoPoster');
+  if (!poster) return;
+  poster.addEventListener('click', function() {
+    poster.classList.add('playing');
+    poster.innerHTML = '<iframe src="https://www.youtube.com/embed/KpEIrQxtXJc?rel=0&modestbranding=1&autoplay=1" title="Ecological Game Field" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  });
+})();
+
 (function() {
   const canvas = document.getElementById('bgParticleCanvas');
   if (!canvas) return;
